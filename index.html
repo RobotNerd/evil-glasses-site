@@ -4,21 +4,26 @@
 	<title>Evil Glasses</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;700;900&display=swap" rel="stylesheet"> 
-	<style>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/reset.css">
+
+  <style>
 		/* CSS styles go here */
     HTML, body {
-      margin: 0px;
-      padding: 0px;
-      border: 0px;
       font-family: 'Roboto', sans-serif;
     }
 
     #logo {
       display: block;
       width: 100%;
-      background-color: pink;
+      background-color: white;
       text-align: center;
+    }
+
+    #logo a img {
+      height: 20vw;
+      margin: 5vw;
     }
 
     nav {
@@ -27,19 +32,24 @@
 
     nav ul li {
       display: inline-block;
-      margin-inline: 1vw;
-      font-size: 1.7vw;
+      margin-inline: 2vw;
+      font-size: 7vw;
     }
 
     nav ul li a {
       color: #444;
       text-decoration: none;
       font-weight: bold;
-      font-variant: small-caps;
     }
 
     nav ul li a:hover {
       color: #888;
+    }
+
+    main {
+      text-align: left;
+      margin: 10vw;
+      font-size: 3vw;
     }
 	</style>
 </head>
@@ -48,20 +58,23 @@
 	<header>
     <div id="logo">
       <a href="http://www.evilglasses.com/">
-        <img src="img/logo1.png" alt="My Website Logo">
+        <img src="img/glasses.png" alt="logo">
       </a>
     </div>
 		<nav>
 			<ul>
-				<li><a href="watch.html">Watch</a></li>
-				<li><a href="read.html">Read</a></li>
-				<li><a href="frequent-boaters-club.html">Frequent Boater's Club</a></li>
+				<li><a href="read/index.html">Read</a></li>
+				<li><a href="game/index.html">Game</a></li>
 				<li><a href="about.html">About</a></li>
 			</ul>
 		</nav>
 	</header>
 	<main>
-		<!-- Content goes here -->
+		Welcome to Evil Glasses - the creative realm of story and game crafting.
+    Evil Glasses is a unique fusion of literary and digital artistry, featuring a
+    collection of captivating stories. But our creativity doesn't stop at the
+    written word. Evil Glasses is also home to a series of inventive mobile video
+    games that we've published.
 	</main>
 	<footer>
 		<!-- Footer content goes here -->

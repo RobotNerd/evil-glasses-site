@@ -1,0 +1,35 @@
+a.no-decoration, a.no-decoration:hover, a.no-decoration:active, a.no-decoration:visited {
+  text-decoration: none;
+  color: #5B6973;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: linear-gradient(90deg, #C1DFF4, white);
+  text-decoration: none;
+  padding: 5px;
+}
+
+.logo {
+  height: 30px;
+  width: 30px;
+  background: linear-gradient(145deg, #C1DFF4, #6cacdbff);
+  border: 1px solid #5B6973;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo img {
+  max-height: 39%;
+}
+
+.title {
+  margin-left: 15px;
+  font-size: 24px;
+  font-family: 'Roboto', sans-serif;
+}
