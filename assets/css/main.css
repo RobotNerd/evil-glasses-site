@@ -2029,6 +2029,15 @@ button.alt:active,
   border: 0;
 }
 
+#header h2 {
+  font-family: "Arvo";
+  font-weight: 500;
+  color: #5E97BF;
+  text-shadow: 0.05em 0.075em 0 rgba(0, 0, 0, 0.1);
+  font-size: 2em;
+  letter-spacing: 13px;
+}
+
 #header p {
   text-transform: uppercase;
   font-weight: 400;
