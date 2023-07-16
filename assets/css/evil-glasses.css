@@ -25,3 +25,8 @@
   width: 100%;
   margin-bottom: 20px;
 }
+
+.eg-author-name {
+  text-transform: none;
+  font-weight: 350;
+}
