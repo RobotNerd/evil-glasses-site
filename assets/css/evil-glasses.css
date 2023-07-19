@@ -30,3 +30,21 @@
   text-transform: none;
   font-weight: 350;
 }
+
+.eg-game-link, .eg-game-link:hover {
+  width: 20em;
+  height: 8em;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.google-play-link, .google-play-link:hover {
+  background-image: url("../../images/google-play-badge.png");
+}
+
+.apple-app-store-link, .apple-app-store-link:hover {
+  background-image: url("../../images/apple-app-store-badge.png");
+}
