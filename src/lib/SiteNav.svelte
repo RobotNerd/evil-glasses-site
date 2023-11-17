@@ -1,5 +1,10 @@
 <script lang="ts">
 	export let showIcons: boolean = true;
+	export let vertical: boolean = false;
+
+	const navHorizontal = 'flex flex-wrap items-center justify-center';
+
+	$: topNavClass = vertical ? '' : navHorizontal;
 
 	const navItems = [
 		{
@@ -42,12 +47,13 @@
 </script>
 
 {#if showIcons}
+  <!-- Top navigation bar and drawer -->
 	<nav class="list-nav">
-		<ul class="flex flex-wrap items-center justify-center">
+		<ul class={topNavClass}>
 			{#each navItems as navItem, i}
 				<li>
 					<a href={navItem.url}>
-            <span class="fa-solid {navItem.icon}"></span>
+						<span class="fa-solid {navItem.icon}"></span>
 						<span class="flex-auto">{navItem.name}</span>
 					</a>
 				</li>
@@ -55,7 +61,8 @@
 		</ul>
 	</nav>
 {:else}
-	<ul class="my-4 flex flex-wrap items-center justify-center">
+  <!-- Bottom of page navigation -->
+	<ul class={topNavClass}>
 		{#each navItems as navItem, i}
 			{#if i > 0}
 				<li class="mx-1">|</li>
@@ -68,7 +75,7 @@
 		{/each}
 	</ul>
 
-	<ul class="my-4 flex flex-wrap items-center justify-center">
+	<ul class={navHorizontal}>
 		{#each additionalNavItems as navItem, i}
 			{#if i > 0}
 				<li class="mx-1">|</li>
@@ -81,16 +88,13 @@
 		{/each}
 	</ul>
 
-	<!-- <hr class="flex flex-wrap items-center justify-center w-10" /> -->
-	<span class="my-4 flex flex-wrap items-center justify-center">
+	<span class={navHorizontal}>
 		<hr class="w-1/2 !border-t-2" />
 	</span>
 
-  <span class="my-4 flex flex-wrap items-center justify-center">
-    <a class="hover:underline" href="mailto:contact@evilglasses.com">contact@evilglasses.com</a>
-  </span>
+	<span class={navHorizontal}>
+		<a class="hover:underline" href="mailto:contact@evilglasses.com">contact@evilglasses.com</a>
+	</span>
 
-  <span class="my-4 flex flex-wrap items-center justify-center">
-    Copyright 2023. All rights reserved.
-  </span>
+	<span class={navHorizontal}> Copyright 2023. All rights reserved. </span>
 {/if}

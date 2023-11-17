@@ -9,6 +9,19 @@
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
 	import { storePopup } from '@skeletonlabs/skeleton';
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
+
+	// Drawer
+	import { initializeStores, Drawer, getDrawerStore } from '@skeletonlabs/skeleton';
+	initializeStores();
+	const drawerStore = getDrawerStore();
+
+	function drawerOpen(): void {
+		drawerStore.open({});
+	}
+
+	function drawerClose(): void {
+		drawerStore.close();
+	}
 </script>
 
 <link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/all.min.css" />
@@ -16,7 +29,9 @@
 <span class="visible sm:hidden">
 	<AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
 		<svelte:fragment slot="lead">
-			<span class="fa-solid fa-bars"></span>
+			<button class="btn-icon btn-sm" on:click={drawerOpen}>
+				<span class="fa-solid fa-bars"></span>
+			</button>
 		</svelte:fragment>
 		Evil Glasses
 	</AppBar>
@@ -25,6 +40,21 @@
 <span class="hidden sm:block">
 	<SiteNav />
 </span>
+
+<Drawer>
+	<AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
+		<svelte:fragment slot="lead">
+			<span class="fa-solid fa-bars"></span>
+		</svelte:fragment>
+		Evil Glasses
+		<svelte:fragment slot="trail">
+			<button class="btn-icon btn-sm" on:click={drawerClose}>
+				<span class="fa-solid fa-xmark"></span>
+			</button>
+		</svelte:fragment>
+	</AppBar>
+	<SiteNav vertical={true} />
+</Drawer>
 
 <slot />
 
