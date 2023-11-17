@@ -2,7 +2,7 @@
 	export let showIcons: boolean = true;
 	export let vertical: boolean = false;
 
-	const navHorizontal = 'flex flex-wrap items-center justify-center';
+	const navHorizontal = 'flex items-center justify-center';
 
 	$: topNavClass = vertical ? '' : navHorizontal;
 
@@ -18,7 +18,7 @@
 			url: '/books'
 		},
 		{
-			name: 'Short Stories',
+			name: 'Stories',
 			icon: 'fa-file-lines',
 			url: '/short-stories'
 		},

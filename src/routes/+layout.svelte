@@ -2,6 +2,7 @@
 	import '../app.postcss';
 
 	import { AppBar } from '@skeletonlabs/skeleton';
+	import { LightSwitch } from '@skeletonlabs/skeleton';
 
 	import SiteNav from '$lib/SiteNav.svelte';
 
@@ -34,11 +35,24 @@
 			</button>
 		</svelte:fragment>
 		Evil Glasses
+		<svelte:fragment slot="trail">
+			<LightSwitch />
+		</svelte:fragment>
 	</AppBar>
 </span>
 
 <span class="hidden sm:block">
-	<SiteNav />
+	<AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
+		<svelte:fragment slot="lead">
+			<a href="/">
+				<img src="/favicon.png" alt="evil glasses logo" />
+			</a>
+		</svelte:fragment>
+		<SiteNav />
+		<svelte:fragment slot="trail">
+			<LightSwitch />
+		</svelte:fragment>
+	</AppBar>
 </span>
 
 <Drawer>
