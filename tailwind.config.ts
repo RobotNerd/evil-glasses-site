@@ -17,7 +17,7 @@ const config = {
 	},
 	plugins: [
 		skeleton({
-			themes: { preset: ["skeleton"] },
+			themes: { preset: ["rocket"] },
 		}),
 	]
 } satisfies Config;
