@@ -71,6 +71,23 @@
 	<SiteNav isDrawer={true} />
 </Drawer>
 
-<slot />
+<span class="flex items-center justify-center">
+	<img class="my-8 w-1/2 sm:w-1/3" src="/glasses.png" alt="evil glasses logo" />
+</span>
+
+<div class="container mx-auto flex h-full flex-col items-center justify-center">
+	<h1 class="h1">Evil Glasses</h1>
+	<h5 class="h5">Storytelling, software, and mobile games</h5>
+</div>
+
+<span class="my-4 flex flex-col items-center justify-center sm:flex-row">
+	<hr class="w-1/2 !border-t-2" />
+</span>
+
+<div class="my-20 flex h-full flex-col items-center justify-center">
+	<slot />
+</div>
 
 <SiteNav isTopNav={false} />
+
+<div class="mb-20"> </div>

@@ -1,11 +1,11 @@
 <script lang="ts">
 	export let isTopNav: boolean = true;
-  export let isDrawer: boolean = false;
+	export let isDrawer: boolean = false;
 
 	const navDefault: string = 'flex flex-col sm:flex-row items-center justify-center';
-  const navDrawer: string = '';
+	const navDrawer: string = '';
 
-  let navClass: string = isDrawer ? navDrawer : navDefault;
+	let navClass: string = isDrawer ? navDrawer : navDefault;
 
 	const navItems = [
 		{
@@ -62,6 +62,10 @@
 		</ul>
 	</nav>
 {:else}
+	<span class="{navClass} my-4">
+		<hr class="w-1/2 !border-t-2" />
+	</span>
+
 	<!-- Bottom of page navigation -->
 	<ul class={navClass}>
 		{#each navItems as navItem, i}
