@@ -1,10 +1,11 @@
 <script lang="ts">
-	export let showIcons: boolean = true;
-	export let vertical: boolean = false;
+	export let isTopNav: boolean = true;
+  export let isDrawer: boolean = false;
 
-	const navHorizontal = 'flex items-center justify-center';
+	const navDefault: string = 'flex flex-col sm:flex-row items-center justify-center';
+  const navDrawer: string = '';
 
-	$: topNavClass = vertical ? '' : navHorizontal;
+  let navClass: string = isDrawer ? navDrawer : navDefault;
 
 	const navItems = [
 		{
@@ -46,10 +47,10 @@
 	];
 </script>
 
-{#if showIcons}
-  <!-- Top navigation bar and drawer -->
+{#if isTopNav}
+	<!-- Top navigation bar and drawer -->
 	<nav class="list-nav">
-		<ul class={topNavClass}>
+		<ul class={navClass}>
 			{#each navItems as navItem, i}
 				<li>
 					<a href={navItem.url}>
@@ -61,11 +62,11 @@
 		</ul>
 	</nav>
 {:else}
-  <!-- Bottom of page navigation -->
-	<ul class={topNavClass}>
+	<!-- Bottom of page navigation -->
+	<ul class={navClass}>
 		{#each navItems as navItem, i}
 			{#if i > 0}
-				<li class="mx-1">|</li>
+				<li class="mx-1 hidden sm:flex">|</li>
 			{/if}
 			<li>
 				<a href={navItem.url} class="hover:underline">
@@ -75,10 +76,10 @@
 		{/each}
 	</ul>
 
-	<ul class={navHorizontal}>
+	<ul class="{navClass} mt-4">
 		{#each additionalNavItems as navItem, i}
 			{#if i > 0}
-				<li class="mx-1">|</li>
+				<li class="mx-1 hidden sm:flex">|</li>
 			{/if}
 			<li>
 				<a href={navItem.url} class="hover:underline">
@@ -88,13 +89,13 @@
 		{/each}
 	</ul>
 
-	<span class={navHorizontal}>
+	<span class="{navClass} my-4">
 		<hr class="w-1/2 !border-t-2" />
 	</span>
 
-	<span class={navHorizontal}>
+	<span class={navClass}>
 		<a class="hover:underline" href="mailto:contact@evilglasses.com">contact@evilglasses.com</a>
 	</span>
 
-	<span class={navHorizontal}> Copyright 2023. All rights reserved. </span>
+	<span class={navClass}> Copyright 2023. All rights reserved. </span>
 {/if}

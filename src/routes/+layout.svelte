@@ -67,9 +67,9 @@
 			</button>
 		</svelte:fragment>
 	</AppBar>
-	<SiteNav vertical={true} />
+	<SiteNav isDrawer={true} />
 </Drawer>
 
 <slot />
 
-<SiteNav showIcons={false} />
+<SiteNav isTopNav={false} />
