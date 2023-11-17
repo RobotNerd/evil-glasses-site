@@ -22,7 +22,9 @@
 	</AppBar>
 </span>
 
-<SiteNav />
+<span class="hidden sm:block">
+	<SiteNav />
+</span>
 
 <slot />
 
