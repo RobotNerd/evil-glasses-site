@@ -7,6 +7,10 @@ export interface Story {
   title: string;
 }
 
+export interface StoryContent {
+  [title: string ] : string;
+}
+
 export interface ShortStoryMeta {
   image: string;
   name: string;
