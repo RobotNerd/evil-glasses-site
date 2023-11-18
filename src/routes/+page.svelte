@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Featured from '$lib/Featured.svelte';
-	import * as featured from '$lib/data/featured.json';
+	import {featured} from '$lib/data/featured';
 </script>
 
-<Featured featuredItems={featured.default} />
+<Featured featuredItems={featured} />
