@@ -27,7 +27,7 @@
 
 <div class="hidden w-1/2 flex-row items-center justify-evenly md:flex">
 	{#each featuredItems as item}
-		<a href={item.url}>
+		<a href="{item.route}">
 			<div class="flex flex-col items-center">
 				<img class=" w-32" src={item.image} alt={item.name} />
 			</div>
@@ -44,7 +44,7 @@
 		<div class="embla__container">
 			{#each featuredItems as item}
 				<div class="embla__slide">
-          <a href={item.url}>
+          <a href="{item.route}">
 					  <img src={item.image} alt={item.name} />
           </a>
 				</div>
