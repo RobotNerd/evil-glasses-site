@@ -40,7 +40,10 @@
 		<span class="fa-solid fa-chevron-left"></span>
 	</button>
 
-	<div class="embla" use:emblaCarouselSvelte={{ emblaOptions }} on:emblaInit={onInit}>
+	<div class="embla" use:emblaCarouselSvelte={{ 
+			// @ts-ignore
+			emblaOptions
+		}} on:emblaInit={onInit}>
 		<div class="embla__container">
 			{#each featuredItems as item}
 				<div class="embla__slide">
