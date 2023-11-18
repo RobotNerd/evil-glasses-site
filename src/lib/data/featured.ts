@@ -1,4 +1,4 @@
-import { Stories } from "./short-stories";
+import { Stories } from "./short-story-meta";
 
 export interface Feature {
   image: string;
