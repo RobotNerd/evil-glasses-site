@@ -12,7 +12,6 @@ export interface StoryContent {
 }
 
 export interface ShortStoryMeta {
-  // image: string;
   name: string;
   stories: Story[];
   route: string;

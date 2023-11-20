@@ -75,9 +75,9 @@
 	<img class="my-8 w-1/2 sm:w-1/3" src="/glasses.png" alt="evil glasses logo" />
 </span>
 
-<div class="container mx-auto flex h-full flex-col items-center justify-center">
+<div class="container mx-auto flex h-full w-3/4 flex-col items-center justify-center">
 	<h1 class="h1">Evil Glasses</h1>
-	<h5 class="h5">Storytelling, software, and mobile games</h5>
+	<h5 class="h5 text-center">Storytelling, software, and mobile games</h5>
 </div>
 
 <span class="my-4 flex flex-col items-center justify-center sm:flex-row">
@@ -90,4 +90,4 @@
 
 <SiteNav isTopNav={false} />
 
-<div class="mb-20"> </div>
+<div class="mb-20"></div>
