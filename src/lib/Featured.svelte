@@ -2,9 +2,9 @@
 	import emblaCarouselSvelte from 'embla-carousel-svelte';
 
 	export let featuredItems: any = [
-		{ url: '/test', image: '/avatar.png', name: 'placeholder' },
-		{ url: '/test', image: '/avatar.png', name: 'placeholder' },
-		{ url: '/test', image: '/avatar.png', name: 'placeholder' }
+		{ route: '/test', image: '/avatar.png', name: 'placeholder' },
+		{ route: '/test', image: '/avatar.png', name: 'placeholder' },
+		{ route: '/test', image: '/avatar.png', name: 'placeholder' }
 	];
 
 	let emblaOptions: any = { loop: true };
