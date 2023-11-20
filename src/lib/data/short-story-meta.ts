@@ -1,4 +1,4 @@
-const route: string = '/short-stories';
+const baseRoute: string = '/short-stories';
 const title: string = 'Evil Glasses Short Stories: Edition';
 
 export interface Story {
@@ -12,7 +12,7 @@ export interface StoryContent {
 }
 
 export interface ShortStoryMeta {
-  image: string;
+  // image: string;
   name: string;
   stories: Story[];
   route: string;
@@ -20,7 +20,6 @@ export interface ShortStoryMeta {
 
 export let Stories: ShortStoryMeta[] = [
   {
-    image: `${route}/2015-07-01-edition-01.png`,
     name: `${title} 1`,
     stories: [
       {
@@ -34,10 +33,9 @@ export let Stories: ShortStoryMeta[] = [
         title: 'Anorexia',
       },
     ],
-    route: `${route}/2015-07-01-edition-01.pdf`
+    route: `${baseRoute}/2015-07-01/01/`
   },
   {
-    image: `${route}/2015-10-01-edition-02.png`,
     name: `${title} 2`,
     stories: [
       {
@@ -51,10 +49,9 @@ export let Stories: ShortStoryMeta[] = [
         title: 'Sharkrilla',
       },
     ],
-    route: `${route}/2015-10-01-edition-02.pdf`
+    route: `${baseRoute}/2015-10-01/02/`
   },
   {
-    image: `${route}/2016-01-01-edition-03.png`,
     name: `${title} 3`,
     stories: [
       {
@@ -73,10 +70,9 @@ export let Stories: ShortStoryMeta[] = [
         title: 'Cloned',
       },
     ],
-    route: `${route}/2016-01-01-edition-03.pdf`
+    route: `${baseRoute}/2016-01-01/03/`
   },
   {
-    image: `${route}/2016-04-01-edition-04.png`,
     name: `${title} 4`,
     stories: [
       {
@@ -90,10 +86,9 @@ export let Stories: ShortStoryMeta[] = [
         title: 'Call',
       },
     ],
-    route: `${route}/2016-04-01-edition-04.pdf`
+    route: `${baseRoute}/2016-04-01/04/`
   },
   {
-    image: `${route}/2016-07-01-edition-05.png`,
     name: `${title} 5`,
     stories: [
       {
@@ -107,10 +102,9 @@ export let Stories: ShortStoryMeta[] = [
         title: 'Sleeping Gods',
       },
     ],
-    route: `${route}/2016-07-01-edition-05.pdf`
+    route: `${baseRoute}/2016-07-01/05/`
   },
   {
-    image: `${route}/2016-10-01-edition-06.png`,
     name: `${title} 6`,
     stories: [
       {
@@ -124,10 +118,9 @@ export let Stories: ShortStoryMeta[] = [
         title: 'The Bad Comic',
       },
     ],
-    route: `${route}/2016-10-01-edition-06.pdf`
+    route: `${baseRoute}/2016-10-01/06/`
   },
   {
-    image: `${route}/2017-01-01-edition-07.png`,
     name: `${title} 7`,
     stories: [
       {
@@ -141,10 +134,9 @@ export let Stories: ShortStoryMeta[] = [
         title: 'Miss Conception',
       },
     ],
-    route: `${route}/2017-01-01-edition-07.pdf`
+    route: `${baseRoute}/2017-01-01/07/`
   },
   {
-    image: `${route}/2017-04-01-edition-08.png`,
     name: `${title} 8`,
     stories: [
       {
@@ -158,10 +150,9 @@ export let Stories: ShortStoryMeta[] = [
         title: '12th Ave North, Unit M',
       },
     ],
-    route: `${route}/2017-04-01-edition-08.pdf`
+    route: `${baseRoute}/2017-04-01/08/`
   },
   {
-    image: `${route}/2017-07-01-edition-09.png`,
     name: `${title} 9`,
     stories: [
       {
@@ -175,10 +166,9 @@ export let Stories: ShortStoryMeta[] = [
         title: 'Night of the Cat',
       },
     ],
-    route: `${route}/2017-07-01-edition-09.pdf`
+    route: `${baseRoute}/2017-07-01/09/`
   },
   {
-    image: `${route}/2017-10-01-edition-10.png`,
     name: `${title} 10`,
     stories: [
       {
@@ -192,10 +182,9 @@ export let Stories: ShortStoryMeta[] = [
         title: 'Moment In Time',
       },
     ],
-    route: `${route}/2017-10-01-edition-10.pdf`
+    route: `${baseRoute}/2017-10-01/10/`
   },
   {
-    image: `${route}/2018-01-01-edition-11.png`,
     name: `${title} 11`,
     stories: [
       {
@@ -209,10 +198,9 @@ export let Stories: ShortStoryMeta[] = [
         title: 'Memories of the End',
       },
     ],
-    route: `${route}/2018-01-01-edition-11.pdf`
+    route: `${baseRoute}/2018-01-01/11/`
   },
   {
-    image: `${route}/2018-04-01-edition-12.png`,
     name: `${title} 12`,
     stories: [
       {
@@ -226,10 +214,9 @@ export let Stories: ShortStoryMeta[] = [
         title: 'A Hot Week in August',
       },
     ],
-    route: `${route}/2018-04-01-edition-12.pdf`
+    route: `${baseRoute}/2018-04-01/12/`
   },
   {
-    image: `${route}/2018-07-01-edition-13.png`,
     name: `${title} 13`,
     stories: [
       {
@@ -243,10 +230,9 @@ export let Stories: ShortStoryMeta[] = [
         title: 'No Kill Shelter',
       },
     ],
-    route: `${route}/2018-07-01-edition-13.pdf`
+    route: `${baseRoute}/2018-07-01/13/`
   },
   {
-    image: `${route}/2019-03-01-edition-14.png`,
     name: `${title} 14`,
     stories: [
       {
@@ -260,6 +246,6 @@ export let Stories: ShortStoryMeta[] = [
         title: 'Two',
       }
     ],
-    route: `${route}/2019-03-01-edition-14.pdf`
+    route: `${baseRoute}/2019-03-01/14/`
   }
 ]
