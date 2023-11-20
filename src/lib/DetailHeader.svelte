@@ -3,7 +3,6 @@
 	export let subtitle: string = '';
 	export let image: string = '';
 	export let imageAlt: string = 'ALT TEXT';
-	export let content: string = 'CONTENT';
 </script>
 
 <div class="mx-auto flex w-3/4 flex-col text-center">
@@ -12,5 +11,3 @@
 </div>
 
 <img class="mb-4 w-1/3" src={image} alt={imageAlt} />
-
-{content}
