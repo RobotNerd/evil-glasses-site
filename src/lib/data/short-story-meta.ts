@@ -17,8 +17,8 @@ export interface ShortStoryMeta {
   route: string;
 }
 
-export let Stories: ShortStoryMeta[] = [
-  {
+export let Stories: { [key: number]: ShortStoryMeta } = {
+  1: {
     name: `${title} 1`,
     stories: [
       {
@@ -34,7 +34,7 @@ export let Stories: ShortStoryMeta[] = [
     ],
     route: `${baseRoute}/2015-07-01/01/`
   },
-  {
+  2: {
     name: `${title} 2`,
     stories: [
       {
@@ -50,7 +50,7 @@ export let Stories: ShortStoryMeta[] = [
     ],
     route: `${baseRoute}/2015-10-01/02/`
   },
-  {
+  3: {
     name: `${title} 3`,
     stories: [
       {
@@ -71,7 +71,7 @@ export let Stories: ShortStoryMeta[] = [
     ],
     route: `${baseRoute}/2016-01-01/03/`
   },
-  {
+  4: {
     name: `${title} 4`,
     stories: [
       {
@@ -87,7 +87,7 @@ export let Stories: ShortStoryMeta[] = [
     ],
     route: `${baseRoute}/2016-04-01/04/`
   },
-  {
+  5: {
     name: `${title} 5`,
     stories: [
       {
@@ -103,7 +103,7 @@ export let Stories: ShortStoryMeta[] = [
     ],
     route: `${baseRoute}/2016-07-01/05/`
   },
-  {
+  6: {
     name: `${title} 6`,
     stories: [
       {
@@ -119,7 +119,7 @@ export let Stories: ShortStoryMeta[] = [
     ],
     route: `${baseRoute}/2016-10-01/06/`
   },
-  {
+  7: {
     name: `${title} 7`,
     stories: [
       {
@@ -135,7 +135,7 @@ export let Stories: ShortStoryMeta[] = [
     ],
     route: `${baseRoute}/2017-01-01/07/`
   },
-  {
+  8: {
     name: `${title} 8`,
     stories: [
       {
@@ -151,7 +151,7 @@ export let Stories: ShortStoryMeta[] = [
     ],
     route: `${baseRoute}/2017-04-01/08/`
   },
-  {
+  9: {
     name: `${title} 9`,
     stories: [
       {
@@ -167,7 +167,7 @@ export let Stories: ShortStoryMeta[] = [
     ],
     route: `${baseRoute}/2017-07-01/09/`
   },
-  {
+  10: {
     name: `${title} 10`,
     stories: [
       {
@@ -183,7 +183,7 @@ export let Stories: ShortStoryMeta[] = [
     ],
     route: `${baseRoute}/2017-10-01/10/`
   },
-  {
+  11: {
     name: `${title} 11`,
     stories: [
       {
@@ -199,7 +199,7 @@ export let Stories: ShortStoryMeta[] = [
     ],
     route: `${baseRoute}/2018-01-01/11/`
   },
-  {
+  12: {
     name: `${title} 12`,
     stories: [
       {
@@ -215,7 +215,7 @@ export let Stories: ShortStoryMeta[] = [
     ],
     route: `${baseRoute}/2018-04-01/12/`
   },
-  {
+  13: {
     name: `${title} 13`,
     stories: [
       {
@@ -231,7 +231,7 @@ export let Stories: ShortStoryMeta[] = [
     ],
     route: `${baseRoute}/2018-07-01/13/`
   },
-  {
+  14: {
     name: `${title} 14`,
     stories: [
       {
@@ -247,4 +247,4 @@ export let Stories: ShortStoryMeta[] = [
     ],
     route: `${baseRoute}/2019-03-01/14/`
   }
-]
+}
