@@ -4,11 +4,12 @@
 
 <div class="flex flex-row flex-wrap justify-center">
 	{#each [...items].reverse() as item}
-    <a href="/short-stories/{item.date}/{item.edition}/">
-		<div class="card card-hover m-8 block rounded-lg p-4">
-      <img class="w-xs sm:max-w-xs" src="/short-stories/{item.date}-edition-{item.edition}.png" alt="TODO">
-			<div>{item.name}</div>
-		</div>
-  </a>
+		<a
+			class="card variant-ghost-secondary card-hover m-4 flex w-1/2 flex-col rounded-lg p-4 text-center sm:w-1/5"
+			href="/short-stories/{item.date}/{item.edition}/"
+		>
+			<img src="/short-stories/{item.date}-edition-{item.edition}.png" alt="{item.name}" />
+			{item.name}
+		</a>
 	{/each}
 </div>
