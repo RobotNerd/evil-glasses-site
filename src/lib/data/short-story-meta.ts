@@ -9,6 +9,8 @@ export interface Story {
 
 export interface ShortStoryMeta {
   name: string;
+  date: string;
+  edition: string;
   stories: Story[];
   route: string;
 }
@@ -16,6 +18,8 @@ export interface ShortStoryMeta {
 export let Stories: { [key: number]: ShortStoryMeta } = {
   1: {
     name: `${title} 1`,
+    date: '2015-07-01',
+    edition: '01',
     stories: [
       {
         author: 'Sara Lufrano',
@@ -32,6 +36,8 @@ export let Stories: { [key: number]: ShortStoryMeta } = {
   },
   2: {
     name: `${title} 2`,
+    date: '2015-10-01',
+    edition: '02',
     stories: [
       {
         author: 'Marshall Bowles',
@@ -48,6 +54,8 @@ export let Stories: { [key: number]: ShortStoryMeta } = {
   },
   3: {
     name: `${title} 3`,
+    date: '2016-01-01',
+    edition: '03',
     stories: [
       {
         author: 'Mike Kirkendall',
@@ -69,6 +77,8 @@ export let Stories: { [key: number]: ShortStoryMeta } = {
   },
   4: {
     name: `${title} 4`,
+    date: '2016-04-01',
+    edition: '04',
     stories: [
       {
         author: 'Marshall Bowles',
@@ -85,6 +95,8 @@ export let Stories: { [key: number]: ShortStoryMeta } = {
   },
   5: {
     name: `${title} 5`,
+    date: '2016-07-01',
+    edition: '05',
     stories: [
       {
         author: 'Sara Lufrano',
@@ -101,6 +113,8 @@ export let Stories: { [key: number]: ShortStoryMeta } = {
   },
   6: {
     name: `${title} 6`,
+    date: '2016-10-01',
+    edition: '06',
     stories: [
       {
         author: 'Marshall Bowles',
@@ -117,6 +131,8 @@ export let Stories: { [key: number]: ShortStoryMeta } = {
   },
   7: {
     name: `${title} 7`,
+    date: '2017-01-01',
+    edition: '07',
     stories: [
       {
         author: 'Sara Lufrano',
@@ -133,6 +149,8 @@ export let Stories: { [key: number]: ShortStoryMeta } = {
   },
   8: {
     name: `${title} 8`,
+    date: '2017-04-01',
+    edition: '08',
     stories: [
       {
         author: 'Marshall Bowles',
@@ -149,6 +167,8 @@ export let Stories: { [key: number]: ShortStoryMeta } = {
   },
   9: {
     name: `${title} 9`,
+    date: '2017-07-01',
+    edition: '09',
     stories: [
       {
         author: 'Sara Lufrano',
@@ -165,6 +185,8 @@ export let Stories: { [key: number]: ShortStoryMeta } = {
   },
   10: {
     name: `${title} 10`,
+    date: '2017-10-01',
+    edition: '10',
     stories: [
       {
         author: 'Marshall Bowles',
@@ -181,6 +203,8 @@ export let Stories: { [key: number]: ShortStoryMeta } = {
   },
   11: {
     name: `${title} 11`,
+    date: '2018-01-01',
+    edition: '11',
     stories: [
       {
         author: 'Sara Lufrano',
@@ -197,6 +221,8 @@ export let Stories: { [key: number]: ShortStoryMeta } = {
   },
   12: {
     name: `${title} 12`,
+    date: '2018-04-01',
+    edition: '12',
     stories: [
       {
         author: 'Sara Lufrano',
@@ -213,6 +239,8 @@ export let Stories: { [key: number]: ShortStoryMeta } = {
   },
   13: {
     name: `${title} 13`,
+    date: '2018-07-01',
+    edition: '13',
     stories: [
       {
         author: 'Sara Lufrano',
@@ -229,6 +257,8 @@ export let Stories: { [key: number]: ShortStoryMeta } = {
   },
   14: {
     name: `${title} 14`,
+    date: '2019-03-01',
+    edition: '14',
     stories: [
       {
         author: 'Marshall Bowles',

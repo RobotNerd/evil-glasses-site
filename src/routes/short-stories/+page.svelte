@@ -1,3 +1,8 @@
+<script lang="ts">
+  import { Stories } from "$lib/data/short-story-meta";
+  import ViewMultiple from "$lib/ViewMultiple.svelte";
+</script>
+
 <h1 class="h1">Short Stories</h1>
 
-TODO CONTENT
+<ViewMultiple items={Object.values(Stories)} />
