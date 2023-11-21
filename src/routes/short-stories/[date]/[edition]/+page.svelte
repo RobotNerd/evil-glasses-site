@@ -7,8 +7,6 @@
 	const image = `/short-stories/${$page.params.date}-edition-${$page.params.edition}.png`;
 	const imageAlt = `Evil Glasses short stories edition ${edition}`;
 	const pdfLink = `/short-stories/${$page.params.date}-edition-${$page.params.edition}.pdf`;
-
-	console.log('link: ', pdfLink);
 </script>
 
 <DetailHeader title="Evil Glasses Short Stories" subtitle="Edition {edition}" {image} {imageAlt} />
