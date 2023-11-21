@@ -5,11 +5,13 @@
 	let contentPath = `../../../../lib/data/short-stories/${date}-edition-${edition}`;
 </script>
 
-<h1 class="h1 mb-4">{title}</h1>
-<h3 class="h3 mb-8">TODO AUTHOR</h3>
-
-<div class="w-3/4 md:w-1/2">
+<span class="w-3/4 md:w-1/2">
 	{#await import(contentPath) then Module}
-		{@html Module.content[title]}
-	{/await}
-</div>
+
+		<h1 class="h2 sm:h1 mb-1 sm:mb-4">{title}</h1>
+		<h3 class="h4 sm:h3 mb-8">by TODO AUTHOR</h3>
+
+    {@html Module.content[title]}
+
+    {/await}
+</span>
