@@ -102,8 +102,11 @@
 	</span>
 
 	<span class={navClass}>
-		<a class="hover:underline" href="mailto:contact@evilglasses.com">contact@evilglasses.com</a>
+		<a class="hover:underline" href="mailto:contact@evilglasses.com">
+			<span class="fa-solid fa-envelope mr-1.5"></span>
+			contact@evilglasses.com
+		</a>
 	</span>
 
-	<span class={navClass}> Copyright 2023. All rights reserved. </span>
+	<span class={navClass}>© Copyright 2023. All rights reserved. </span>
 {/if}
