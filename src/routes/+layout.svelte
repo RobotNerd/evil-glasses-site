@@ -68,7 +68,7 @@
 			</button>
 		</svelte:fragment>
 	</AppBar>
-	<SiteNav isDrawer={true} />
+	<SiteNav isDrawer={true} on:drawerClose={drawerClose} />
 </Drawer>
 
 <span class="flex items-center justify-center">

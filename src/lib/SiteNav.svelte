@@ -1,9 +1,13 @@
 <script lang="ts">
+	import { createEventDispatcher } from 'svelte';
+
 	export let isTopNav: boolean = true;
 	export let isDrawer: boolean = false;
 
 	const navDefault: string = 'flex flex-col sm:flex-row items-center justify-center';
 	const navDrawer: string = '';
+
+	const dispatch = createEventDispatcher();
 
 	let navClass: string = isDrawer ? navDrawer : navDefault;
 
@@ -53,7 +57,7 @@
 		<ul class={navClass}>
 			{#each navItems as navItem, i}
 				<li>
-					<a href={navItem.url}>
+					<a href={navItem.url} on:click={() => dispatch('drawerClose')}>
 						<span class="fa-solid {navItem.icon}"></span>
 						<span class="flex-auto">{navItem.name}</span>
 					</a>
