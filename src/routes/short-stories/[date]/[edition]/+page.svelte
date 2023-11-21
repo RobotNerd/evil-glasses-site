@@ -19,7 +19,7 @@
 <div>
   {#each Stories[edition].stories as story}
     <div>
-      <a href="">{story.title}</a>  <!-- TODO html link to each story -->
+      <a class="underline" href="/short-stories/read/{$page.params.date}/{$page.params.edition}/{story.title}">{story.title}</a>  <!-- TODO html link to each story -->
       by {story.author}
     </div>
   {/each}
