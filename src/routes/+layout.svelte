@@ -29,7 +29,11 @@
 <link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/all.min.css" />
 
 <span class="visible sm:hidden">
-	<AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
+	<AppBar
+		gridColumns="grid-cols-4"
+		slotDefault="place-self-center col-span-2"
+		slotTrail="place-content-end"
+	>
 		<svelte:fragment slot="lead">
 			<button class="btn-icon btn-sm" on:click={drawerOpen}>
 				<span class="fa-solid fa-bars"></span>
