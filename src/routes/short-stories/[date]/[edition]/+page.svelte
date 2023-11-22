@@ -13,14 +13,16 @@
 
 <h3 class="h3 mb-4">Read Online</h3>
 
-<div>
+<div class="w-1/2 sm:w-1/3">
 	{#each Stories[edition].stories as story}
-		<div>
-			<a class="underline" href="/short-stories/read/{$page.params.date}/{story.title}"
-				>{story.title}</a
-			>
+		<a
+			class="card variant-ghost card-hover mb-8 flex flex-col rounded-lg p-4"
+			href="/short-stories/read/{$page.params.date}/{story.title}"
+		>
+			<h3 class="h3">{story.title}</h3>
 			by {story.author}
-		</div>
+			<div class="my-4">{story.synopsis}</div>
+		</a>
 	{/each}
 </div>
 
