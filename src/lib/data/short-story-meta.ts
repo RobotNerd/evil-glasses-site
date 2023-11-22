@@ -1,19 +1,7 @@
+import type { ShortStoryMeta } from '$lib/util/Story';
+
 const baseRoute: string = '/short-stories';
 const title: string = 'Evil Glasses Short Stories: Edition';
-
-export interface Story {
-  author: string;
-  synopsis: string;
-  title: string;
-}
-
-export interface ShortStoryMeta {
-  name: string;
-  date: string;
-  edition: string;
-  stories: Story[];
-  route: string;
-}
 
 export let Stories: { [key: number]: ShortStoryMeta } = {
   1: {
