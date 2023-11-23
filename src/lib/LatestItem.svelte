@@ -18,7 +18,9 @@
 		{description}
 	</p>
 
+  <div class="flex flex-col items-center">
   {#if book}
     <BookLinks book={book} />
   {/if}
+  </div>
 </div>
