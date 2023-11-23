@@ -11,7 +11,9 @@
 </script>
 
 <div class="card variant-outline m-4 flex w-3/4 flex-col items-center rounded-lg p-4">
-	<img class="mb-8 w-2/3" src={image} alt={imageDescription} />
+	<a class="mb-8 w-2/3" href={url}>
+		<img  src={image} alt={imageDescription} />
+	</a>
 
 	<h3 class="h3 mb-4">{title}</h3>
 
