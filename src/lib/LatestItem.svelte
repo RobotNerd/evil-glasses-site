@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { BookMeta } from './util/Story';
+	import type { BookMeta } from '$lib/util/Story';
 	import BookLinks from '$lib/BookLinks.svelte';
 
-	export let book: BookMeta;
+	export let book: BookMeta | null;
 	export let description: string = 'DESCRIPTION';
 	export let image: string = 'IMAGE';
 	export let imageDescription: string = 'IMAGE DESCRIPTION';

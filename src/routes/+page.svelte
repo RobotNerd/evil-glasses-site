@@ -2,6 +2,7 @@
 	import Featured from '$lib/Featured.svelte';
 	import { featured } from '$lib/data/featured';
 	import { Books } from '$lib/data/book-meta';
+	import { Games } from '$lib/data/game-meta';
 
 	import LatestItem from '$lib/LatestItem.svelte';
 </script>
@@ -29,5 +30,14 @@
 		imageDescription={'cover image'}
 		title={'Mixed Martial Hearts'}
 		url={Books['Mixed Martial Hearts'].route}
+	/>
+
+	<LatestItem
+		book={null}
+		description={Games['Inflation Buster'].synopsis}
+		image={Games['Inflation Buster'].image}
+		imageDescription={'cover image'}
+		title={'Inflation Buster'}
+		url={Games['Inflation Buster'].route}
 	/>
 </div>
