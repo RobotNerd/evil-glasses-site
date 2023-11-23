@@ -6,9 +6,11 @@
 	import LatestItem from '$lib/LatestItem.svelte';
 </script>
 
+<h2 class="h2 mb-8">Featured</h2>
+
 <Featured featuredItems={featured} />
 
-<h3 class="h3 my-12">Latest</h3>
+<h2 class="h2 my-12">Latest</h2>
 
 <LatestItem
 	book={Books["Press Start for Love"]}

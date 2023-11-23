@@ -23,8 +23,6 @@
 	}
 </script>
 
-<h3 class="h3 mb-8">Featured</h3>
-
 <div class="hidden w-1/2 flex-row items-center justify-evenly md:flex">
 	{#each featuredItems as item}
 		<a href="{item.route}">
