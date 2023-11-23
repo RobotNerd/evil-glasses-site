@@ -16,6 +16,7 @@
 	image={Books["Press Start for Love"].coverImage}
 	imageDescription={"cover image"}
 	title={"Press Start for Love"}
+	url="{Books["Press Start for Love"].route}"
 />
 
 	<hr class="w-1/2 !border-t-2 my-8" />
@@ -26,4 +27,5 @@
 	image={Books["Mixed Martial Hearts"].coverImage}
 	imageDescription={"cover image"}
 	title={"Mixed Martial Hearts"}
+	url="{Books["Mixed Martial Hearts"].route}"
 />
