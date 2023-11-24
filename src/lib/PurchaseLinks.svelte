@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { PurchaseLink } from "$lib/util/Purchase";
+	import type { PurchaseInfo } from "$lib/util/Purchase";
 
-	export let items: PurchaseLink[];
+	export let items: PurchaseInfo[];
 </script>
 
 <h3 class="h3 mb-4">Get your copy now!</h3>

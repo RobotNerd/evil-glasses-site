@@ -1,10 +1,10 @@
-import type { PurchaseLink } from "$lib/util/Purchase";
+import type { PurchaseInfo } from "$lib/util/Purchase";
 
 export interface BookMeta {
   author: string;
   authorDescription: string;
   coverImage: string;
-  purchaseLinks: PurchaseLink[];
+  purchaseLinks: PurchaseInfo[];
   route: string;
   subtitle: string;
   synopsis: string;

@@ -1,11 +1,11 @@
 <script lang="ts">
 	import PurchaseLinks from '$lib/PurchaseLinks.svelte';
-	import type { PurchaseLink } from '$lib/util/Purchase';
+	import type { PurchaseInfo } from '$lib/util/Purchase';
 
 	export let description: string = 'DESCRIPTION';
 	export let image: string = 'IMAGE';
 	export let imageDescription: string = 'IMAGE DESCRIPTION';
-	export let purchaseLinks: PurchaseLink[] = [];
+	export let purchaseLinks: PurchaseInfo[] = [];
 	export let title: string = 'TITLE';
 	export let url: string = '';
 </script>
