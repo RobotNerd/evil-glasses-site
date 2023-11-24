@@ -10,9 +10,9 @@
 	export let url: string = '';
 </script>
 
-<div class="card variant-outline m-4 flex w-3/4 flex-col items-center rounded-lg p-4">
+<div class="card variant-outline m-4 flex w-3/4 flex-col items-center rounded-lg p-4 sm:w-1/4">
 	<a class="mb-8 w-2/3" href={url}>
-		<img  src={image} alt={imageDescription} />
+		<img src={image} alt={imageDescription} />
 	</a>
 
 	<h3 class="h3 mb-4">{title}</h3>

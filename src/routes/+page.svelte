@@ -13,7 +13,9 @@
 
 <h2 class="h2 my-12">Latest</h2>
 
-<div class="flex flex-col items-center sm:w-2/3 sm:flex-row sm:items-start">
+<div
+	class="flex flex-col flex-wrap items-center justify-center sm:w-2/3 sm:flex-row sm:items-start"
+>
 	<LatestItem
 		book={Books['Press Start for Love']}
 		description={Books['Press Start for Love'].synopsis}
