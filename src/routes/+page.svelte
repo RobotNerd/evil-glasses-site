@@ -4,7 +4,7 @@
 	import { Books } from '$lib/data/book-meta';
 	import { Games } from '$lib/data/game-meta';
 
-	import LatestItem from '$lib/LatestItem.svelte';
+	import CardItem from '$lib/CardItem.svelte';
 </script>
 
 <h2 class="h2 mb-8">Featured</h2>
@@ -16,7 +16,7 @@
 <div
 	class="flex flex-col flex-wrap items-center justify-center sm:w-2/3 sm:flex-row sm:items-start"
 >
-	<LatestItem
+	<CardItem
 		description={Books['Press Start for Love'].synopsis}
 		image={Books['Press Start for Love'].coverImage}
 		imageDescription={'cover image'}
@@ -25,7 +25,7 @@
 		url={Books['Press Start for Love'].route}
 	/>
 
-	<LatestItem
+	<CardItem
 		description={Books['Mixed Martial Hearts'].synopsis}
 		image={Books['Mixed Martial Hearts'].coverImage}
 		imageDescription={'cover image'}
@@ -34,7 +34,7 @@
 		url={Books['Mixed Martial Hearts'].route}
 	/>
 
-	<LatestItem
+	<CardItem
 		description={Games['Inflation Buster'].synopsis}
 		image={Games['Inflation Buster'].image}
 		imageDescription={'cover image'}
