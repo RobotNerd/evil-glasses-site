@@ -6,7 +6,7 @@ export let Books: { [key: string]: BookMeta } = {
   'Mixed Martial Hearts': {
     author: 'Sara Lufrano',
     authorDescription: 'Mixed Martial Hearts is Sara Rogers\' freshmen publication. She lives in Seattle, Washington with her family and adopted pets. She enjoys going to festivals and conventions, training her dog, and traveling.',
-    bookLinks: [
+    purchaseLinks: [
       {
         image: '/Amazon_logo.svg',
         label: 'Paperback',
@@ -31,7 +31,7 @@ export let Books: { [key: string]: BookMeta } = {
   'Press Start for Love': {
     author: 'Sara Lufrano',
     authorDescription: 'Sara Rogers lives in Seattle, Washington with her family and adopted pets. She enjoys going to festivals and conventions, training her dog, and traveling.',
-    bookLinks: [
+    purchaseLinks: [
       {
         image: '/Amazon_logo.svg',
         label: 'Paperback',

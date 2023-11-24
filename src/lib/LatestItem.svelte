@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { BookMeta } from '$lib/util/Story';
-	import BookLinks from '$lib/BookLinks.svelte';
+	import PurchaseLinks from '$lib/PurchaseLinks.svelte';
 
 	export let book: BookMeta | null;
 	export let description: string = 'DESCRIPTION';
@@ -23,7 +23,7 @@
 
 	<div class="flex flex-col items-center">
 		{#if book}
-			<BookLinks {book} />
+			<PurchaseLinks items={book.purchaseLinks} />
 		{/if}
 	</div>
 

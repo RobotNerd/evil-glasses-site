@@ -1,13 +1,9 @@
+import type { PurchaseLink } from "$lib/util/Purchase";
+
 export interface GameMeta {
-  gameLinks: GameLink[];
+  purchaseLinks: PurchaseLink[];
   image: string;
   route: string;
   subtitle: string;
   synopsis: string;
-}
-
-export interface GameLink {
-  image: string;
-  label: string;
-  url: string;
 }

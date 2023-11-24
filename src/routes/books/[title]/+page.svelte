@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	import { Books } from '$lib/data/book-meta';
 	import type { BookMeta } from '$lib/util/Story';
-  import BookLinks from '$lib/BookLinks.svelte';
+	import PurchaseLinks from '$lib/PurchaseLinks.svelte';
 
 	let book: BookMeta = Books[$page.params.title];
 </script>
@@ -12,7 +12,7 @@
 <div class="w-3/4 sm:w-1/2">
 	<img class="mb-8" src={book.coverImage} alt="book cover" />
 
-  <BookLinks book={book} />
+  <PurchaseLinks items={book.purchaseLinks} />
 
 	<h3 class="h3 mb-4">{book.subtitle}</h3>
 
