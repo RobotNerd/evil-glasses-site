@@ -17,25 +17,24 @@
 	class="flex flex-col flex-wrap items-center justify-center sm:w-2/3 sm:flex-row sm:items-start"
 >
 	<LatestItem
-		book={Books['Press Start for Love']}
 		description={Books['Press Start for Love'].synopsis}
 		image={Books['Press Start for Love'].coverImage}
 		imageDescription={'cover image'}
+		purchaseLinks={Books['Press Start for Love'].purchaseLinks}
 		title={'Press Start for Love'}
 		url={Books['Press Start for Love'].route}
 	/>
 
 	<LatestItem
-		book={Books['Mixed Martial Hearts']}
 		description={Books['Mixed Martial Hearts'].synopsis}
 		image={Books['Mixed Martial Hearts'].coverImage}
 		imageDescription={'cover image'}
+		purchaseLinks={Books['Mixed Martial Hearts'].purchaseLinks}
 		title={'Mixed Martial Hearts'}
 		url={Books['Mixed Martial Hearts'].route}
 	/>
 
 	<LatestItem
-		book={null}
 		description={Games['Inflation Buster'].synopsis}
 		image={Games['Inflation Buster'].image}
 		imageDescription={'cover image'}
