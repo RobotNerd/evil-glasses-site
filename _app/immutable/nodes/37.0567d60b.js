@@ -1,0 +1,30 @@
+import{s as i,f as h,g as l,Y as m,j as r,i as d,H as a,d as p}from"../chunks/scheduler.2c32cff6.js";import{S as w,i as b}from"../chunks/index.4fb3896e.js";function c(n){let e,s=`<h1 class="h2 mb-1 sm:h1 sm:mb-4">I Died</h1> <h3 class="h4 mb-8 sm:h3">by Sara Lufrano</h3> <p class="mb-4">I&#39;m dead, he isn&#39;t. I know how it happened and everything, a cycling accident. A FedUP truck hit
+		me.</p> <p class="mb-4">I was mostly in my bike lane and bam, splattered all over the truck and the road.</p> <p class="mb-4">My mom, dad, and little sister got paid handsomely from the settlement but he wasn&#39;t included
+		since he was never legally family. He actually didn&#39;t even make it to any hearings.</p> <p class="mb-4">I know that because I&#39;ve been with him, watching him, since it happened.</p> <p class="mb-4">I know it&#39;s sad when I look at him but I can&#39;t feel anything anymore. I see him cry, I see him
+		lay in bed for days, I see him not eat, not answer his phone. I see him doing nothing and I know
+		it&#39;s sad but there are no feelings in me.</p> <p class="mb-4">We were each other&#39;s soul mates. We jokingly talked about how we wouldn&#39;t be able to move on if
+		the other died. Super funny.</p> <p class="mb-4">I had no idea I&#39;d be watching him like this after and it makes me wonder who was watching me
+		until I kicked it.</p> <p class="mb-4">He goes to a job, he lost his real one after it happened. He lives in an unfinished basement of
+		someone&#39;s house after losing our apartment. And he sits there, or lays there, and does nothing
+		until it&#39;s time to get up and get on the bus to his job.</p> <p class="mb-4">I&#39;m not able to get his attention or move anything to show him I&#39;m there, I can&#39;t talk to him
+		during his dreams, or flicker lights when he cries out my name.</p> <p class="mb-4">So I wrap my arms around him and lay there with him. I always wish that this didn&#39;t happen but I
+		feel no pain.</p> <p class="mb-4">Years passed and I&#39;m still here with him.</p> <p class="mb-4">He was true to his word about not being able to move on. He doesn&#39;t cry anymore but he&#39;s still
+		by himself in this basement working jobs, doing nothing but watching Netflix.</p> <p class="mb-4">He&#39;s thicker than he was a year ago but still not back to the size he was before. His hair and
+		beard are long but he combs them and keeps them tidy. He got some new clothes that fit him
+		better on his new frame.</p> <p class="mb-4">He&#39;s handsome now just like he always was.</p> <p class="mb-4">I don&#39;t know if anything is ever going to be different for me. I might watch him for his whole
+		life and then when he dies maybe we&#39;ll be together. Maybe that thing will happen that when I do
+		something good I go on to the true afterlife. Maybe I&#39;ll wander here forever even after everyone
+		else is gone.</p> <p class="mb-4">I know that I don&#39;t want to leave him. Even though I&#39;m dead and can&#39;t feel anything I know I
+		don&#39;t want to be anywhere except with him.</p> <p class="mb-4">I&#39;ve got my routine too. When he wakes up I give him a kiss and say “good morning, how did you
+		sleep?” We sit together at his little outside bistro set that he has inside and have coffee. He
+		gets ready, I give him his space then, and I sit and think or reread any text I can see.</p> <p class="mb-4">I go to work with him. He&#39;s started riding a bike again. I understood what he was going through
+		everytime he looked at a it. I&#39;m glad because I really did enjoy it, now I just know it as a
+		reasonable mode of transportation.</p> <p class="mb-4">In the evenings and his days off we hang out and watch TV or he plays games on his console and
+		then we go to bed.</p> <p class="mb-4">Recently he&#39;s been in better and better moods. He gets texts more often now and he&#39;s got more
+		friends at his job. It&#39;s good for him. He smiles too.</p> <p class="mb-4">I do like seeing him this way. It&#39;s a small glimpse at how he was when I was alive.</p> <p class="mb-4">It had been months and he&#39;s grown further away from me. There&#39;s a woman at his job that he talks
+		with, that talks with him. He smiles and laughs when she&#39;s around. They like each other.</p> <p class="mb-4">What she doesn&#39;t know is when he&#39;s home he cries because I&#39;m gone. I think about what I would
+		feel like if I could and it&#39;s satisfaction. But I only sit with him as he cries and doesn&#39;t
+		respond to her texts, gently running my hand down his arm telling him everything will be okay.</p> <p class="mb-4">It&#39;s a few weeks later. He&#39;s been looking at his phone a lot but no one is texting or calling.</p> <p class="mb-4">The TV is off, it&#39;s sprinkling rain. He opens the door and steps outside. I follow him and stand
+		next to him. He gets a shiver, I watch him shake it off.</p> <p class="mb-4">“Leave me alone,” he says staring out in the rain.</p> <p class="mb-4">I look to where he&#39;s looking but there&#39;s only the street, there&#39;s not even a house across the
+		way.</p> <p class="mb-4">“I don&#39;t want to keep doing this.”</p> <p class="mb-4">He closes his eyes. He&#39;s crying.</p> <p class="mb-4">“If I say out loud that I don&#39;t love you anymore will you leave me alone?”</p> <p class="mb-4">Don&#39;t love me anymore? Who is he talking about?</p> <p class="mb-4">His hands are fists, down by his side. “I don&#39;t love you anymore!”</p> <p class="mb-4">I put my hand out to grab his shoulder and it goes right through him. I try again.</p> <p class="mb-4">“I want to forget you!”</p> <p class="mb-4">And then he was gone. Or I was gone. Either way we weren&#39;t together anymore. I know that in this
+		moment I was happy that I didn&#39;t feel anymore.</p>`;return{c(){e=h("span"),e.innerHTML=s,this.h()},l(t){e=l(t,"SPAN",{class:!0,"data-svelte-h":!0}),m(e)!=="svelte-12z4cb9"&&(e.innerHTML=s),this.h()},h(){r(e,"class","w-2/3 max-w-md")},m(t,o){d(t,e,o)},p:a,i:a,o:a,d(t){t&&p(e)}}}class u extends w{constructor(e){super(),b(this,e,null,c,i,{})}}export{u as component};
