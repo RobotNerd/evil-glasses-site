@@ -13,7 +13,7 @@
 
 	<h3 class="h3 mb-4">{game.subtitle}</h3>
 
-	<p class="mb-4">
-		{game.synopsis}
-	</p>
+	{#each game.description as line}
+		<p class="mb-4">{line}</p>
+	{/each}
 </div>

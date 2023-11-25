@@ -4,6 +4,12 @@ const baseRoute: string = '/games';
 
 export let Games: { [key: string]: GameMeta } = {
   'Inflation Buster': {
+    description: [
+      'Stop inflation in its tracks in this fast-paced arcade shooter.',
+      'INFLATION is out of control! After years of quantitative easing, the Federal Reserve must reverse course.Who would have guessed that pumping free money into the economy would have negative consequences ?',
+      'It is your job to stop inflation before it gets out of control.How do you do that ? Do you address wealth inequality, fix our healthcare system, or build more housing? Nope. You RAISE INTEREST RATES!',
+      'How will you know if the plan is working? JOB DESTRUCTION! When regular working Americans don\'t have money to spend, demand goes down, and so does inflation.',
+    ],
     image: '/games/inflation-buster.png',
     purchaseLinks: [],
     route: `${baseRoute}/Inflation Buster`,
