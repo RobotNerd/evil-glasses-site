@@ -20,3 +20,14 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 It uses `@sveltejs/adapter-static` to allow it to be served as a static site by github pages.
+
+## Deploying
+
+The gh-pages npm package is used for deployment. It copies all build
+artifacts to a gh-pages branch and pushes that branch to github. Run
+this command to deploy.
+
+```bash
+npm run deploy
+```
+
