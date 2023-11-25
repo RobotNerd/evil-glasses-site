@@ -1,20 +1,23 @@
 <script lang="ts">
-	import type { MultiView } from '$lib/util/MultiView';
-	import ViewMultiple from '$lib/ViewMultiple.svelte';
+	import { Books } from '$lib/data/book-meta';
+	import CardItem from '$lib/CardItem.svelte';
 
-  import { Books } from '$lib/data/book-meta';
-
-	let items: MultiView[] = [];
-	for (let [title, book] of Object.entries(Books)) {
-		items.push({
-			image: book.coverImage,
-			name: title,
-			route: `/books/${title}`
-		});
-	}
-	items.reverse();
+	let titles: string[] = [...Object.keys(Books)].reverse();
 </script>
 
 <h1 class="h1">Books</h1>
 
-<ViewMultiple {items} />
+<div
+	class="flex flex-col flex-wrap items-center justify-center sm:w-2/3 sm:flex-row sm:items-start"
+>
+	{#each titles as title}
+		<CardItem
+			description={Books[title].synopsis}
+			image={Books[title].coverImage}
+			imageDescription={'cover image'}
+			purchaseLinks={Books[title].purchaseLinks}
+			title={title}
+			url={Books[title].route}
+		/>
+	{/each}
+</div>

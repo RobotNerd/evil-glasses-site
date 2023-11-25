@@ -1,19 +1,23 @@
 <script lang="ts">
 	import { Stories } from '$lib/data/short-story-meta';
-	import type { MultiView } from '$lib/util/MultiView';
-	import ViewMultiple from '$lib/ViewMultiple.svelte';
+	import type { ShortStoryMeta } from '$lib/util/Story';
+	import CardItem from '$lib/CardItem.svelte';
 
-	let items: MultiView[] = [];
-	for (let story of Object.values(Stories)) {
-		items.push({
-			image: `/short-stories/${story.date}-edition-${story.edition}.png`,
-			name: story.name,
-			route: story.route
-		});
-	}
-	items.reverse();
+	let stories: ShortStoryMeta[] = [...Object.values(Stories)].reverse();
 </script>
 
 <h1 class="h1">Short Stories</h1>
 
-<ViewMultiple {items} />
+<div
+	class="flex flex-col flex-wrap items-center justify-center sm:w-2/3 sm:flex-row sm:items-start"
+>
+	{#each stories as story}
+		<CardItem
+			description={`Edition ${parseInt(story.edition)}`}
+			image={`/short-stories/${story.date}-edition-${story.edition}.png`}
+			imageDescription={'cover'}
+			title={"Short Stories"}
+			url={story.route}
+		/>
+	{/each}
+</div>

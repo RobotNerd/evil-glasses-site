@@ -4,7 +4,9 @@
 	export let items: PurchaseInfo[];
 </script>
 
-<h3 class="h3 mb-4">Get your copy now!</h3>
+{#if items.length > 0}
+	<h3 class="h3 mb-4">Get your copy now!</h3>
+{/if}
 
 <div class="flex flex-col items-center justify-evenly">
 	{#each items as link}
