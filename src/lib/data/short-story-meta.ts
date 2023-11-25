@@ -184,7 +184,7 @@ export let Stories: { [key: number]: ShortStoryMeta } = {
       {
         author: 'Sara Lufrano',
         synopsis: 'A quiet crisis of a woman caught in the crossfire of her desires and duties.',
-        title: 'Moment In Time',
+        title: 'Moment in Time',
       },
     ],
     route: `${baseRoute}/2017-10-01/10/`
