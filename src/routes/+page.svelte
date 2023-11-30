@@ -1,15 +1,22 @@
 <script lang="ts">
-	import Featured from '$lib/Featured.svelte';
-	import { featured } from '$lib/data/featured';
 	import { Books } from '$lib/data/book-meta';
 	import { Games } from '$lib/data/game-meta';
 
 	import CardItem from '$lib/CardItem.svelte';
 </script>
 
-<h2 class="h2 mb-8">Featured</h2>
-
-<Featured featuredItems={featured} />
+<div
+	class="flex items-center justify-center w-2/3 sm:w-1/2"
+>
+	<p>
+		Welcome to Evil Glasses, our hub of creativity and innovation. Here at Evil Glasses, we delve
+		into the realms of literature and technology, offering an eclectic mix of captivating books,
+		immersive short stories, engaging mobile games, and open source software projects. Whether
+		you're a book enthusiast, a gamer, or a software developer, Evil Glasses is your destination for
+		content that inspires, entertains, and supports you with unique tools. Join us on this journey
+		as we expand our horizons and explore new possibilities in the world of multimedia.
+	</p>
+</div>
 
 <h2 class="h2 my-12">Latest</h2>
 
