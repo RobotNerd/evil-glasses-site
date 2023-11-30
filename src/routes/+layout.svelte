@@ -76,7 +76,7 @@
 </Drawer>
 
 <span class="flex items-center justify-center">
-	<img class="my-8 w-1/2 sm:w-1/3" src="/glasses.png" alt="evil glasses logo" />
+	<img class="my-8 w-1/3 xl:w-1/4" src="/glasses.png" alt="evil glasses logo" />
 </span>
 
 <div class="container mx-auto flex h-full w-3/4 flex-col items-center justify-center">
