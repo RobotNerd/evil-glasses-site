@@ -28,7 +28,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 
-<span class="visible sm:hidden">
+<span class="visible md:hidden">
 	<AppBar
 		gridColumns="grid-cols-4"
 		slotDefault="place-self-center col-span-2"
@@ -46,7 +46,7 @@
 	</AppBar>
 </span>
 
-<span class="hidden sm:block">
+<span class="hidden md:block">
 	<AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
 		<svelte:fragment slot="lead">
 			<a href="/">
