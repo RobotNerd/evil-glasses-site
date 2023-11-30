@@ -88,7 +88,7 @@
 	<hr class="w-1/2 !border-t-2" />
 </span>
 
-<div class="my-20 flex h-full flex-col items-center justify-center">
+<div class="my-10 flex h-full flex-col items-center justify-center">
 	<slot />
 </div>
 
