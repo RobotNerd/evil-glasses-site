@@ -28,6 +28,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 
+<!-- Hamburger menu and drawer for smaller screens. -->
 <span class="visible md:hidden">
 	<AppBar
 		gridColumns="grid-cols-4"
@@ -46,6 +47,7 @@
 	</AppBar>
 </span>
 
+<!-- Site nav in top bar for larger screens. -->
 <span class="hidden md:block">
 	<AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
 		<svelte:fragment slot="lead">
