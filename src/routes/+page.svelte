@@ -45,6 +45,7 @@
 		description={Games['Inflation Buster'].synopsis}
 		image={Games['Inflation Buster'].image}
 		imageDescription={'cover image'}
+		purchaseLinks={Games['Inflation Buster'].purchaseLinks}
 		title={'Inflation Buster'}
 		url={Games['Inflation Buster'].route}
 	/>
