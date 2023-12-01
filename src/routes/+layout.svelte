@@ -28,7 +28,8 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 
-<span class="visible sm:hidden">
+<!-- Hamburger menu and drawer for smaller screens. -->
+<span class="visible md:hidden">
 	<AppBar
 		gridColumns="grid-cols-4"
 		slotDefault="place-self-center col-span-2"
@@ -46,7 +47,8 @@
 	</AppBar>
 </span>
 
-<span class="hidden sm:block">
+<!-- Site nav in top bar for larger screens. -->
+<span class="hidden md:block">
 	<AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
 		<svelte:fragment slot="lead">
 			<a href="/">
@@ -76,7 +78,7 @@
 </Drawer>
 
 <span class="flex items-center justify-center">
-	<img class="my-8 w-1/2 sm:w-1/3" src="/glasses.png" alt="evil glasses logo" />
+	<img class="my-8 w-1/3 xl:w-1/4" src="/glasses.png" alt="evil glasses logo" />
 </span>
 
 <div class="container mx-auto flex h-full w-3/4 flex-col items-center justify-center">
@@ -88,7 +90,7 @@
 	<hr class="w-1/2 !border-t-2" />
 </span>
 
-<div class="my-20 flex h-full flex-col items-center justify-center">
+<div class="my-10 flex h-full flex-col items-center justify-center">
 	<slot />
 </div>
 

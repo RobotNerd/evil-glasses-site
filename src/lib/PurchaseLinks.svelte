@@ -11,11 +11,10 @@
 <div class="flex flex-col items-center justify-evenly">
 	{#each items as link}
 		<a
-			class="card variant-ghost-primary card-hover mb-4 flex w-3/4 flex-col items-center justify-center rounded-lg p-4"
-			href={link.url}
-		>
+			class="card variant-ghost-primary card-hover my-4 flex flex-col w-1/2 items-center justify-center rounded-lg p-4"
+			href={link.url}>
 			<img class="m-1 w-8/12" src={link.image} alt={link.label} />
-			<span class="text-xs">{link.label}</span>
+			<span class="text-xs text-center">{link.label}</span>
 		</a>
 	{/each}
 </div>
