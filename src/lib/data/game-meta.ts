@@ -11,7 +11,13 @@ export let Games: { [key: string]: GameMeta } = {
       'How will you know if the plan is working? JOB DESTRUCTION! When regular working Americans don\'t have money to spend, demand goes down, and so does inflation.',
     ],
     image: '/games/inflation-buster.png',
-    purchaseLinks: [],
+    purchaseLinks: [
+      {
+        image: '/google-play-badge.png',
+        label: 'Android',
+        url: 'https://play.google.com/store/apps/details?id=org.godotengine.inflationbuster&hl=en&gl=US',
+      },
+    ],
     route: `${baseRoute}/Inflation Buster`,
     subtitle: 'Destroy the economy to save it?',
     synopsis: 'Play as the head of the US Federal Reserve in this fast-paced arcade shooter! Throw out interest rate hikes to stop those inflating dollars in their tracks, and save the economy. ',
