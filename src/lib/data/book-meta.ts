@@ -8,17 +8,17 @@ export let Books: { [key: string]: BookMeta } = {
     authorDescription: 'Mixed Martial Hearts is Sara Rogers\' freshmen publication. She lives in Seattle, Washington with her family and adopted pets. She enjoys going to festivals and conventions, training her dog, and traveling.',
     purchaseLinks: [
       {
-        image: '/Amazon_logo.svg',
+        image: '/amazon.png',
         label: 'Paperback',
         url: 'https://www.amazon.com/Mixed-Martial-Hearts-Sara-Rogers/dp/B0BF31V262/ref=sr_1_1?crid=1AIXMJBPQ67SZ&keywords=mixed+martial+hearts&qid=1689195050&s=books&sprefix=mixed+martial+hearts%2Cstripbooks%2C247&sr=1-1',
       },
       {
-        image: '/Amazon_Kindle_logo.svg',
+        image: '/kindle.png',
         label: 'Kindle eBook',
         url: 'https://www.amazon.com/Mixed-Martial-Hearts-Sara-Rogers-ebook/dp/B0BF93GZX4/ref=tmm_kin_swatch_0?_encoding=UTF8&qid=1689195050&sr=1-1',
       },
       {
-        image: '/swlogo.png',
+        image: '/smashwords.png',
         label: 'Smashwords eBook',
         url: 'https://www.smashwords.com/books/view/1165784',
       },
@@ -33,17 +33,17 @@ export let Books: { [key: string]: BookMeta } = {
     authorDescription: 'Sara Rogers lives in Seattle, Washington with her family and adopted pets. She enjoys going to festivals and conventions, training her dog, and traveling.',
     purchaseLinks: [
       {
-        image: '/Amazon_logo.svg',
+        image: '/amazon.png',
         label: 'Paperback',
         url: 'https://www.amazon.com/dp/B0CJDDKSS4/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=&sr=',
       },
       {
-        image: '/Amazon_Kindle_logo.svg',
+        image: '/kindle.png',
         label: 'Kindle eBook',
         url: 'https://www.amazon.com/Press-Start-Love-Sara-Rogers-ebook/dp/B0CJD99KVP/ref=tmm_kin_swatch_0?_encoding=UTF8&qid=&sr=',
       },
       {
-        image: '/swlogo.png',
+        image: '/smashwords.png',
         label: 'Smashwords eBook',
         url: 'https://www.smashwords.com/books/view/1451808',
       },

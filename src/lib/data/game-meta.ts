@@ -17,6 +17,11 @@ export let Games: { [key: string]: GameMeta } = {
         label: 'Android',
         url: 'https://play.google.com/store/apps/details?id=org.godotengine.inflationbuster&hl=en&gl=US',
       },
+      {
+        image: '/apple-app-store-badge.png',
+        label: 'Apple',
+        url: 'https://apps.apple.com/us/app/inflation-buster/id6449170617',
+      },
     ],
     route: `${baseRoute}/Inflation Buster`,
     subtitle: 'Destroy the economy to save it?',
