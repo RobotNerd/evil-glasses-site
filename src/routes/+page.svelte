@@ -30,6 +30,7 @@
 		purchaseLinks={Books['Press Start for Love'].purchaseLinks}
 		title={'Press Start for Love'}
 		url={Books['Press Start for Love'].route}
+		icon="fa-book"
 	/>
 
 	<CardItem
@@ -39,6 +40,7 @@
 		purchaseLinks={Books['Mixed Martial Hearts'].purchaseLinks}
 		title={'Mixed Martial Hearts'}
 		url={Books['Mixed Martial Hearts'].route}
+		icon="fa-book"
 	/>
 
 	<CardItem
@@ -48,5 +50,6 @@
 		purchaseLinks={Games['Inflation Buster'].purchaseLinks}
 		title={'Inflation Buster'}
 		url={Games['Inflation Buster'].route}
+		icon="fa-gamepad"
 	/>
 </div>

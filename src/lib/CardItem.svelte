@@ -8,6 +8,7 @@
 	export let purchaseLinks: PurchaseInfo[] = [];
 	export let title: string = 'TITLE';
 	export let url: string = '';
+	export let icon: string = 'fa-circle';
 </script>
 
 <div class="card variant-outline m-4 flex w-3/4 flex-col items-center rounded-lg p-4 xl:w-1/3">
@@ -15,7 +16,10 @@
 		<img src={image} alt={imageDescription} />
 	</a>
 
-	<h3 class="h3 mb-4">{title}</h3>
+	<h3 class="h3 mb-4">
+		<span class="fa-solid {icon}"></span>
+		{title}
+	</h3>
 
 	<p class="mb-4">
 		{description}

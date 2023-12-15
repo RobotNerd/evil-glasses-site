@@ -18,6 +18,7 @@
 			imageDescription={'cover'}
 			title={"Short Stories"}
 			url={story.route}
+			icon="fa-file-lines"
 		/>
 	{/each}
 </div>

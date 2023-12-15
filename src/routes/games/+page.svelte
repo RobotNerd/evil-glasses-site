@@ -18,6 +18,7 @@
 			purchaseLinks={Games[title].purchaseLinks}
 			title={title}
 			url={Games[title].route}
+			icon="fa-gamepad"
 		/>
 	{/each}
 </div>

@@ -18,6 +18,7 @@
 			purchaseLinks={Books[title].purchaseLinks}
 			title={title}
 			url={Books[title].route}
+			icon="fa-book"
 		/>
 	{/each}
 </div>
