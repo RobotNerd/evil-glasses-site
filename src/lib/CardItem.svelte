@@ -10,7 +10,7 @@
 	export let url: string = '';
 </script>
 
-<div class="card variant-outline m-4 flex w-3/4 flex-col items-center rounded-lg p-4 xl:w-1/3">
+<div class="card variant-outline m-4 flex w-3/4 flex-col items-center rounded-lg p-4 xl:hidden">
 	<a class="mb-8 w-2/3" href={url}>
 		<img src={image} alt={imageDescription} />
 	</a>
@@ -33,4 +33,29 @@
 			href={url}>More Info</a
 		>
 	{/if}
+</div>
+
+<div class="card variant-outline m-4 w-3/4 flex-col items-start rounded-lg p-4 xl:flex xl:flex-row">
+	<a class="mr-8 w-1/3" href={url}>
+		<img src={image} alt={imageDescription} />
+	</a>
+
+	<div class="flex w-full flex-col xl:w-2/3">
+		<h3 class="h3 mb-4">{title}</h3>
+
+		<p class="mb-4">
+			{description}
+		</p>
+
+		{#if purchaseLinks}
+			<PurchaseLinks items={purchaseLinks} />
+		{/if}
+
+		{#if url}
+			<a
+				class="card variant-filled-secondary card-hover my-2 w-fit justify-center rounded-lg p-4 xl:p-2"
+				href={url}>More Info</a
+			>
+		{/if}
+	</div>
 </div>
