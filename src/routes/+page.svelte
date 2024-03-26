@@ -24,6 +24,15 @@
 	class="flex flex-col flex-wrap items-center justify-center sm:w-2/3 sm:flex-row sm:items-start"
 >
 	<CardItem
+		description={Games['Inflation Buster'].synopsis}
+		image={Games['Inflation Buster'].image}
+		imageDescription={'cover image'}
+		purchaseLinks={Games['Inflation Buster'].purchaseLinks}
+		title={'Inflation Buster'}
+		url={Games['Inflation Buster'].route}
+	/>
+
+	<CardItem
 		description={Books['Press Start for Love'].synopsis}
 		image={Books['Press Start for Love'].coverImage}
 		imageDescription={'cover image'}
@@ -39,14 +48,5 @@
 		purchaseLinks={Books['Mixed Martial Hearts'].purchaseLinks}
 		title={'Mixed Martial Hearts'}
 		url={Books['Mixed Martial Hearts'].route}
-	/>
-
-	<CardItem
-		description={Games['Inflation Buster'].synopsis}
-		image={Games['Inflation Buster'].image}
-		imageDescription={'cover image'}
-		purchaseLinks={Games['Inflation Buster'].purchaseLinks}
-		title={'Inflation Buster'}
-		url={Games['Inflation Buster'].route}
 	/>
 </div>
