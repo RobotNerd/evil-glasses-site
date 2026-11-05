@@ -27,7 +27,7 @@ There is no test suite. There is no ESLint config file in the repo, so the eslin
   - `books/[title]` → `Books[title]` (key is the human-readable title, e.g. `'Mixed Martial Hearts'`)
   - `games/[title]` → `Games[title]`
   - `short-stories/[date]/[edition]` → `Stories[parseInt(edition)]`
-  Each entry's `route` field must match these URL shapes, since prerendering discovers pages by crawling those links.
+    Each entry's `route` field must match these URL shapes, since prerendering discovers pages by crawling those links.
 - **Short-story assets by convention.** Edition cover/PDF are `static/short-stories/{date}-edition-{NN}.{png,pdf}`. Each story's full text is a hand-written static page at `src/routes/short-stories/read/{date}/{Title}/+page.svelte`; the edition page links there using the story title with apostrophes stripped, so the directory name must match that.
 - **Shared UI** in `src/lib/` (`SiteNav`, `CardItem`, `DetailHeader`, `PurchaseLinks`); the app shell (AppBar, drawer nav, light switch, Floating UI popup store) is in `+layout.svelte`.
 - **Base path:** `svelte.config.js` sets `paths.base` to `/evil-glasses-site` in production, but no code uses `$app/paths` — links and image paths are root-absolute while the site is served from the custom domain root. These are inconsistent; verify with `npm run build && npm run preview` before changing either.
@@ -40,5 +40,5 @@ Prettier: tabs, single quotes, no trailing commas, 100-column width, with the Sv
 
 These are the commands `.sdlc/config.toml` runs. There are no tests.
 
-* Lint: `npm run check`
-* Format: `npx prettier --check .`
+- Lint: `npm run check`
+- Format: `npx prettier --check .`

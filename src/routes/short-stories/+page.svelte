@@ -16,7 +16,7 @@
 			description={`Edition ${parseInt(story.edition)}`}
 			image={`/short-stories/${story.date}-edition-${story.edition}.png`}
 			imageDescription={'cover'}
-			title={"Short Stories"}
+			title={'Short Stories'}
 			url={story.route}
 		/>
 	{/each}

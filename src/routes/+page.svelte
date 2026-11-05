@@ -5,9 +5,7 @@
 	import CardItem from '$lib/CardItem.svelte';
 </script>
 
-<div
-	class="flex items-center justify-center w-2/3 sm:w-1/2"
->
+<div class="flex w-2/3 items-center justify-center sm:w-1/2">
 	<p>
 		Welcome to Evil Glasses, our hub of creativity and innovation. Here at Evil Glasses, we delve
 		into the realms of literature and technology, offering an eclectic mix of captivating books,

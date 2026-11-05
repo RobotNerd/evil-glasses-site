@@ -1,5 +1,5 @@
 export interface PurchaseInfo {
-  image: string;
-  label: string;
-  url: string;
+	image: string;
+	label: string;
+	url: string;
 }

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Games } from '$lib/data/game-meta';
+	import { Games } from '$lib/data/game-meta';
 	import CardItem from '$lib/CardItem.svelte';
 
 	let titles: string[] = [...Object.keys(Games)].reverse();
@@ -16,7 +16,7 @@
 			image={Games[title].image}
 			imageDescription={'screenshot'}
 			purchaseLinks={Games[title].purchaseLinks}
-			title={title}
+			{title}
 			url={Games[title].route}
 		/>
 	{/each}
