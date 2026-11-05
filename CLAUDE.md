@@ -35,3 +35,10 @@ There is no test suite. There is no ESLint config file in the repo, so the eslin
 ## Conventions
 
 Prettier: tabs, single quotes, no trailing commas, 100-column width, with the Svelte and Tailwind class-sorting plugins. Some `.ts` data files currently use 2-space indentation; run `npm run format` on files you touch.
+
+## Checks
+
+These are the commands `.sdlc/config.toml` runs. There are no tests.
+
+* Lint: `npm run check`
+* Format: `npx prettier --check .`
