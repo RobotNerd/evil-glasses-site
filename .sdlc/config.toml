@@ -12,12 +12,13 @@ project_slug = "EG-WEB"
 url = "https://rainbow-flame.taila02055.ts.net:8443"
 
 [outline]
-collection_id = "evil-glasses-web-gHUwnrzsbZ"
+collection_id = "1d7e7768-38a9-48ce-b248-1d9085a7c3c7"
 url = "https://rainbow-flame.taila02055.ts.net:8445"
 
 [notify]
 enabled = true
 stop_hook = true
+emoji = "👓"
 
 [[notify.channels]]
 role = "primary"
