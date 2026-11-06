@@ -57,13 +57,19 @@ export const editionSchema = z.strictObject({
 	cover: z.string().min(1)
 });
 
+export const pageSchema = z.strictObject({
+	title: z.string().min(1),
+	description: z.string().min(1)
+});
+
 export const schemas = {
 	books: bookSchema,
 	games: gameSchema,
 	apps: appSchema,
 	legal: legalSchema,
 	stories: storySchema,
-	editions: editionSchema
+	editions: editionSchema,
+	pages: pageSchema
 } as const;
 
 export type ContentType = keyof typeof schemas;
@@ -73,4 +79,5 @@ export type GameData = z.infer<typeof gameSchema>;
 export type AppData = z.infer<typeof appSchema>;
 export type StoryData = z.infer<typeof storySchema>;
 export type EditionData = z.infer<typeof editionSchema>;
+export type PageData = z.infer<typeof pageSchema>;
 export type LegalData = z.infer<typeof legalSchema>;

@@ -1,6 +1,5 @@
 import { expect, test } from '@playwright/test';
 import { checkPage } from './checks';
-import { pendingPages } from './pending-pages';
 
 async function internalLinks(page: import('@playwright/test').Page): Promise<string[]> {
 	const hrefs = await page
@@ -13,24 +12,17 @@ async function internalLinks(page: import('@playwright/test').Page): Promise<str
 		.map((url) => url.pathname);
 }
 
-test('every internal link reachable from / passes the page checks', async ({ page, request }) => {
+test('every internal link reachable from / passes the page checks', async ({ page }) => {
 	// One axe pass per page, and the site now has 60+ pages.
 	test.setTimeout(240_000);
 	const queue = ['/'];
 	const seen = new Set<string>();
 	const problems: string[] = [];
-	const pendingNow = new Set(pendingPages);
 
 	while (queue.length > 0) {
 		const path = queue.shift()!;
 		if (seen.has(path)) continue;
 		seen.add(path);
-
-		if (pendingNow.has(path)) {
-			const status = (await request.get(path)).status();
-			if (status === 200) problems.push(`${path}: now exists, remove it from pending-pages.ts`);
-			continue;
-		}
 
 		const fresh = page.context().newPage();
 		const tab = await fresh;

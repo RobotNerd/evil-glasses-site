@@ -1,6 +1,9 @@
 <svelte:head>
-	<title>Not found | Evil Glasses</title>
+	<title>Page not found | Evil Glasses</title>
 </svelte:head>
 
 <h1>Page not found</h1>
-<p><a href="/">Home</a></p>
+<p>
+	We couldn't find that page. Try heading <a href="/">home</a> or reading some
+	<a href="/stories">stories</a>.
+</p>

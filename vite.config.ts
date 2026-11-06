@@ -8,11 +8,7 @@ export default defineConfig({
 	plugins: [
 		enhancedImages(),
 		sveltekit({
-			adapter: adapter({ fallback: '404.html' }),
-			prerender: {
-				// Content pages arrive in later tasks; the shell already links to them.
-				handleHttpError: 'warn'
-			}
+			adapter: adapter({ fallback: '404.html' })
 		})
 	]
 });
