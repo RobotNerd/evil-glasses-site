@@ -25,3 +25,38 @@ describe('ci workflow', () => {
 		expect(order).toEqual([...order].sort((a, b) => a - b));
 	});
 });
+
+describe('deploy workflow', () => {
+	const deploy = parse(readFileSync('.github/workflows/deploy.yml', 'utf8'));
+	const buildSteps: Record<string, unknown>[] = deploy.jobs.build.steps;
+
+	it('runs on pushes to main and by hand', () => {
+		expect(Object.keys(deploy.on)).toEqual(['push', 'workflow_dispatch']);
+		expect(deploy.on.push.branches).toEqual(['main']);
+	});
+
+	it('deploys only when PAGES_DEPLOY is true', () => {
+		expect(deploy.jobs.deploy.if).toBe("vars.PAGES_DEPLOY == 'true'");
+		expect(deploy.jobs.deploy.needs).toBe('build');
+		expect(deploy.jobs.build.if).toBeUndefined();
+	});
+
+	it('has the Pages permissions, environment and a non-cancelling concurrency group', () => {
+		expect(deploy.permissions.pages).toBe('write');
+		expect(deploy.permissions['id-token']).toBe('write');
+		expect(deploy.jobs.deploy.environment.name).toBe('github-pages');
+		expect(deploy.concurrency['cancel-in-progress']).toBe(false);
+		expect(deploy.concurrency.group).toBeTruthy();
+	});
+
+	it('builds with the .nvmrc Node version and uploads build/', () => {
+		const setupNode = buildSteps.find((s) => String(s.uses).startsWith('actions/setup-node'));
+		expect((setupNode?.with as Record<string, string>)['node-version-file']).toBe('.nvmrc');
+		expect(buildSteps.map((s) => s.run)).toContain('npm run build');
+		const upload = buildSteps.find((s) =>
+			String(s.uses).startsWith('actions/upload-pages-artifact')
+		);
+		expect((upload?.with as Record<string, string>).path).toBe('build');
+		expect(String(deploy.jobs.deploy.steps[0].uses)).toMatch(/^actions\/deploy-pages@/);
+	});
+});
