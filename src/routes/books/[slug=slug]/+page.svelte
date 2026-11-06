@@ -29,7 +29,7 @@
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -- trusted Markdown rendered at build time -->
 	{@html book.html}
 
-	<h2>About the author</h2>
+	<h2>About the Author</h2>
 	<p class="bio">{book.data.authorBio}</p>
 
 	<h2>Get the book</h2>
