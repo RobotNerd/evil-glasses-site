@@ -1,6 +1,7 @@
 <script lang="ts">
 	import '../lib/styles.css';
-	import SiteHeader from '../lib/components/SiteHeader.svelte';
+	import { page } from '$app/state';
+	import SiteMenu from '../lib/components/SiteMenu.svelte';
 	import SiteFooter from '../lib/components/SiteFooter.svelte';
 	import display from '../lib/assets/fonts/big-shoulders-display-800.woff2?url';
 	import serif from '../lib/assets/fonts/literata.woff2?url';
@@ -15,16 +16,19 @@
 	{/each}
 </svelte:head>
 
-<SiteHeader />
+<SiteMenu />
 <main>
 	{@render children()}
 </main>
-<SiteFooter />
+{#if page.url.pathname !== '/'}
+	<SiteFooter />
+{/if}
 
 <style>
 	main {
 		max-width: var(--content-width);
 		margin: 0 auto;
-		padding: var(--space-3);
+		/* The column starts below the floating menu button. */
+		padding: calc(4.5rem + env(safe-area-inset-top)) var(--space-3) var(--space-3);
 	}
 </style>

@@ -1,9 +1,9 @@
 import { expect, test } from '@playwright/test';
 
-test('the header links to /apps after /games', async ({ page }) => {
+test('the menu links to /apps after /games', async ({ page }) => {
 	await page.goto('/');
 	const hrefs = await page
-		.locator('header nav a')
+		.locator('#site-menu a')
 		.evaluateAll((anchors) => anchors.map((a) => a.getAttribute('href')));
 	expect(hrefs.indexOf('/apps')).toBe(hrefs.indexOf('/games') + 1);
 });

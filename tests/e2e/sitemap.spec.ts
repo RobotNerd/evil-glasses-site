@@ -12,7 +12,8 @@ async function crawl(request: import('@playwright/test').APIRequestContext): Pro
 		seen.add(path);
 		const html = await (await request.get(path)).text();
 		for (const [, href] of html.matchAll(/<a [^>]*href="(\/[^"#?]*)/g)) {
-			if (!seen.has(href)) queue.push(href);
+			// /menu is the no-JavaScript menu page; every page links to it, and it stays out of the sitemap.
+			if (!seen.has(href) && href !== '/menu') queue.push(href);
 		}
 	}
 	return [...seen].filter((path) => /\.(html)?$/.test(path) === false);
