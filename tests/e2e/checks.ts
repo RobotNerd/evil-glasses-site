@@ -1,0 +1,45 @@
+import AxeBuilder from '@axe-core/playwright';
+import type { Page } from '@playwright/test';
+
+export const axeTags = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'];
+
+/** Loads a path and returns every problem found, each prefixed with the URL. */
+export async function checkPage(page: Page, path: string): Promise<string[]> {
+	const problems: string[] = [];
+	const report = (message: string) => problems.push(`${path}: ${message}`);
+
+	page.on('console', (msg) => {
+		if (msg.type() === 'error') report(`console error: ${msg.text()}`);
+	});
+	page.on('pageerror', (error) => report(`page error: ${error.message}`));
+	page.on('requestfailed', (request) =>
+		report(`failed request: ${request.url()} (${request.failure()?.errorText})`)
+	);
+	page.on('response', (response) => {
+		if (response.status() >= 400 && response.request().resourceType() !== 'document') {
+			report(`failed request: ${response.url()} (status ${response.status()})`);
+		}
+	});
+
+	const response = await page.goto(path);
+	if (response?.status() !== 200) report(`status ${response?.status()}, expected 200`);
+	await page.waitForLoadState('networkidle');
+
+	const h1s = await page.locator('h1').count();
+	if (h1s !== 1) report(`found ${h1s} h1 elements, expected exactly 1`);
+	if ((await page.locator('header').count()) < 1) report('missing header');
+	if ((await page.locator('footer').count()) < 1) report('missing footer');
+
+	const brokenImages = await page.evaluate(() =>
+		[...document.images]
+			.filter((img) => !img.complete || img.naturalWidth === 0)
+			.map((img) => img.currentSrc || img.src)
+	);
+	for (const src of brokenImages) report(`image did not load: ${src}`);
+
+	const axe = await new AxeBuilder({ page }).withTags(axeTags).analyze();
+	for (const violation of axe.violations) {
+		report(`axe ${violation.id}: ${violation.help} (${violation.nodes.length} nodes)`);
+	}
+	return problems;
+}
