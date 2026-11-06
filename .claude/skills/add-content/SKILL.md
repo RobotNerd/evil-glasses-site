@@ -24,6 +24,7 @@ The Content section of `docs/guidelines/architecture.md` is the only field refer
    For any other type, refuse. Say that only `app`, `book`, `edition`, `game` and `story` are supported, create nothing, and stop.
 
 2. Ask for each required field of that type, and for any optional field the developer wants. Ask for the image paths and, for a story, the story text.
+   If a required field is missing from the request, ask the developer for it. Never invent a placeholder value.
 
 3. Choose the slug: the title in lowercase, words joined by hyphens, with apostrophes and other punctuation removed. An edition's folder is `edition-NN`, where `NN` is the number padded to two digits. If the folder exists, stop and report it.
 
@@ -36,6 +37,8 @@ The Content section of `docs/guidelines/architecture.md` is the only field refer
    ```
 
 6. A story belongs to the edition whose number equals its edition field. If that edition does not exist, add it first, as an `edition` entry with its own cover.
+   A story has no image of its own. Its cover is its edition's cover, so an image given with a story goes on the edition.
+   A story's date is its edition's date. Give the story an order that is the next number after the highest one in its edition, starting at 1 for a new edition.
 
 7. Names: write an author's name as the developer gives it. Do not change one name to another. The site uses "Sara Rogers" on books and stories, "Marshall Bowles" on his, and "Sara Lufrano" on the What Size Will They Be? app. If the developer gives a different spelling of a name already on the site, ask which to use.
 
