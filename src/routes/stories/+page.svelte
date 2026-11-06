@@ -1,0 +1,55 @@
+<script lang="ts">
+	import { editionId } from '../../lib/content/stories';
+	import { formatDate } from '../../lib/content/format';
+
+	let { data } = $props();
+</script>
+
+<svelte:head>
+	<title>Stories | Evil Glasses</title>
+	<meta name="description" content="Short stories by Sara Rogers, Marshall Bowles and friends." />
+</svelte:head>
+
+<h1>Stories</h1>
+
+{#each data.groups as group (group.edition.data.number)}
+	<section
+		id={editionId(group.edition.data.number)}
+		aria-labelledby="{editionId(group.edition.data.number)}-title"
+	>
+		<h2 id="{editionId(group.edition.data.number)}-title">
+			Edition {group.edition.data.number}
+			<time datetime={group.edition.data.date}>{formatDate(group.edition.data.date)}</time>
+		</h2>
+		<ul>
+			{#each group.stories as story (story.slug)}
+				<li>
+					<a href="/stories/{story.slug}">{story.data.title}</a>
+					<span class="author">by {story.data.author}</span>
+					<p>{story.data.synopsis}</p>
+				</li>
+			{/each}
+		</ul>
+	</section>
+{/each}
+
+<style>
+	h2 time {
+		color: var(--color-muted);
+		font-size: 1rem;
+		font-weight: 400;
+	}
+	ul {
+		padding: 0;
+		list-style: none;
+	}
+	li {
+		margin-block-end: var(--space-3);
+	}
+	.author {
+		color: var(--color-muted);
+	}
+	p {
+		margin-block: 0;
+	}
+</style>

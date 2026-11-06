@@ -14,6 +14,8 @@ async function internalLinks(page: import('@playwright/test').Page): Promise<str
 }
 
 test('every internal link reachable from / passes the page checks', async ({ page, request }) => {
+	// One axe pass per page, and the site now has 60+ pages.
+	test.setTimeout(240_000);
 	const queue = ['/'];
 	const seen = new Set<string>();
 	const problems: string[] = [];
