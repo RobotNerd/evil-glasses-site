@@ -1,7 +1,6 @@
 <script lang="ts">
 	import SeoHead from '../../../lib/components/SeoHead.svelte';
-	import { editionId } from '../../../lib/content/stories';
-	import { formatDate } from '../../../lib/content/format';
+	import { editionId, formatDate } from '../../../lib/content/format';
 
 	let { data } = $props();
 	const story = $derived(data.story);

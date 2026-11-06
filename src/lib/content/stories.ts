@@ -85,7 +85,4 @@ export function getStory(slug: string): Story | undefined {
 	return loadStories().find((story) => story.slug === slug);
 }
 
-/** `01`, `14`: the number used in the `edition-NN` anchor. */
-export function editionId(number: number): string {
-	return `edition-${String(number).padStart(2, '0')}`;
-}
+export { editionId } from './format';

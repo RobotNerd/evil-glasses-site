@@ -5,3 +5,8 @@ export function formatDate(date: string): string {
 		timeZone: 'UTC'
 	});
 }
+
+/** `01`, `14`: the number used in the `edition-NN` anchor. */
+export function editionId(number: number): string {
+	return `edition-${String(number).padStart(2, '0')}`;
+}

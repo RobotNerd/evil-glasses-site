@@ -16,10 +16,10 @@ describe('ci workflow', () => {
 		expect((setupNode?.with as Record<string, string>)['node-version-file']).toBe('.nvmrc');
 	});
 
-	it('runs lint, prettier and test in order', () => {
+	it('runs lint, prettier, test and lighthouse in order', () => {
 		const runs = steps.map((s) => s.run).filter(Boolean);
-		const order = ['npm run lint', 'npx prettier --check .', 'npm test'].map((c) =>
-			runs.indexOf(c)
+		const order = ['npm run lint', 'npx prettier --check .', 'npm test', 'npm run lighthouse'].map(
+			(c) => runs.indexOf(c)
 		);
 		expect(order.every((i) => i >= 0)).toBe(true);
 		expect(order).toEqual([...order].sort((a, b) => a - b));

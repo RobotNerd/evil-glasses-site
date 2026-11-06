@@ -12,3 +12,4 @@ vite.config.ts.timestamp-*
 .sdlc/local/
 /test-results
 /playwright-report
+/.lighthouseci
