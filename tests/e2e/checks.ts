@@ -41,6 +41,19 @@ export async function checkPage(page: Page, path: string): Promise<string[]> {
 		report('footer has no link to /legal');
 	}
 
+	// Lazy images below the fold load when scrolled to: bring each into view and wait for it.
+	await page.evaluate(async () => {
+		for (const img of document.images) {
+			img.scrollIntoView();
+			if (!img.complete) {
+				await new Promise((done) => {
+					img.addEventListener('load', done, { once: true });
+					img.addEventListener('error', done, { once: true });
+				});
+			}
+		}
+		window.scrollTo(0, 0);
+	});
 	const brokenImages = await page.evaluate(() =>
 		[...document.images]
 			.filter((img) => !img.complete || img.naturalWidth === 0)

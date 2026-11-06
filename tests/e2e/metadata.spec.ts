@@ -31,7 +31,7 @@ test('every page has unique, absolute metadata', async ({ page, request }) => {
 
 		const image = await meta('meta[property="og:image"]');
 		if (!image?.startsWith(`${origin}/`)) problems.push(`${path}: og:image is ${image}`);
-		const isDefault = image === `${origin}/og-default.png`;
+		const isDefault = image === `${origin}/evil-glasses-sticker.png`;
 		if (ownImage.test(path) === isDefault) {
 			problems.push(`${path}: og:image ${isDefault ? 'is the default but' : 'is'} unexpected`);
 		}
@@ -43,4 +43,10 @@ test('every page has unique, absolute metadata', async ({ page, request }) => {
 		}
 	}
 	expect(problems, problems.join('\n')).toEqual([]);
+});
+
+test('a page without its own image shares the sticker', async ({ page }) => {
+	await page.goto('/legal');
+	const image = await page.locator('meta[property="og:image"]').getAttribute('content');
+	expect(image).toMatch(/\/evil-glasses-sticker\.png$/);
 });

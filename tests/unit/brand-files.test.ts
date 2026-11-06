@@ -12,7 +12,7 @@ describe('brand files', () => {
 	});
 
 	it('the default share image is 1200x630', async () => {
-		const meta = await sharp('static/og-default.png').metadata();
+		const meta = await sharp('static/evil-glasses-sticker.png').metadata();
 		expect([meta.width, meta.height]).toEqual([1200, 630]);
 	});
 
