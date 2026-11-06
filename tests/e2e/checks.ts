@@ -1,5 +1,5 @@
 import AxeBuilder from '@axe-core/playwright';
-import type { Page } from '@playwright/test';
+import type { Locator, Page } from '@playwright/test';
 
 export const axeTags = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'];
 
@@ -42,4 +42,10 @@ export async function checkPage(page: Page, path: string): Promise<string[]> {
 		report(`axe ${violation.id}: ${violation.help} (${violation.nodes.length} nodes)`);
 	}
 	return problems;
+}
+
+/** A locator's rendered text with the headings' capitals undone, so it can be compared to the source. */
+export async function sourceText(locator: Locator): Promise<string> {
+	await locator.page().addStyleTag({ content: 'h1, h2, h3 { text-transform: none !important; }' });
+	return locator.innerText();
 }

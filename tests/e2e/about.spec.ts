@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import { sourceText } from './checks';
 import { expect, test } from '@playwright/test';
 
 const fixture = readFileSync('tests/fixtures/about-text.txt', 'utf8').replace(/\s+/g, ' ').trim();
@@ -6,7 +7,7 @@ const fixture = readFileSync('tests/fixtures/about-text.txt', 'utf8').replace(/\
 test('/about shows the old text with the new name and both photos', async ({ page }) => {
 	const response = await page.goto('/about');
 	expect(response?.status()).toBe(200);
-	const text = await page.locator('main').innerText();
+	const text = await sourceText(page.locator('main'));
 	expect(text.replace(/\s+/g, ' ').trim()).toBe(fixture);
 	const alts = await page
 		.locator('main img')

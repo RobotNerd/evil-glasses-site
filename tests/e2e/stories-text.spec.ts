@@ -1,4 +1,5 @@
 import { readdirSync, readFileSync } from 'node:fs';
+import { sourceText } from './checks';
 import { expect, test } from '@playwright/test';
 
 type Fixture = {
@@ -28,7 +29,7 @@ for (const fixture of fixtures) {
 		await expect(page.getByText(`By ${fixture.author}`)).toBeVisible();
 
 		const story = page.locator('.story');
-		expect(normalize(await story.innerText())).toBe(fixture.text);
+		expect(normalize(await sourceText(story))).toBe(fixture.text);
 
 		const texts = (selector: string) =>
 			story.locator(selector).evaluateAll((els) => els.map((el) => el.textContent ?? ''));
