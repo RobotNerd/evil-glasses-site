@@ -263,3 +263,30 @@ h3 {
 	height: auto;
 	border-radius: var(--radius);
 }
+
+/* Page transitions: 180 ms by default, set per navigation by the layout's onNavigate. */
+:root {
+	--vt-duration: 180ms;
+}
+:root[data-vt='section'] {
+	--vt-duration: 300ms;
+}
+:root[data-vt='cover'] {
+	--vt-duration: 250ms;
+}
+::view-transition-group(*),
+::view-transition-old(*),
+::view-transition-new(*) {
+	animation-duration: var(--vt-duration);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		transition-duration: 0s !important;
+		transition-delay: 0s !important;
+		animation-duration: 0s !important;
+		animation-delay: 0s !important;
+	}
+}

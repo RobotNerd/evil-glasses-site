@@ -121,6 +121,18 @@
 		display: none;
 	}
 
+	nav:not([hidden]) {
+		transform-origin: top left;
+		animation: menu-in 140ms ease-out;
+	}
+
+	@keyframes menu-in {
+		from {
+			opacity: 0;
+			transform: scale(0.96);
+		}
+	}
+
 	ul {
 		margin: 0;
 		padding: 0;

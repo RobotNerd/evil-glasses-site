@@ -4,9 +4,11 @@
 		width?: number;
 		/** An accessible name. Without it the logo is decorative and hidden from assistive tech. */
 		label?: string;
+		/** Plays a light streak across the lenses once, 250 ms after the logo appears. */
+		glint?: boolean;
 	};
 
-	let { width = 113, label }: Props = $props();
+	let { width = 113, label, glint = false }: Props = $props();
 
 	// Ids are unique per instance, so two logos on a page never clash.
 	const uid = $props.id();
@@ -32,6 +34,13 @@
 			transform="translate(-1266.687 -1602.805)scale(.12054)"
 		/>
 		<clipPath id="{id}-lens-clip"><use href="#{id}-lens" /></clipPath>
+		{#if glint}
+			<linearGradient id="{id}-glint-fill">
+				<stop offset="0" stop-color="#fff" stop-opacity="0" />
+				<stop offset="0.5" stop-color="#fff" stop-opacity="0.9" />
+				<stop offset="1" stop-color="#fff" stop-opacity="0" />
+			</linearGradient>
+		{/if}
 	</defs>
 	<path
 		class="frame"
@@ -103,4 +112,30 @@
 		fill-opacity=".521739"
 		transform="translate(-1266.687 -1602.805)scale(.12054)"
 	/>
+	{#if glint}
+		<g clip-path="url(#{id}-lens-clip)">
+			<rect class="glint" x="-30" y="-6" width="16" height="70" fill="url(#{id}-glint-fill)" />
+		</g>
+	{/if}
 </svg>
+
+<style>
+	/* Off to the left until it plays, so a missing animation shows nothing. */
+	.glint {
+		opacity: 0;
+		transform-box: fill-box;
+		transform-origin: center;
+		animation: glint 700ms ease-in-out 250ms 1 backwards;
+	}
+
+	@keyframes glint {
+		from {
+			opacity: 1;
+			transform: translateX(0) skewX(-20deg);
+		}
+		to {
+			opacity: 1;
+			transform: translateX(160px) skewX(-20deg);
+		}
+	}
+</style>

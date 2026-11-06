@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { afterNavigate } from '$app/navigation';
 	import Badge from '../lib/components/Badge.svelte';
 	import Logo from '../lib/components/Logo.svelte';
 	import SeoHead from '../lib/components/SeoHead.svelte';
@@ -7,6 +8,15 @@
 
 	// Quadrant classes, in the same order as the sections: books, stories, games, apps.
 	const quadrants = ['books', 'stories', 'games', 'apps'];
+
+	// The glint plays as the page mounts, which covers back and forward too. Restart it after a
+	// client navigation in case the page was kept alive.
+	afterNavigate(({ type }) => {
+		if (type === 'enter') return;
+		for (const animation of document.querySelector('.landing .glint')?.getAnimations() ?? []) {
+			animation.currentTime = 0;
+		}
+	});
 </script>
 
 <SeoHead
@@ -20,7 +30,7 @@
 <div class="landing">
 	{#each data.sections as section, index (section.href)}
 		<a class="sec {quadrants[index]}" href={section.href}>
-			<span class="bg">
+			<span class="bg" style="view-transition-name: section-{quadrants[index]}">
 				{#if section.image}
 					<enhanced:img src={section.image} alt="" sizes="50vw" />
 				{/if}
@@ -34,7 +44,7 @@
 	<span class="line vertical"></span>
 	<div class="hub">
 		<Badge size="large" tagline="books, stories, games, and apps">
-			<Logo width={200} />
+			<Logo width={200} glint />
 		</Badge>
 	</div>
 </div>
