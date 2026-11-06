@@ -21,8 +21,26 @@ export const bookSchema = z.strictObject({
 	storeLinks: z.array(storeLinkSchema).min(1)
 });
 
-export const schemas = { books: bookSchema } as const;
+export const gameSchema = z.strictObject({
+	title: z.string().min(1),
+	subtitle: z.string().min(1),
+	date: isoDate,
+	image: z.string().min(1),
+	synopsis: z.string().min(1),
+	storeLinks: z.array(storeLinkSchema).min(1),
+	privacyPolicy: z.string().regex(/^\/[a-z0-9/-]*$/, 'must be a site path such as /legal/my-app')
+});
+
+export const legalSchema = z.strictObject({
+	title: z.string().min(1),
+	app: z.string().min(1),
+	updated: isoDate
+});
+
+export const schemas = { books: bookSchema, games: gameSchema, legal: legalSchema } as const;
 
 export type ContentType = keyof typeof schemas;
 export type StoreLink = z.infer<typeof storeLinkSchema>;
 export type BookData = z.infer<typeof bookSchema>;
+export type GameData = z.infer<typeof gameSchema>;
+export type LegalData = z.infer<typeof legalSchema>;
