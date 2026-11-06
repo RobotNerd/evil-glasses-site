@@ -9,7 +9,7 @@
 	const pdfLink = `/short-stories/${$page.params.date}-edition-${$page.params.edition}.pdf`;
 
 	function sanitizeTitle(title: string): string {
-		return title.replace("'", "");
+		return title.replace("'", '');
 	}
 </script>
 

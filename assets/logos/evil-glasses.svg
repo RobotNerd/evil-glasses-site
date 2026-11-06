@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
+   sodipodi:docname="evil-glasses.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#ffffff"
+     inkscape:document-units="mm"
+     showgrid="false"
+     showborder="false"
+     inkscape:zoom="0.35993664"
+     inkscape:cx="602.88389"
+     inkscape:cy="1061.2979"
+     inkscape:window-width="964"
+     inkscape:window-height="989"
+     inkscape:window-x="2149"
+     inkscape:window-y="174"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g3736"
+       inkscape:export-filename="../../../dev/evilglasses-site/img/glasses.png"
+       inkscape:export-xdpi="89.059998"
+       inkscape:export-ydpi="89.059998"
+       transform="matrix(0.12054456,0,0,0.12054456,-1218.2002,-1479.622)">
+      <path
+         inkscape:export-ydpi="89.059998"
+         inkscape:export-xdpi="89.059998"
+         inkscape:export-filename="/Users/mbowles/Desktop/glasses.png"
+         style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:9.45172;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 10988.336,13547.898 c 7.782,0.109 19.825,17.046 19.825,22.096 l 20.576,90.548 c 5.203,35.537 46.491,84.127 91.34,82.501 h 201.593 c 36.251,0.631 97.687,-40.282 99.187,-83.448 l 1,-143.907 c 7.076,-5.682 20.038,-0.627 21.452,-8.203 l -1.001,-86.461 -344.312,51.766 c -17.442,2.623 -68.615,29.016 -80.643,29.016 h -39.756 -36.573 c -12.028,0 -63.209,-26.515 -80.676,-29.016 l -347.523,-50.874 1.001,86.462 c 1.414,7.576 13.343,1.628 20.419,7.31 l -1.001,143.907 c 1.5,43.166 62.966,84.079 99.218,83.448 h 201.593 c 44.85,1.626 78.405,-48.227 90.683,-82.501 l 19.818,-90.548 c 0,-5.05 12.041,-21.999 19.824,-22.096 l 12.685,-0.158 z"
+         id="path5270"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="sccccccccsscssccccccccscs" />
+      <g
+         inkscape:export-ydpi="89.059998"
+         inkscape:export-xdpi="89.059998"
+         inkscape:export-filename="/Users/mbowles/Desktop/glasses.png"
+         id="g5272"
+         transform="matrix(1.0006218,0,0,0.8927945,-7743.647,5656.5705)">
+        <circle
+           inkscape:export-ydpi="89.059998"
+           inkscape:export-xdpi="89.059998"
+           inkscape:export-filename="/Users/marshallbowles/Desktop/eg_logo.png"
+           r="10"
+           cy="8731.6504"
+           cx="18262.482"
+           id="circle5274"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+        <circle
+           inkscape:export-ydpi="89.059998"
+           inkscape:export-xdpi="89.059998"
+           inkscape:export-filename="/Users/marshallbowles/Desktop/eg_logo.png"
+           r="10"
+           cy="8765.6504"
+           cx="18262.482"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="circle5276" />
+      </g>
+      <g
+         inkscape:export-ydpi="89.059998"
+         inkscape:export-xdpi="89.059998"
+         inkscape:export-filename="/Users/mbowles/Desktop/glasses.png"
+         id="g5278"
+         transform="matrix(1.0006218,0,0,0.8927945,-7764.66,5657.4633)">
+        <circle
+           inkscape:export-ydpi="89.059998"
+           inkscape:export-xdpi="89.059998"
+           inkscape:export-filename="/Users/marshallbowles/Desktop/eg_logo.png"
+           r="10"
+           cy="8730.6504"
+           cx="-19174.416"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="circle5280"
+           transform="scale(-1,1)" />
+        <circle
+           inkscape:export-ydpi="89.059998"
+           inkscape:export-xdpi="89.059998"
+           inkscape:export-filename="/Users/marshallbowles/Desktop/eg_logo.png"
+           r="10"
+           cy="8764.6504"
+           cx="-19174.416"
+           transform="scale(-1,1)"
+           id="circle5282"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      </g>
+      <g
+         transform="translate(-4511.1472,5622.1365)"
+         id="g5284"
+         inkscape:export-filename="/Users/mbowles/Desktop/glasses.png"
+         inkscape:export-xdpi="89.059998"
+         inkscape:export-ydpi="89.059998">
+        <path
+           sodipodi:nodetypes="cccc"
+           inkscape:connector-curvature="0"
+           id="path5286"
+           d="m 15450.561,7845.3358 15.775,-5.0962 c 6.855,-9.9332 -3.19,-23.0369 -3.19,-23.0369 0,0 3.074,16.6322 -12.585,28.1331 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.692417px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        <path
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.692417px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 15522.61,7845.3358 -15.775,-5.0962 c -6.855,-9.9332 3.19,-23.0369 3.19,-23.0369 0,0 -3.074,16.6322 12.585,28.1331 z"
+           id="path5288"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+      </g>
+      <g
+         transform="translate(-4508.9712,5622.1365)"
+         id="g5290"
+         inkscape:export-filename="/Users/mbowles/Desktop/glasses.png"
+         inkscape:export-xdpi="89.059998"
+         inkscape:export-ydpi="89.059998">
+        <path
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+           d="m 15453.753,7759.7442 c 0,0 -27.02,31.1062 -54.626,18.4606 l -285.378,-101.8098 c -47.014,-15.9897 -88.684,88.1433 -88.684,88.1433 0,0 40.381,-42.5507 121.033,-29.4108 0,0 145.326,23.0055 258.446,88.5336 20.626,17.9768 49.209,-63.9169 49.209,-63.9169 z"
+           id="path5292"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccccccc" />
+        <path
+           sodipodi:nodetypes="ccccccc"
+           inkscape:connector-curvature="0"
+           id="path5294"
+           d="m 15515.065,7759.7442 c 0,0 27.02,31.1062 54.626,18.4606 l 285.378,-101.8098 c 47.014,-15.9897 88.684,88.1433 88.684,88.1433 0,0 -40.381,-42.5507 -121.033,-29.4108 0,0 -145.326,23.0055 -258.446,88.5336 -20.626,17.9768 -49.209,-63.9169 -49.209,-63.9169 z"
+           style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1" />
+      </g>
+      <path
+         inkscape:export-ydpi="89.059998"
+         inkscape:export-xdpi="89.059998"
+         inkscape:export-filename="/Users/mbowles/Desktop/glasses.png"
+         sodipodi:nodetypes="cccccccc"
+         inkscape:connector-curvature="0"
+         id="path5296"
+         d="m 10866.63,13500.865 c 26.76,2.678 65.015,30.403 65.015,30.403 0,0 -26.649,118.221 -35.655,140.541 -10.006,19.641 -38.735,49.197 -56.453,52.985 -18.427,5.238 -206.358,3.481 -217.678,-0.938 -35.114,-14.564 -63.321,-42.992 -64.029,-63.679 0,0 -1.363,-194.894 2.883,-203.101 7.075,-3.788 305.917,43.789 305.917,43.789 z"
+         style="fill:#d9efff;fill-opacity:1;stroke:#464646;stroke-width:7.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="89.059998"
+         inkscape:export-xdpi="89.059998"
+         inkscape:export-filename="/Users/mbowles/Desktop/glasses.png"
+         style="fill:#d9efff;fill-opacity:1;stroke:#464646;stroke-width:7.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 11089.446,13500.865 c -26.76,2.678 -65.015,30.403 -65.015,30.403 0,0 26.649,118.221 35.655,140.541 7.005,17.856 33.731,49.197 56.453,52.984 18.427,5.239 206.358,3.482 217.678,-0.937 35.114,-14.564 63.321,-42.992 64.029,-63.679 0,0 1.363,-194.894 -2.883,-203.101 -7.075,-3.788 -305.917,43.789 -305.917,43.789 z"
+         id="path5300"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cccccccc" />
+      <path
+         style="fill:#ffffff;fill-opacity:0.456522;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 10941.752,13510.774 c -1.768,15.202 3.182,33.941 3.182,33.941 0,0 2.828,-19.446 4.596,-29.345 5.303,-11.668 55.155,-7.425 55.155,-7.425 -11.873,-4.894 -58.69,-9.192 -62.933,2.829 z"
+         id="path5359"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc"
+         inkscape:export-filename="/Users/mbowles/Desktop/glasses.png"
+         inkscape:export-xdpi="89.059998"
+         inkscape:export-ydpi="89.059998" />
+      <path
+         sodipodi:nodetypes="ccccccc"
+         inkscape:connector-curvature="0"
+         id="path5375"
+         d="m 10511.304,13420.09 c 4.786,-3.384 355.465,52.065 355.465,52.065 3.008,2.463 -12.354,1.075 -12.354,1.075 0,0 -325.916,-50.764 -336.346,-48.112 -4.358,3.265 -2.862,23.491 -2.862,23.491 -2.329,3.42 -1.868,-1.169 -1.868,-1.169 0,0 -5.387,-24.27 -2.035,-27.35 z"
+         style="fill:#ffffff;fill-opacity:0.454902;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         inkscape:export-filename="/Users/mbowles/Desktop/glasses.png"
+         inkscape:export-xdpi="89.059998"
+         inkscape:export-ydpi="89.059998" />
+      <path
+         sodipodi:nodetypes="cccc"
+         inkscape:connector-curvature="0"
+         id="path5379"
+         d="m 11406.285,13680.493 c 2.789,-8.463 5.093,-54.003 -0.486,-50.54 1.265,48.57 -3.186,53.111 -33.588,81.695 0.575,7.241 31.739,-22.211 34.074,-31.155 z"
+         style="fill:#ffffff;fill-opacity:0.456522;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         inkscape:export-filename="/Users/mbowles/Desktop/glasses.png"
+         inkscape:export-xdpi="89.059998"
+         inkscape:export-ydpi="89.059998" />
+      <path
+         style="fill:#ffffff;fill-opacity:0.456522;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 10535.331,13664.746 c -2.121,-10.463 -2.253,-126.769 2.795,-108.034 -0.79,115.402 -0.502,115.97 33.411,158.6 -3.618,7.485 -36.005,-33.475 -36.206,-50.566 z"
+         id="path5383"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cccc"
+         inkscape:export-filename="/Users/mbowles/Desktop/glasses.png"
+         inkscape:export-xdpi="89.059998"
+         inkscape:export-ydpi="89.059998" />
+      <path
+         style="fill:#ffffff;fill-opacity:0.456522;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 11096.536,13474.926 c -17.785,2.912 -57.447,23.811 -54.741,18.479 28.704,-15.342 48.185,-20.782 53.478,-22.313 5.694,-1.648 113.262,-16.925 118.481,-18.233 9.567,5.706 -110.5,21.36 -117.218,22.067 z"
+         id="path5388"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccscc"
+         inkscape:export-filename="/Users/mbowles/Desktop/glasses.png"
+         inkscape:export-xdpi="89.059998"
+         inkscape:export-ydpi="89.059998" />
+      <path
+         style="fill:#ffffff;fill-opacity:0.521739;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 11388.416,13589.37 0.646,64.429 c 0.354,22.192 -44.439,60.364 -68.631,60.217 l -27.015,0.354 c 0,0 51.525,-16.686 68.354,-39.439 19.071,-25.082 26.646,-85.561 26.646,-85.561 z"
+         id="path5390"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cccccc"
+         inkscape:export-filename="/Users/mbowles/Desktop/glasses.png"
+         inkscape:export-xdpi="89.059998"
+         inkscape:export-ydpi="89.059998" />
+      <path
+         sodipodi:nodetypes="cccccc"
+         inkscape:connector-curvature="0"
+         id="path5392"
+         d="m 10900.916,13611.87 -11.354,46.929 c -5.646,23.192 -46.939,57.364 -71.131,57.217 l -27.015,0.354 c 0,0 51.525,-16.686 68.354,-39.439 19.071,-25.082 41.146,-65.061 41.146,-65.061 z"
+         style="fill:#ffffff;fill-opacity:0.521739;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         inkscape:export-filename="/Users/mbowles/Desktop/glasses.png"
+         inkscape:export-xdpi="89.059998"
+         inkscape:export-ydpi="89.059998" />
+      <path
+         style="fill:#ffffff;fill-opacity:0.521739;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 11056.416,13614.37 -15.146,-68.429 c 1.146,-15.192 34.939,-37.364 59.131,-37.217 l 36.015,-3.854 c 0,0 -55.525,8.686 -72.354,31.439 -16.571,29.582 -7.646,78.061 -7.646,78.061 z"
+         id="path5394"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cccccc"
+         inkscape:export-filename="/Users/mbowles/Desktop/glasses.png"
+         inkscape:export-xdpi="89.059998"
+         inkscape:export-ydpi="89.059998" />
+      <path
+         sodipodi:nodetypes="cccccc"
+         inkscape:connector-curvature="0"
+         id="path5397"
+         d="m 10569.843,13550.994 1.208,-64.418 c 0,-5.304 12.059,-14.481 23.951,-13.225 l 82.596,11.166 c 0,0 -81.916,-2.125 -88.364,7.48 -6.802,11.378 -19.391,58.997 -19.391,58.997 z"
+         style="fill:#ffffff;fill-opacity:0.521739;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         inkscape:export-filename="/Users/mbowles/Desktop/glasses.png"
+         inkscape:export-xdpi="89.059998"
+         inkscape:export-ydpi="89.059998" />
+    </g>
+  </g>
+</svg>

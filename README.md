@@ -34,4 +34,3 @@ npm run deploy
 ## Privacy Policy
 
 The privacy policy was generated using the [App Privacy Policy Generator](https://app-privacy-policy-generator.firebaseapp.com/).
-

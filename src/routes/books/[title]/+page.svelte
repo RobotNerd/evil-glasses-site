@@ -12,7 +12,7 @@
 <div class="w-3/4 sm:w-1/2">
 	<img class="mb-8" src={book.coverImage} alt="book cover" />
 
-  <PurchaseLinks items={book.purchaseLinks} />
+	<PurchaseLinks items={book.purchaseLinks} />
 
 	<h3 class="h3 mb-4">{book.subtitle}</h3>
 

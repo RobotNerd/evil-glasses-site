@@ -16,7 +16,7 @@
 			image={Books[title].coverImage}
 			imageDescription={'cover image'}
 			purchaseLinks={Books[title].purchaseLinks}
-			title={title}
+			{title}
 			url={Books[title].route}
 		/>
 	{/each}

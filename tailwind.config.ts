@@ -7,18 +7,15 @@ const config = {
 	darkMode: 'class',
 	content: [
 		'./src/**/*.{html,js,svelte,ts}',
-		join(require.resolve(
-			'@skeletonlabs/skeleton'),
-			'../**/*.{html,js,svelte,ts}'
-		)
+		join(require.resolve('@skeletonlabs/skeleton'), '../**/*.{html,js,svelte,ts}')
 	],
 	theme: {
-		extend: {},
+		extend: {}
 	},
 	plugins: [
 		skeleton({
-			themes: { preset: ["rocket"] },
-		}),
+			themes: { preset: ['rocket'] }
+		})
 	]
 } satisfies Config;
 

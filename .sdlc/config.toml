@@ -1,0 +1,29 @@
+config_version = 1
+branch_prefix = "eg-web-"
+remote = "origin"
+test_command = ""
+lint_command = "npm run check"
+format_command = "npx prettier --check ."
+throwaway_test_dir = ".sdlc/local/throwaway-tests"
+
+[kaneo]
+project_id = "p42jtml7lzaehqdphi9fowbe"
+project_slug = "EG-WEB"
+url = "https://rainbow-flame.taila02055.ts.net:8443"
+
+[outline]
+collection_id = "1d7e7768-38a9-48ce-b248-1d9085a7c3c7"
+url = "https://rainbow-flame.taila02055.ts.net:8445"
+
+[notify]
+enabled = true
+stop_hook = true
+emoji = "👓"
+
+[[notify.channels]]
+role = "primary"
+type = "discord"
+
+[[notify.channels]]
+role = "failover"
+type = "telegram"
