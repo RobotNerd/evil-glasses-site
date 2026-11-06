@@ -8,7 +8,7 @@ export default defineConfig({
 	reporter: process.env.CI ? 'github' : 'list',
 	use: { baseURL: `http://localhost:${port}` },
 	webServer: {
-		command: 'npm run build && npm run preview',
+		command: 'npm run preview',
 		url: `http://localhost:${port}`,
 		reuseExistingServer: !process.env.CI,
 		timeout: 120_000

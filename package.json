@@ -14,7 +14,7 @@
 		"lint": "eslint . && npm run check",
 		"format": "prettier --write .",
 		"brand": "node scripts/make-brand.js",
-		"test": "vitest run && playwright test"
+		"test": "npm run build && vitest run && playwright test"
 	},
 	"devDependencies": {
 		"@axe-core/playwright": "^4.14.0",
