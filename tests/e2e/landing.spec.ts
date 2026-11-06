@@ -109,6 +109,15 @@ test.describe('hover and focus', () => {
 			};
 		});
 
+	// Waits for every running transition inside the section to finish.
+	const settle = (page: Page, name: string) =>
+		link(page, name).evaluate((a) =>
+			Promise.all(a.getAnimations({ subtree: true }).map((x) => x.finished)).then(() => true)
+		);
+
+	// Parks the pointer in the Apps quadrant, away from Books.
+	const parkPointer = (page: Page) => page.mouse.move(1000, 700);
+
 	const resting = { image: 1.12, fade: 0.8, vig: '30%', title: 1 };
 
 	test('the pointer zooms out, lightens, opens the vignette and grows the title', async ({
@@ -116,25 +125,30 @@ test.describe('hover and focus', () => {
 	}) => {
 		await page.emulateMedia({ colorScheme: 'light' });
 		await page.goto('/');
+		await parkPointer(page);
+		await settle(page, 'Books');
 		expect(await state(page, 'Books')).toEqual(resting);
 		await page.mouse.move(300, 200);
-		await page.waitForTimeout(400);
+		await settle(page, 'Books');
 		expect(await state(page, 'Books')).toEqual({ image: 1, fade: 0.6, vig: '50%', title: 1.12 });
-		await page.mouse.move(1000, 700);
-		await page.waitForTimeout(400);
+		await parkPointer(page);
+		await settle(page, 'Books');
 		expect(await state(page, 'Books')).toEqual(resting);
 	});
 
 	test('keyboard focus does the same', async ({ page }) => {
 		await page.emulateMedia({ colorScheme: 'light' });
 		await page.goto('/');
+		await parkPointer(page);
 		await link(page, 'Books').focus();
 		await page.keyboard.press('Shift+Tab');
 		await page.keyboard.press('Tab');
-		await page.waitForTimeout(400);
+		await expect(link(page, 'Books')).toBeFocused();
+		await settle(page, 'Books');
 		expect(await state(page, 'Books')).toEqual({ image: 1, fade: 0.6, vig: '50%', title: 1.12 });
 		await page.keyboard.press('Tab');
-		await page.waitForTimeout(400);
+		await expect(link(page, 'Books')).not.toBeFocused();
+		await settle(page, 'Books');
 		expect(await state(page, 'Books')).toEqual(resting);
 	});
 });
