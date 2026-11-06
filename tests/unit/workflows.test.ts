@@ -24,6 +24,11 @@ describe('ci workflow', () => {
 		expect(order.every((i) => i >= 0)).toBe(true);
 		expect(order).toEqual([...order].sort((a, b) => a - b));
 	});
+
+	it("runs lighthouse in the runner's Google Chrome", () => {
+		const step = steps.find((s) => s.run === 'npm run lighthouse');
+		expect((step?.env as Record<string, string>).CHROME_PATH).toBe('/usr/bin/google-chrome');
+	});
 });
 
 describe('deploy workflow', () => {

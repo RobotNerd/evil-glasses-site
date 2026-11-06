@@ -36,4 +36,8 @@ jobs:
       - run: npm run lint
       - run: npx prettier --check .
       - run: npm test
-      - run: npm run lighthouse
+      - name: Lighthouse
+        run: npm run lighthouse
+        env:
+          # The runner's Google Chrome sandboxes fine; Playwright's Chromium does not.
+          CHROME_PATH: /usr/bin/google-chrome
