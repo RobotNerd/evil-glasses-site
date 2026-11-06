@@ -1,11 +1,9 @@
 <script lang="ts">
+	import SeoHead from '../../lib/components/SeoHead.svelte';
 	let { data } = $props();
 </script>
 
-<svelte:head>
-	<title>Books | Evil Glasses</title>
-	<meta name="description" content="Books by Sara Rogers." />
-</svelte:head>
+<SeoHead title="Books" description="Books by Sara Rogers." path="/books" />
 
 <h1>Books</h1>
 

@@ -1,14 +1,16 @@
 <script lang="ts">
+	import SeoHead from '../../lib/components/SeoHead.svelte';
 	import { editionId } from '../../lib/content/stories';
 	import { formatDate } from '../../lib/content/format';
 
 	let { data } = $props();
 </script>
 
-<svelte:head>
-	<title>Stories | Evil Glasses</title>
-	<meta name="description" content="Short stories by Sara Rogers, Marshall Bowles and friends." />
-</svelte:head>
+<SeoHead
+	title="Stories"
+	description="Short stories by Sara Rogers, Marshall Bowles and friends."
+	path="/stories"
+/>
 
 <h1>Stories</h1>
 

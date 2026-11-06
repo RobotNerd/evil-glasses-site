@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Menu from '@lucide/svelte/icons/menu';
+	import logo from '../assets/evil-glasses.svg';
 	import X from '@lucide/svelte/icons/x';
 
 	const links = [
@@ -14,7 +15,7 @@
 </script>
 
 <header>
-	<a class="brand" href="/">Evil Glasses</a>
+	<a class="brand" href="/"><img src={logo} alt="Evil Glasses" width="105" height="50" /></a>
 	<button
 		type="button"
 		class="menu-button"
@@ -47,9 +48,15 @@
 	}
 
 	.brand {
+		display: inline-flex;
 		font-weight: 700;
 		color: var(--color-text);
 		text-decoration: none;
+	}
+
+	.brand img {
+		height: 2.5rem;
+		width: auto;
 	}
 
 	.menu-button {

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import logo from '../lib/assets/evil-glasses.svg';
+	import SeoHead from '../lib/components/SeoHead.svelte';
 	import { formatDate } from '../lib/content/format';
 
 	let { data } = $props();
@@ -12,13 +14,13 @@
 	const typeLabel = { books: 'Book', stories: 'Story', games: 'Game', apps: 'App' };
 </script>
 
-<svelte:head>
-	<title>Evil Glasses</title>
-	<meta
-		name="description"
-		content="Evil Glasses makes books, stories, games and apps with a little heart and a little mischief."
-	/>
-</svelte:head>
+<SeoHead
+	title="Evil Glasses"
+	description="Evil Glasses makes books, stories, games and apps with a little heart and a little mischief."
+	path="/"
+/>
+
+<img class="logo" src={logo} alt="Evil Glasses" width="226" height="108" />
 
 <h1>Evil Glasses</h1>
 
@@ -45,6 +47,10 @@
 </ul>
 
 <style>
+	.logo {
+		max-width: 100%;
+		height: auto;
+	}
 	ul {
 		padding: 0;
 		list-style: none;

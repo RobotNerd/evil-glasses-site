@@ -1,12 +1,14 @@
 <script lang="ts">
+	import SeoHead from '../../../lib/components/SeoHead.svelte';
 	let { data } = $props();
 	const policy = $derived(data.policy);
 </script>
 
-<svelte:head>
-	<title>{policy.data.title} | Evil Glasses</title>
-	<meta name="description" content="Privacy policy for {policy.data.app}." />
-</svelte:head>
+<SeoHead
+	title={policy.data.title}
+	description="Privacy policy for {policy.data.app}."
+	path="/legal/{policy.slug}"
+/>
 
 <article>
 	<h1>{policy.data.title}</h1>

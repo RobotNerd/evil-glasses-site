@@ -1,4 +1,5 @@
 <script lang="ts">
+	import SeoHead from '../../../lib/components/SeoHead.svelte';
 	import { editionId } from '../../../lib/content/stories';
 	import { formatDate } from '../../../lib/content/format';
 
@@ -6,10 +7,12 @@
 	const story = $derived(data.story);
 </script>
 
-<svelte:head>
-	<title>{story.data.title} | Evil Glasses</title>
-	<meta name="description" content={story.data.synopsis} />
-</svelte:head>
+<SeoHead
+	title={story.data.title}
+	description={story.data.synopsis}
+	path="/stories/{story.slug}"
+	image={story.edition.cover}
+/>
 
 <article>
 	<enhanced:img

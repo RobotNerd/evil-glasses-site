@@ -13,6 +13,7 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"lint": "eslint . && npm run check",
 		"format": "prettier --write .",
+		"brand": "node scripts/make-brand.js",
 		"test": "vitest run && playwright test"
 	},
 	"devDependencies": {
@@ -29,8 +30,10 @@
 		"globals": "^17.14.0",
 		"prettier": "^3.9.10",
 		"prettier-plugin-svelte": "^4.1.1",
+		"sharp": "^0.35.5",
 		"svelte": "^5.57.3",
 		"svelte-check": "^4.7.8",
+		"svgo": "^4.1.0",
 		"typescript": "^6.0.3",
 		"typescript-eslint": "^8.72.1",
 		"vite": "^8.3.6",

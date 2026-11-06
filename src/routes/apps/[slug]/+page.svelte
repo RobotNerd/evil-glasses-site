@@ -1,14 +1,17 @@
 <script lang="ts">
+	import SeoHead from '../../../lib/components/SeoHead.svelte';
 	import { storeBadges } from '../../../lib/content/stores';
 
 	let { data } = $props();
 	const app = $derived(data.app);
 </script>
 
-<svelte:head>
-	<title>{app.data.title} | Evil Glasses</title>
-	<meta name="description" content={app.data.synopsis} />
-</svelte:head>
+<SeoHead
+	title={app.data.title}
+	description={app.data.synopsis}
+	path="/apps/{app.slug}"
+	image={app.image}
+/>
 
 <article>
 	<enhanced:img

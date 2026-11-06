@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { checkPage } from './checks';
+import { localPath, sitemapUrls } from './sitemap-urls';
 
 async function internalLinks(page: import('@playwright/test').Page): Promise<string[]> {
 	const hrefs = await page
@@ -12,10 +13,14 @@ async function internalLinks(page: import('@playwright/test').Page): Promise<str
 		.map((url) => url.pathname);
 }
 
-test('every internal link reachable from / passes the page checks', async ({ page }) => {
+test('every page in the sitemap and every internal link from / passes the page checks', async ({
+	page,
+	request
+}) => {
 	// One axe pass per page, and the site now has 60+ pages.
 	test.setTimeout(240_000);
-	const queue = ['/'];
+	// Starting from the sitemap as well as / catches orphan pages that nothing links to.
+	const queue = ['/', ...(await sitemapUrls(request)).map(localPath)];
 	const seen = new Set<string>();
 	const problems: string[] = [];
 

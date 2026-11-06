@@ -1,12 +1,10 @@
 <script lang="ts">
+	import SeoHead from '../../lib/components/SeoHead.svelte';
 	let { data } = $props();
 	const page = $derived(data.page);
 </script>
 
-<svelte:head>
-	<title>{page.data.title} | Evil Glasses</title>
-	<meta name="description" content={page.data.description} />
-</svelte:head>
+<SeoHead title={page.data.title} description={page.data.description} path="/about" />
 
 <article>
 	<h1>{page.data.title}</h1>
