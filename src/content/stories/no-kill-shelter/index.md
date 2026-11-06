@@ -3,6 +3,7 @@ title: 'No Kill Shelter'
 author: Marshall Bowles
 date: 2018-07-01
 edition: 13
+order: 2
 synopsis: 'In a post-apocalyptic world, a robotic caretaker diligently maintains a dog shelter in the face of danger.'
 ---
 

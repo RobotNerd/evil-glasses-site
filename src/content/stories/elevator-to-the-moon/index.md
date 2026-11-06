@@ -3,6 +3,7 @@ title: 'Elevator to the Moon'
 author: Sara Rogers
 date: 2016-01-01
 edition: 3
+order: 2
 synopsis: 'On a journey to the moon, two people share an intimate encounter as they grapple with their future in the new lunar colony.'
 ---
 

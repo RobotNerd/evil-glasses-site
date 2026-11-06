@@ -3,6 +3,7 @@ title: 'Sharkrilla'
 author: Sara Rogers
 date: 2015-10-01
 edition: 2
+order: 2
 synopsis: 'A scientist releases a bioengineered beast to evade an armed group, facing repercussions from his partner and risking global danger.'
 ---
 

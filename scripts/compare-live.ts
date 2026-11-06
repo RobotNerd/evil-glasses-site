@@ -47,7 +47,7 @@ type Captured = { text: string; links: string[]; images: { url: string; alt: str
  * and second rule spans, after the site title and tagline, which are kept as part of the text so
  * the allowlist can account for them. Locally the content is <main>, or one edition's section.
  */
-function extract(arg: { live: boolean; hash: string; sort: boolean }): Captured {
+function extract(arg: { live: boolean; hash: string }): Captured {
 	let nodes: Element[];
 	let prefix = '';
 	if (arg.live) {
@@ -65,20 +65,10 @@ function extract(arg: { live: boolean; hash: string; sort: boolean }): Captured 
 		nodes = [scope];
 	}
 	const text: string[] = [];
-	// A story list is compared as a set: the new site orders stories by title, the old by edition.
-	const cards = !arg.sort
-		? []
-		: nodes.flatMap((n) =>
-				Array.from(arg.live ? n.querySelectorAll('a.card') : n.querySelectorAll('li'))
-			);
-	const cardText = (el: Element) => (el as HTMLElement).innerText;
-	const sorted = cards.map(cardText).sort();
 	const links = new Set<string>();
 	const images = new Map<string, string>();
 	for (const node of nodes) {
-		let own = (node as HTMLElement).innerText;
-		for (const card of cards) own = own.replace(cardText(card), '');
-		text.push(own);
+		text.push((node as HTMLElement).innerText);
 		for (const el of [node, ...Array.from(node.querySelectorAll('*'))]) {
 			if (el instanceof HTMLAnchorElement && /^(https?:|mailto:)/.test(el.href)) {
 				if (!el.href.startsWith(location.origin)) links.add(el.href);
@@ -90,7 +80,7 @@ function extract(arg: { live: boolean; hash: string; sort: boolean }): Captured 
 		}
 	}
 	return {
-		text: `${prefix}${text.join(' ')} ${sorted.join(' ')}`,
+		text: prefix + text.join(' '),
 		links: [...links],
 		images: [...images].map(([url, alt]) => ({ url, alt }))
 	};
@@ -282,11 +272,11 @@ async function waitForServer(): Promise<void> {
 }
 
 /** GitHub Pages sometimes answers with an error page; try a few times before giving up. */
-async function readLive(page: Page, path: string, sort: boolean): Promise<Captured> {
+async function readLive(page: Page, path: string): Promise<Captured> {
 	for (let attempt = 1; ; attempt++) {
 		try {
 			await page.goto(LIVE + encodeURI(path), { waitUntil: 'networkidle' });
-			return await page.evaluate(extract, { live: true, hash: '', sort });
+			return await page.evaluate(extract, { live: true, hash: '' });
 		} catch (error) {
 			if (attempt === 3) throw error;
 			await new Promise((r) => setTimeout(r, 2000 * attempt));
@@ -339,10 +329,10 @@ async function main(): Promise<number> {
 			}
 			try {
 				const [path, hash = ''] = localPath.split('#');
-				const live = await readLive(livePage, livePath, !!hash);
+				const live = await readLive(livePage, livePath);
 				await localPage.goto(LOCAL + path, { waitUntil: 'networkidle' });
 				if (hash) await localPage.waitForSelector(`#${hash}`);
-				const local = await localPage.evaluate(extract, { live: false, hash, sort: !!hash });
+				const local = await localPage.evaluate(extract, { live: false, hash });
 				row.found.push(...diffText(normalize(live.text), normalize(local.text)));
 				for (const link of live.links) {
 					if (!local.links.includes(link)) {

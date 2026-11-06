@@ -3,6 +3,7 @@ title: 'Plane Jumper'
 author: Marshall Bowles
 date: 2015-10-01
 edition: 2
+order: 1
 synopsis: 'A young boy inherits a supernatural ability and must learn to use his unique power.'
 ---
 

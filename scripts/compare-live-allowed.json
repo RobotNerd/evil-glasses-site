@@ -1,6 +1,16 @@
 {
 	"entries": [
 		{
+			"id": "detail-page-extras",
+			"reason": "Book pages show the author under the title and game pages link to their privacy policy, as the spec says; the old pages had neither.",
+			"rules": [
+				{
+					"pages": "^/(books|games)/",
+					"local": ["\\bby Sara Rogers\\b", "\\bPrivacy policy\\b"]
+				}
+			]
+		},
+		{
 			"id": "author-name",
 			"reason": "\"Sara Lufrano\" is now \"Sara Rogers\" on books, stories and the About page.",
 			"rules": [
@@ -112,6 +122,29 @@
 					"pages": "^/short-stories/read/2018-01-01/Glasswood Chest$",
 					"live": ["“Glasswood\\b", "\\bChest”"],
 					"local": ["\\bGlasswood\\b", "\\bChest\\b"]
+				}
+			]
+		},
+		{
+			"id": "list-pages-redesigned",
+			"reason": "The books and games list pages are redesigned as cover grids in a later epic; the synopsis, store links and badges are on each item page.",
+			"rules": [
+				{
+					"kinds": ["text", "link", "image"],
+					"pages": "^/(books|games)$",
+					"live": [".+"],
+					"local": [".+"]
+				}
+			]
+		},
+		{
+			"id": "memories-spacing",
+			"reason": "The old Memories of the End page ran words together where italics met ('mybest', 'hitsa'); the new text has the spaces.",
+			"rules": [
+				{
+					"pages": "^/short-stories/read/2018-01-01/Memories of the End$",
+					"live": ["Eric—mybest", "kindergarten—hitsa"],
+					"local": ["Eric—my best", "kindergarten—hits a"]
 				}
 			]
 		}

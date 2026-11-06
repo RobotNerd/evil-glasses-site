@@ -3,6 +3,7 @@ title: 'Call'
 author: Sara Rogers
 date: 2016-04-01
 edition: 4
+order: 2
 synopsis: 'A man obsessively contemplates reaching out to his ex while ignoring his current partner.'
 ---
 

@@ -3,6 +3,7 @@ title: 'Crowds'
 author: Marshall Bowles
 date: 2017-04-01
 edition: 8
+order: 1
 synopsis: 'A tale of distorted reality where human bonds and rock concerts take a sinister twist, where crowds are to be feared.'
 ---
 

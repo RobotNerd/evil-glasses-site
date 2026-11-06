@@ -3,6 +3,7 @@ title: 'A Hot Week in August'
 author: Marshall Bowles
 date: 2018-04-01
 edition: 12
+order: 2
 synopsis: 'Two men struggle with the meaning of their lives while working a grueling job creating a firebreak.'
 ---
 

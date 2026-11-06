@@ -3,6 +3,7 @@ title: 'I Died'
 author: Sara Rogers
 date: 2018-07-01
 edition: 13
+order: 1
 synopsis: 'A poignant exploration of eternal love and the heartrending journey of a ghost clinging to the world of the living.'
 ---
 

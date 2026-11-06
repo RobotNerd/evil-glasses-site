@@ -26,8 +26,11 @@ describe('compare-live allowlist', () => {
 				'item-dates',
 				'site-header-footer',
 				'what-size-policy',
-				// Accepted: these two titles follow the old data.
-				'story-titles'
+				// Accepted by the developer after comparing:
+				'story-titles',
+				'list-pages-redesigned',
+				'memories-spacing',
+				'detail-page-extras'
 			].sort()
 		);
 	});

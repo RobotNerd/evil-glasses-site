@@ -23,20 +23,20 @@
 	<h1>{game.data.title}</h1>
 	<p class="subtitle">{game.data.subtitle}</p>
 
-	<h2>About the game</h2>
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -- trusted Markdown rendered at build time -->
 	{@html game.html}
 
-	<h2>Get the game</h2>
+	<h2>Get your copy now!</h2>
 	<ul class="stores">
 		{#each game.data.storeLinks as link (link.url)}
 			{@const badge = storeBadges[link.store]}
 			<li>
 				<a href={link.url}>
 					{#if badge}
-						<enhanced:img src={badge} alt="" />
+						<enhanced:img src={badge} alt={link.label} />
+					{:else}
+						<span>{link.label}</span>
 					{/if}
-					<span>{link.label}</span>
 				</a>
 			</li>
 		{/each}

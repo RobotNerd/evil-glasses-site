@@ -3,6 +3,7 @@ title: 'Cloned'
 author: Marshall Bowles
 date: 2016-01-01
 edition: 3
+order: 3
 synopsis: 'A couple grapples with ethical questions about the potential of human cloning after a rockclimbing accident.'
 ---
 

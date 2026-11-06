@@ -3,6 +3,7 @@ title: 'Anorexia'
 author: Marshall Bowles
 date: 2015-07-01
 edition: 1
+order: 2
 synopsis: 'A high school student begins experiencing horrifying encounters and inexplicable sickness following the death of her friend.'
 ---
 

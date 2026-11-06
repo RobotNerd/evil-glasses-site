@@ -3,6 +3,7 @@ title: 'Advertisment Help!'
 author: Marshall Bowles
 date: 2019-03-01
 edition: 14
+order: 1
 synopsis: 'A proposal for a new form of targeted advertising turns out to be unethical in more ways than one.'
 ---
 
