@@ -3,6 +3,8 @@ title: About Evil Glasses
 description: Who is behind Evil Glasses, the writers and game developers.
 ---
 
+Two people. A pair of cursed glasses. We make books, stories, games, and apps. Enjoy!
+
 We are writers and game developers an Evil Glasses is our label. Find out about our publications, games, and more at evilglasses.com.
 
 ## Our Staff

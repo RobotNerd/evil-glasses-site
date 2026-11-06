@@ -34,6 +34,8 @@ Each entry is a folder named for its slug, holding an `index.md` and any images 
 
 Every page load is a `+page.server.ts` file, so the parsers stay out of the client bundle.
 
+Set `hero: true` on one book, story, game or app to put its image on the landing page; a type with none flagged uses its newest item, and two flagged items in one type fail the build. A story's image is its edition's cover, and an app's is its first screenshot.
+
 Dates are written `YYYY-MM-DD`. A store link is an object with the fields `store` (one of `amazon`, `apple`, `google-play`, `kindle`, `smashwords`), `label` and `url`, all required.
 
 ### apps
@@ -44,6 +46,7 @@ An app has every game field, plus the ones below. Its `subtitle` becomes optiona
 | --------------- | -------------------------------------- | -------- |
 | `author`        | string                                 | yes      |
 | `date`          | date                                   | yes      |
+| `hero`          | `true`                                 | no       |
 | `image`         | image file name                        | yes      |
 | `privacyPolicy` | site path                              | yes      |
 | `screenshots`   | list of image file names, at least one | yes      |
@@ -60,6 +63,7 @@ An app has every game field, plus the ones below. Its `subtitle` becomes optiona
 | `authorBio`  | string                            | yes      |
 | `cover`      | image file name                   | yes      |
 | `date`       | date                              | yes      |
+| `hero`       | `true`                            | no       |
 | `storeLinks` | list of store links, at least one | yes      |
 | `subtitle`   | string                            | yes      |
 | `synopsis`   | string                            | yes      |
@@ -78,6 +82,7 @@ An app has every game field, plus the ones below. Its `subtitle` becomes optiona
 | Field           | Type                              | Required |
 | --------------- | --------------------------------- | -------- |
 | `date`          | date                              | yes      |
+| `hero`          | `true`                            | no       |
 | `image`         | image file name                   | yes      |
 | `privacyPolicy` | site path such as `/legal/my-app` | yes      |
 | `storeLinks`    | list of store links, at least one | yes      |
@@ -109,13 +114,14 @@ A story belongs to the edition whose `number` equals its `edition`. A story with
 | `author`   | string                | yes      |
 | `date`     | date                  | yes      |
 | `edition`  | positive whole number | yes      |
+| `hero`     | `true`                | no       |
 | `order`    | positive whole number | no       |
 | `synopsis` | string                | yes      |
 | `title`    | string                | yes      |
 
 ## URLs and redirects
 
-- `/`: the home page
+- `/`: the landing page, four sections linking to the lists
 - `/about`: the about page
 - `/apps` and `/apps/<slug>`: apps
 - `/books` and `/books/<slug>`: books
