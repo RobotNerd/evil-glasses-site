@@ -1,46 +1,38 @@
 {
-	"name": "evilglasses-test",
+	"name": "evil-glasses-site",
 	"version": "0.0.1",
 	"private": true,
+	"type": "module",
+	"engines": {
+		"node": ">=26 <27"
+	},
 	"scripts": {
-		"deploy": "npm run build && npx gh-pages -d build -t true",
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "prettier --check . && eslint .",
+		"lint": "eslint . && npm run check",
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
-		"@skeletonlabs/skeleton": "2.5.0",
-		"@skeletonlabs/tw-plugin": "0.2.4",
-		"@sveltejs/adapter-static": "^2.0.3",
-		"@sveltejs/kit": "^1.27.4",
-		"@tailwindcss/forms": "0.5.7",
-		"@tailwindcss/typography": "0.5.10",
-		"@types/node": "20.9.1",
-		"@typescript-eslint/eslint-plugin": "^6.0.0",
-		"@typescript-eslint/parser": "^6.0.0",
-		"autoprefixer": "10.4.16",
-		"eslint": "^8.28.0",
-		"eslint-config-prettier": "^9.0.0",
-		"eslint-plugin-svelte": "^2.30.0",
-		"gh-pages": "^6.1.0",
-		"postcss": "8.4.31",
-		"prettier": "^3.1.0",
-		"prettier-plugin-svelte": "^3.0.0",
-		"prettier-plugin-tailwindcss": "^0.5.7",
-		"svelte": "^4.0.5",
-		"svelte-check": "^3.6.0",
-		"tailwindcss": "3.3.5",
-		"tslib": "^2.4.1",
-		"typescript": "^5.0.0",
-		"vite": "^4.4.2",
-		"vite-plugin-tailwind-purgecss": "0.1.3"
+		"@eslint/js": "^10.0.1",
+		"@sveltejs/adapter-static": "^4.0.1",
+		"@sveltejs/kit": "^3.1.1",
+		"@sveltejs/vite-plugin-svelte": "^7.3.1",
+		"@types/node": "^26.6.6",
+		"eslint": "^10.14.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-svelte": "^3.24.0",
+		"globals": "^17.14.0",
+		"prettier": "^3.9.10",
+		"prettier-plugin-svelte": "^4.1.1",
+		"svelte": "^5.57.3",
+		"svelte-check": "^4.7.8",
+		"typescript": "^6.0.3",
+		"typescript-eslint": "^8.72.1",
+		"vite": "^8.3.6"
 	},
-	"type": "module",
 	"dependencies": {
-		"@floating-ui/dom": "1.5.3"
+		"@lucide/svelte": "^1.70.0"
 	}
 }
