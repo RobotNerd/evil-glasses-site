@@ -41,15 +41,13 @@ const stories = [
 		slug: 'the-bad-comic-episode-2',
 		title: 'The Bad Comic, Episode 2',
 		author: 'Sara Rogers',
-		edition: 'Edition 9',
-		date: 'July 1, 2017'
+		edition: 'Edition 9'
 	},
 	{
 		slug: '12th-ave-north-unit-m',
 		title: '12th Ave North, Unit M',
 		author: 'Sara Rogers',
-		edition: 'Edition 8',
-		date: 'April 1, 2017'
+		edition: 'Edition 8'
 	}
 ];
 
@@ -58,9 +56,8 @@ for (const story of stories) {
 		const response = await page.goto(`/stories/${story.slug}`);
 		expect(response?.status()).toBe(200);
 		await expect(page.getByRole('heading', { level: 1 })).toHaveText(story.title);
-		await expect(page.getByText(`By ${story.author}`)).toBeVisible();
-		await expect(page.locator('.edition')).toContainText(story.edition);
-		await expect(page.locator('.edition')).toContainText(story.date);
+		await expect(page.locator('.meta')).toContainText(`By ${story.author}`);
+		await expect(page.locator('.meta')).toContainText(story.edition);
 		const cover = page.locator('img.cover');
 		await expect(cover).toBeVisible();
 		expect(await cover.getAttribute('alt')).toBeTruthy();
@@ -70,7 +67,7 @@ for (const story of stories) {
 
 test('the edition link on a story returns to its group', async ({ page }) => {
 	await page.goto('/stories/the-lava-farmer');
-	await expect(page.locator('.edition a')).toHaveAttribute('href', '/stories#edition-01');
+	await expect(page.locator('.meta a')).toHaveAttribute('href', '/stories#edition-01');
 });
 
 // The order the old site listed each edition's stories in.

@@ -81,6 +81,22 @@ export function groupByEdition(stories: Story[]): EditionGroup[] {
 	return [...groups.values()].sort((a, b) => b.edition.data.number - a.edition.data.number);
 }
 
+/**
+ * The story after `story`: the next one in its edition by `order`, else the first story of
+ * the next edition. `stories` must be in the order `loadStories` returns. Undefined for the
+ * last story of the newest edition.
+ */
+export function nextStory<T extends Story>(stories: T[], story: T): T | undefined {
+	const number = story.edition.data.number;
+	const inEdition = stories.filter((s) => s.edition.data.number === number);
+	const next = inEdition[inEdition.indexOf(story) + 1];
+	if (next) return next;
+	const later = stories
+		.filter((s) => s.edition.data.number > number)
+		.sort((a, b) => a.edition.data.number - b.edition.data.number);
+	return later[0];
+}
+
 export function getStory(slug: string): Story | undefined {
 	return loadStories().find((story) => story.slug === slug);
 }
