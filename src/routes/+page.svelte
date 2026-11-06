@@ -25,8 +25,7 @@
 <h1>Evil Glasses</h1>
 
 <p class="intro">
-	Two people, one pair of mischievous glasses. We make books, stories, games and apps, each with a
-	little heart and a little mischief. Pull up a chair, pick something new, and enjoy.
+	Two people. A pair of cursed glasses. We make books, stories, games, and apps. Enjoy!
 </p>
 
 <h2>Newest</h2>

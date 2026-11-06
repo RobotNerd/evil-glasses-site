@@ -1,7 +1,7 @@
 ---
 title: Inflation Buster
 subtitle: Destroy the economy to save it?
-date: 2023-01-01
+date: 2023-12-17
 image: image.png
 synopsis: Play as the head of the US Federal Reserve in this fast-paced arcade shooter! Throw out interest rate hikes to stop those inflating dollars in their tracks, and save the economy.
 storeLinks:
