@@ -3,6 +3,7 @@ title: 'Capital Hill'
 author: Sara Rogers
 date: 2016-07-01
 edition: 5
+order: 1
 synopsis: 'Two friends share a unique experience watching mysterious phenomena in the sky.'
 ---
 

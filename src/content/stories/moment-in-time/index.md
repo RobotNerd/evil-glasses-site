@@ -3,6 +3,7 @@ title: 'Moment in Time'
 author: Sara Rogers
 date: 2017-10-01
 edition: 10
+order: 2
 synopsis: 'A quiet crisis of a woman caught in the crossfire of her desires and duties.'
 ---
 

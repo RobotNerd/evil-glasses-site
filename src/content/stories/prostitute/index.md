@@ -3,6 +3,7 @@ title: 'Prostitute'
 author: Sara Rogers
 date: 2018-04-01
 edition: 12
+order: 1
 synopsis: 'A high-ranking executive tired of constant agreement from his peers seeks enlightenment from a dominatrix.'
 ---
 

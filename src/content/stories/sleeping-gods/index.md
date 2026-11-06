@@ -3,6 +3,7 @@ title: 'Sleeping Gods'
 author: Marshall Bowles
 date: 2016-07-01
 edition: 5
+order: 2
 synopsis: "Caught between age-old myths and harsh survival, a young man defies all odds to protect humanity's last stand against the advice of his elders."
 ---
 

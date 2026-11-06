@@ -3,6 +3,7 @@ title: 'Glasswood Chest'
 author: Sara Rogers
 date: 2018-01-01
 edition: 11
+order: 1
 synopsis: 'A tale of loss and redemption, where love lives in every grain of wood and in the heart of a man finding his way back to life.'
 ---
 

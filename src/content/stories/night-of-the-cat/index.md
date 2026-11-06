@@ -3,6 +3,7 @@ title: 'Night of the Cat'
 author: Marshall Bowles
 date: 2017-07-01
 edition: 9
+order: 2
 synopsis: 'A night of cat-sitting goes wrong.'
 ---
 

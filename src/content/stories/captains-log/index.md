@@ -3,6 +3,7 @@ title: "Captain's Log"
 author: Sara Rogers
 date: 2017-01-01
 edition: 7
+order: 1
 synopsis: 'Embark on a thrilling cosmic journey where an unexpected encounter with sentient matter propels an explorer fleet starship into a high- stakes battle.'
 ---
 

@@ -1,0 +1,152 @@
+{
+	"entries": [
+		{
+			"id": "detail-page-extras",
+			"reason": "Book pages show the author under the title and game pages link to their privacy policy, as the spec says; the old pages had neither.",
+			"rules": [
+				{
+					"pages": "^/(books|games)/",
+					"local": ["\\bby Sara Rogers\\b", "\\bPrivacy policy\\b"]
+				}
+			]
+		},
+		{
+			"id": "author-name",
+			"reason": "\"Sara Lufrano\" is now \"Sara Rogers\" on books, stories and the About page.",
+			"rules": [
+				{
+					"live": ["\\bLufrano\\b"],
+					"local": ["\\bRogers\\b"]
+				}
+			]
+		},
+		{
+			"id": "home-page",
+			"reason": "The home page has a new intro and a list of the newest items instead of the old book and game cards, so its text, store links and images differ.",
+			"rules": [
+				{
+					"kinds": ["text", "link", "image"],
+					"pages": "^/$",
+					"live": [".+"],
+					"local": [".+"]
+				}
+			]
+		},
+		{
+			"id": "software-page-removed",
+			"reason": "The software page is gone, and its old URL redirects to the home page.",
+			"rules": [
+				{
+					"kinds": ["page"],
+					"pages": "^/software$",
+					"live": ["^/software$"]
+				}
+			]
+		},
+		{
+			"id": "pdf-links-removed",
+			"reason": "The story PDFs are dropped, so the Download PDF links are gone.",
+			"rules": [
+				{
+					"pages": "^/short-stories/\\d{4}-\\d{2}-\\d{2}/\\d{2}$",
+					"live": ["\\bOr Download PDF\\b"]
+				}
+			]
+		},
+		{
+			"id": "inflation-buster-spacing",
+			"reason": "The Inflation Buster description had missing spaces after full stops and stray spaces before question marks, now fixed.",
+			"rules": [
+				{
+					"pages": "^/games/Inflation Buster$",
+					"live": ["\\S+\\.[A-Z]\\S*", "\\S+ \\?"],
+					"local": ["\\S+\\. [A-Z]\\S*", "\\S+\\?"]
+				}
+			]
+		},
+		{
+			"id": "editions-merged",
+			"reason": "The edition pages are merged into /stories, so the old edition index and edition page headings and buttons are gone.",
+			"rules": [
+				{
+					"pages": "^/short-stories$",
+					"live": ["\\bShort Stories\\b", "\\bEdition \\d+\\b", "\\bMore Info\\b", "\\bShort\\b"],
+					"local": [".+"]
+				},
+				{
+					"pages": "^/short-stories/\\d{4}-\\d{2}-\\d{2}/\\d{2}$",
+					"live": ["\\bEvil Glasses Short Stories\\b", "\\bRead Online\\b"]
+				}
+			]
+		},
+		{
+			"id": "item-dates",
+			"reason": "Stories and editions now show their date, and a story shows its edition, as new lines.",
+			"rules": [
+				{
+					"pages": "^/short-stories",
+					"local": ["\\b[A-Z][a-z]+ \\d{1,2}, \\d{4}\\b", "\\bEdition \\d+,"]
+				}
+			]
+		},
+		{
+			"id": "site-header-footer",
+			"reason": "The old site title and tagline above every page are replaced by the new header, nav and footer.",
+			"rules": [
+				{
+					"live": ["\\bEvil Glasses Storytelling, software, and mobile games\\b"]
+				}
+			]
+		},
+		{
+			"id": "what-size-policy",
+			"reason": "/legal also lists the What Size Will They Be? privacy policy, and lists each policy by its full title.",
+			"rules": [
+				{
+					"pages": "^/legal$",
+					"live": ["\\bPolicies\\b"],
+					"local": ["\\bPolicy for\\b", "\\bWhat Size Will They Be\\?", "\\bPrivacy\\b"]
+				}
+			]
+		},
+		{
+			"id": "story-titles",
+			"reason": "Two story titles follow the old data instead of the old page headings: \"12th Ave North, Unit M\" (the page heading said NW) and \"Glasswood Chest\" (the heading had quotes).",
+			"rules": [
+				{
+					"pages": "^/short-stories/read/2017-04-01/12th Ave North, Unit M$",
+					"live": ["\\bNW,"],
+					"local": ["\\bNorth,"]
+				},
+				{
+					"pages": "^/short-stories/read/2018-01-01/Glasswood Chest$",
+					"live": ["“Glasswood\\b", "\\bChest”"],
+					"local": ["\\bGlasswood\\b", "\\bChest\\b"]
+				}
+			]
+		},
+		{
+			"id": "list-pages-redesigned",
+			"reason": "The books and games list pages are redesigned as cover grids in a later epic; the synopsis, store links and badges are on each item page.",
+			"rules": [
+				{
+					"kinds": ["text", "link", "image"],
+					"pages": "^/(books|games)$",
+					"live": [".+"],
+					"local": [".+"]
+				}
+			]
+		},
+		{
+			"id": "memories-spacing",
+			"reason": "The old Memories of the End page ran words together where italics met ('mybest', 'hitsa'); the new text has the spaces.",
+			"rules": [
+				{
+					"pages": "^/short-stories/read/2018-01-01/Memories of the End$",
+					"live": ["Eric—mybest", "kindergarten—hitsa"],
+					"local": ["Eric—my best", "kindergarten—hits a"]
+				}
+			]
+		}
+	]
+}

@@ -57,13 +57,16 @@ export function attachEditions(stories: Entry<StoryData>[], editions: Edition[])
 	});
 }
 
-/** Every story, validated, in edition order (newest first), then title order. */
+/** Every story, validated, in edition order (newest first), then `order` within the edition, then title. */
 export function loadStories(): Story[] {
 	const entries = Object.entries(storyFiles).map(([path, source]) =>
 		validateEntry('stories', { path, source })
 	);
 	return attachEditions(entries, loadEditions()).sort(
-		(a, b) => b.data.edition - a.data.edition || a.data.title.localeCompare(b.data.title)
+		(a, b) =>
+			b.data.edition - a.data.edition ||
+			(a.data.order ?? Infinity) - (b.data.order ?? Infinity) ||
+			a.data.title.localeCompare(b.data.title)
 	);
 }
 
@@ -82,7 +85,4 @@ export function getStory(slug: string): Story | undefined {
 	return loadStories().find((story) => story.slug === slug);
 }
 
-/** `01`, `14`: the number used in the `edition-NN` anchor. */
-export function editionId(number: number): string {
-	return `edition-${String(number).padStart(2, '0')}`;
-}
+export { editionId } from './format';

@@ -48,6 +48,8 @@ export const storySchema = z.strictObject({
 	author: z.string().min(1),
 	date: isoDate,
 	edition: z.number().int().positive(),
+	// Position within the edition. Stories without one sort after those with one, by title.
+	order: z.number().int().positive().optional(),
 	synopsis: z.string().min(1)
 });
 

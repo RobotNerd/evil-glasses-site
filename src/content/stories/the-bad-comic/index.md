@@ -3,6 +3,7 @@ title: 'The Bad Comic'
 author: Sara Rogers
 date: 2016-10-01
 edition: 6
+order: 2
 synopsis: "A comic's onstage struggle with the right punchline parallels her offstage pursuit of an out- of - reach love."
 ---
 

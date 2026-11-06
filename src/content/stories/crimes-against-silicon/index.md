@@ -3,6 +3,7 @@ title: 'Crimes Against Silicon'
 author: Marshall Bowles
 date: 2016-10-01
 edition: 6
+order: 1
 synopsis: "In a world where AI justice reigns supreme, a lawyer's quest for the perfect life score collides with humanity's stark reality when he's tasked to defend the very creator of the omnipotent AI."
 ---
 

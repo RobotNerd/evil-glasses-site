@@ -3,6 +3,7 @@ title: 'EOW Insurance'
 author: Mike Kirkendall
 date: 2016-01-01
 edition: 3
+order: 1
 synopsis: "In a troll-infested, post-apocalyptic world, an insurance agent grapples with perilous conditions and deceptive policy terms to verify a client's death."
 ---
 

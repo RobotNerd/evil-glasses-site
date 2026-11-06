@@ -3,6 +3,7 @@ title: 'Miss Conception'
 author: Marshall Bowles
 date: 2017-01-01
 edition: 7
+order: 2
 synopsis: 'A clash of reality and gaming where the stakes are more personal than anyone could have anticipated - a battle for bodily autonomy in a world that demands the unthinkable.'
 ---
 

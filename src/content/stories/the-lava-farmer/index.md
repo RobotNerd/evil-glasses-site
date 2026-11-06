@@ -3,6 +3,7 @@ title: 'The Lava Farmer'
 author: Sara Rogers
 date: 2015-07-01
 edition: 1
+order: 1
 synopsis: 'A solitary woman dedicated to her labor-intensive life near a volcano encounters an unexpected visitor.'
 ---
 

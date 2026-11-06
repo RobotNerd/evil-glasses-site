@@ -3,6 +3,7 @@ title: '12th Ave North, Unit M'
 author: Sara Rogers
 date: 2017-04-01
 edition: 8
+order: 2
 synopsis: 'A chilling tale of sleepless nights and haunting melodies, where love is tested by a mystery that turns every dream into a waking nightmare.'
 ---
 

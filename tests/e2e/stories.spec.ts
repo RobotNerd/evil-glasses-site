@@ -1,17 +1,39 @@
+import { readdirSync, readFileSync } from 'node:fs';
 import { expect, test } from '@playwright/test';
+import { parse } from 'yaml';
 
-test('/stories lists 29 stories in 14 groups, newest edition first', async ({ page }) => {
+type Story = { slug: string; title: string; edition: number; order: number };
+
+/** Reads every story's frontmatter from src/content/stories, so the test follows the content. */
+function readStories(): Story[] {
+	const root = 'src/content/stories';
+	return readdirSync(root).map((slug) => {
+		const source = readFileSync(`${root}/${slug}/index.md`, 'utf8');
+		const data = parse(source.split('---\n')[1]);
+		return { slug, title: data.title, edition: data.edition, order: data.order ?? Infinity };
+	});
+}
+
+test('/stories lists every story in its edition group, newest edition first', async ({ page }) => {
+	const stories = readStories();
+	const numbers = [...new Set(stories.map((s) => s.edition))].sort((a, b) => b - a);
 	await page.goto('/stories');
 	const ids = await page
 		.locator('main section[id^="edition-"]')
 		.evaluateAll((sections) => sections.map((s) => s.id));
-	expect(ids).toEqual(
-		Array.from({ length: 14 }, (_, i) => `edition-${String(14 - i).padStart(2, '0')}`)
-	);
-	await expect(page.locator('main section a[href^="/stories/"]')).toHaveCount(29);
+	expect(ids).toEqual(numbers.map((n) => `edition-${String(n).padStart(2, '0')}`));
+	await expect(page.locator('main section a[href^="/stories/"]')).toHaveCount(stories.length);
+	for (const number of numbers) {
+		const expected = stories
+			.filter((s) => s.edition === number)
+			.sort((a, b) => a.order - b.order || a.title.localeCompare(b.title));
+		const group = page.locator(`#edition-${String(number).padStart(2, '0')} li > a`);
+		await expect(group).toHaveText(expected.map((s) => s.title));
+		const hrefs = await group.evaluateAll((links) => links.map((a) => a.getAttribute('href')));
+		expect(hrefs).toEqual(expected.map((s) => `/stories/${s.slug}`));
+	}
 	const first = page.locator('#edition-01 a');
-	await expect(first).toHaveCount(2);
-	await expect(first.first()).toHaveAttribute('href', '/stories/anorexia');
+	await expect(first.first()).toHaveAttribute('href', '/stories/the-lava-farmer');
 });
 
 const stories = [
@@ -47,6 +69,32 @@ for (const story of stories) {
 }
 
 test('the edition link on a story returns to its group', async ({ page }) => {
-	await page.goto('/stories/anorexia');
+	await page.goto('/stories/the-lava-farmer');
 	await expect(page.locator('.edition a')).toHaveAttribute('href', '/stories#edition-01');
+});
+
+// The order the old site listed each edition's stories in.
+const oldOrder: Record<number, string[]> = {
+	1: ['The Lava Farmer', 'Anorexia'],
+	2: ['Plane Jumper', 'Sharkrilla'],
+	3: ['EOW Insurance', 'Elevator to the Moon', 'Cloned'],
+	4: ['Fishing Trip', 'Call'],
+	5: ['Capital Hill', 'Sleeping Gods'],
+	6: ['Crimes Against Silicon', 'The Bad Comic'],
+	7: ["Captain's Log", 'Miss Conception'],
+	8: ['Crowds', '12th Ave North, Unit M'],
+	9: ['The Bad Comic, Episode 2', 'Night of the Cat'],
+	10: ['Transformations', 'Moment in Time'],
+	11: ['Glasswood Chest', 'Memories of the End'],
+	12: ['Prostitute', 'A Hot Week in August'],
+	13: ['I Died', 'No Kill Shelter'],
+	14: ['Advertisment Help!', 'Two']
+};
+
+test('/stories keeps the old order of stories within each edition', async ({ page }) => {
+	await page.goto('/stories');
+	for (const [number, titles] of Object.entries(oldOrder)) {
+		const id = `edition-${number.padStart(2, '0')}`;
+		await expect(page.locator(`#${id} li > a`)).toHaveText(titles);
+	}
 });

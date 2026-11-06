@@ -3,6 +3,7 @@ title: 'The Bad Comic, Episode 2'
 author: Sara Rogers
 date: 2017-07-01
 edition: 9
+order: 1
 synopsis: 'An exploration of failed aspirations, self-doubt, and the bittersweet humor found within the disappointments of everyday life of a standup comic.'
 ---
 

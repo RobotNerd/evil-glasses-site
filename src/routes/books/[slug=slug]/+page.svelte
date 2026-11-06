@@ -21,31 +21,31 @@
 		sizes="(min-width: 40rem) 20rem, 90vw"
 	/>
 	<h1>{book.data.title}</h1>
-	<p class="subtitle">{book.data.subtitle}</p>
-	<p class="author">By {book.data.author}</p>
 
-	<h2>Synopsis</h2>
-	<p class="synopsis">{book.data.synopsis}</p>
-	<!-- eslint-disable-next-line svelte/no-at-html-tags -- trusted Markdown rendered at build time -->
-	{@html book.html}
-
-	<h2>About the author</h2>
-	<p class="bio">{book.data.authorBio}</p>
-
-	<h2>Get the book</h2>
+	<h2>Get your copy now!</h2>
 	<ul class="stores">
 		{#each book.data.storeLinks as link (link.url)}
 			{@const badge = storeBadges[link.store]}
 			<li>
 				<a href={link.url}>
 					{#if badge}
-						<enhanced:img src={badge} alt="" />
+						<enhanced:img src={badge} alt={link.label} />
+					{:else}
+						<span>{link.label}</span>
 					{/if}
-					<span>{link.label}</span>
 				</a>
 			</li>
 		{/each}
 	</ul>
+
+	<p class="subtitle">{book.data.subtitle}</p>
+	<p class="author">By {book.data.author}</p>
+	<p class="synopsis">{book.data.synopsis}</p>
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -- trusted Markdown rendered at build time -->
+	{@html book.html}
+
+	<h2>About the Author</h2>
+	<p class="bio">{book.data.authorBio}</p>
 </article>
 
 <style>

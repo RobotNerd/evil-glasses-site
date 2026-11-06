@@ -3,6 +3,7 @@ title: 'Fishing Trip'
 author: Marshall Bowles
 date: 2016-04-01
 edition: 4
+order: 1
 synopsis: 'An adult man catfishes his father to find evidence of adultery.'
 ---
 

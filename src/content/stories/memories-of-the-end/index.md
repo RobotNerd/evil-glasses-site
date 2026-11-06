@@ -3,6 +3,7 @@ title: 'Memories of the End'
 author: Marshall Bowles
 date: 2018-01-01
 edition: 11
+order: 2
 synopsis: 'A journey of souls, transcending time and space, as they dance on the edge of eternity.'
 ---
 
