@@ -10,3 +10,5 @@ tmp/
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .sdlc/local/
+/test-results
+/playwright-report

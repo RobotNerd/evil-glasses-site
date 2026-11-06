@@ -1,8 +1,8 @@
 config_version = 1
 branch_prefix = "eg-web-"
 remote = "origin"
-test_command = ""
-lint_command = "npm run check"
+test_command = "npm test"
+lint_command = "npm run lint"
 format_command = "npx prettier --check ."
 throwaway_test_dir = ".sdlc/local/throwaway-tests"
 
