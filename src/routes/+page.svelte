@@ -32,7 +32,12 @@
 		<a class="sec {quadrants[index]}" href={section.href}>
 			<span class="bg" style="view-transition-name: section-{quadrants[index]}">
 				{#if section.image}
-					<enhanced:img src={section.image} alt="" sizes="50vw" />
+					<enhanced:img
+						src={section.image}
+						alt=""
+						sizes="50vw"
+						fetchpriority={index === 0 ? 'high' : 'low'}
+					/>
 				{/if}
 			</span>
 			<span class="fade"></span>

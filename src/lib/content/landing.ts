@@ -17,7 +17,7 @@ export type Section = {
 // Each section shows its image at half the screen, so the landing page uses small widths of its
 // own rather than the full-size images the detail pages use.
 const small = import.meta.glob('/src/content/{books,editions,games,apps}/*/*.{jpg,jpeg,png}', {
-	query: { enhanced: true, w: '320;640;960' },
+	query: { enhanced: true, w: '320;480;640' },
 	import: 'default',
 	eager: true
 }) as Record<string, Image>;

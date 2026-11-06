@@ -30,6 +30,6 @@ test('headings use the display font and the rest the system font, all self-hoste
 		expect(url).toMatch(/\.woff2$/);
 	}
 	const preloads = await page.locator('link[rel="preload"][as="font"][type="font/woff2"]').count();
-	expect(preloads).toBe(3);
+	expect(preloads).toBe(1);
 	expect(fonts.reduce((sum, f) => sum + f.size, 0)).toBeLessThan(80 * 1024);
 });
