@@ -1,16 +1,38 @@
+import { readdirSync, readFileSync } from 'node:fs';
 import { expect, test } from '@playwright/test';
+import { parse } from 'yaml';
 
-test('/stories lists 29 stories in 14 groups, newest edition first', async ({ page }) => {
+type Story = { slug: string; title: string; edition: number; order: number };
+
+/** Reads every story's frontmatter from src/content/stories, so the test follows the content. */
+function readStories(): Story[] {
+	const root = 'src/content/stories';
+	return readdirSync(root).map((slug) => {
+		const source = readFileSync(`${root}/${slug}/index.md`, 'utf8');
+		const data = parse(source.split('---\n')[1]);
+		return { slug, title: data.title, edition: data.edition, order: data.order ?? Infinity };
+	});
+}
+
+test('/stories lists every story in its edition group, newest edition first', async ({ page }) => {
+	const stories = readStories();
+	const numbers = [...new Set(stories.map((s) => s.edition))].sort((a, b) => b - a);
 	await page.goto('/stories');
 	const ids = await page
 		.locator('main section[id^="edition-"]')
 		.evaluateAll((sections) => sections.map((s) => s.id));
-	expect(ids).toEqual(
-		Array.from({ length: 14 }, (_, i) => `edition-${String(14 - i).padStart(2, '0')}`)
-	);
-	await expect(page.locator('main section a[href^="/stories/"]')).toHaveCount(29);
+	expect(ids).toEqual(numbers.map((n) => `edition-${String(n).padStart(2, '0')}`));
+	await expect(page.locator('main section a[href^="/stories/"]')).toHaveCount(stories.length);
+	for (const number of numbers) {
+		const expected = stories
+			.filter((s) => s.edition === number)
+			.sort((a, b) => a.order - b.order || a.title.localeCompare(b.title));
+		const group = page.locator(`#edition-${String(number).padStart(2, '0')} li > a`);
+		await expect(group).toHaveText(expected.map((s) => s.title));
+		const hrefs = await group.evaluateAll((links) => links.map((a) => a.getAttribute('href')));
+		expect(hrefs).toEqual(expected.map((s) => `/stories/${s.slug}`));
+	}
 	const first = page.locator('#edition-01 a');
-	await expect(first).toHaveCount(2);
 	await expect(first.first()).toHaveAttribute('href', '/stories/the-lava-farmer');
 });
 
