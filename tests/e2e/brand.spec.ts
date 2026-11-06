@@ -1,10 +1,10 @@
 import { expect, test } from '@playwright/test';
 import { sitemapUrls, localPath } from './sitemap-urls';
 
-test('the header and the home page show the logo with its alt text', async ({ page }) => {
+test('the menu button and the landing badge show the logo', async ({ page }) => {
 	await page.goto('/');
-	await expect(page.locator('header').getByRole('img', { name: 'Evil Glasses' })).toBeVisible();
-	await expect(page.locator('main').getByRole('img', { name: 'Evil Glasses' })).toBeVisible();
+	await expect(page.getByRole('button', { name: 'Menu' }).locator('svg')).toBeVisible();
+	await expect(page.locator('.landing .hub .badge svg')).toBeVisible();
 });
 
 test('the favicon files are built with the stated sizes', async ({ request }) => {

@@ -1,6 +1,6 @@
 export const siteUrl = 'https://evilglasses.com';
 export const siteName = 'Evil Glasses';
-export const defaultImage = '/og-default.png';
+export const defaultImage = '/evil-glasses-sticker.png';
 
 type BuiltImage = string | { img: { src: string } };
 

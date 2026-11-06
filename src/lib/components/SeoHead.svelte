@@ -7,7 +7,7 @@
 		description: string;
 		/** The page's path on the site, such as `/books/my-book`. */
 		path: string;
-		/** A cover, image or icon from an `?enhanced` or `?url` import; defaults to the logo image. */
+		/** A cover, image or icon from an `?enhanced` or `?url` import; defaults to the sticker. */
 		image?: Parameters<typeof imageUrl>[0];
 		/** The image's alt text for sharing. */
 		imageAlt?: string;

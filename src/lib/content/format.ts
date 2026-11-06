@@ -10,3 +10,12 @@ export function formatDate(date: string): string {
 export function editionId(number: number): string {
 	return `edition-${String(number).padStart(2, '0')}`;
 }
+
+/** Writes `2015-07-01` as `July 2015`. */
+export function formatMonth(date: string): string {
+	return new Date(`${date}T00:00:00Z`).toLocaleDateString('en-US', {
+		month: 'long',
+		year: 'numeric',
+		timeZone: 'UTC'
+	});
+}

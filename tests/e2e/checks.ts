@@ -1,5 +1,5 @@
 import AxeBuilder from '@axe-core/playwright';
-import type { Page } from '@playwright/test';
+import type { Locator, Page } from '@playwright/test';
 
 export const axeTags = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'];
 
@@ -27,9 +27,33 @@ export async function checkPage(page: Page, path: string): Promise<string[]> {
 
 	const h1s = await page.locator('h1').count();
 	if (h1s !== 1) report(`found ${h1s} h1 elements, expected exactly 1`);
-	if ((await page.locator('header').count()) < 1) report('missing header');
-	if ((await page.locator('footer').count()) < 1) report('missing footer');
+	const button = await page.locator('.menu-button').boundingBox();
+	if (!button) report('missing logo menu button');
+	else if (button.width < 60 || button.height < 44) {
+		report(`logo menu button is ${button.width}x${button.height}, expected at least 60x44`);
+	}
+	if ((await page.locator('header nav a').count()) > 0) report('found header links');
+	const footers = await page.locator('footer').count();
+	if (path === '/') {
+		if (footers > 0) report('the landing page has a footer');
+	} else if (footers < 1) report('missing footer');
+	else if ((await page.locator('footer a[href="/legal"]').count()) < 1) {
+		report('footer has no link to /legal');
+	}
 
+	// Lazy images below the fold load when scrolled to: bring each into view and wait for it.
+	await page.evaluate(async () => {
+		for (const img of document.images) {
+			img.scrollIntoView();
+			if (!img.complete) {
+				await new Promise((done) => {
+					img.addEventListener('load', done, { once: true });
+					img.addEventListener('error', done, { once: true });
+				});
+			}
+		}
+		window.scrollTo(0, 0);
+	});
 	const brokenImages = await page.evaluate(() =>
 		[...document.images]
 			.filter((img) => !img.complete || img.naturalWidth === 0)
@@ -42,4 +66,10 @@ export async function checkPage(page: Page, path: string): Promise<string[]> {
 		report(`axe ${violation.id}: ${violation.help} (${violation.nodes.length} nodes)`);
 	}
 	return problems;
+}
+
+/** A locator's rendered text with the headings' capitals undone, so it can be compared to the source. */
+export async function sourceText(locator: Locator): Promise<string> {
+	await locator.page().addStyleTag({ content: 'h1, h2, h3 { text-transform: none !important; }' });
+	return locator.innerText();
 }

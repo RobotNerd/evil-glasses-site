@@ -37,6 +37,7 @@ The scripts:
 | `brand`        | Makes the favicon, touch icon and default share image              |
 | `build`        | Builds the static site into `build/`                               |
 | `check`        | Syncs SvelteKit and runs the Svelte type check                     |
+| `fonts`        | x                                                                  |
 | `compare:live` | Compares the built pages with the live site                        |
 | `dev`          | Starts the dev server                                              |
 | `format`       | Formats every file with Prettier                                   |

@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import { sourceText } from './checks';
 import { expect, test } from '@playwright/test';
 
 const fixture = readFileSync('tests/fixtures/inflation-buster-policy.txt', 'utf8')
@@ -20,7 +21,7 @@ test('/legal/inflation-buster serves the old policy text without a redirect', as
 	const response = await page.goto('/legal/inflation-buster');
 	expect(response?.status()).toBe(200);
 	expect(response?.request().redirectedFrom()).toBeNull();
-	const text = await page.locator('main').innerText();
+	const text = await sourceText(page.locator('main'));
 	expect(text.replace(/\s+/g, ' ').trim()).toBe(fixture);
 });
 
@@ -36,6 +37,6 @@ test('/legal/what-size-will-they-be serves the policy text without a redirect', 
 	const response = await page.goto('/legal/what-size-will-they-be');
 	expect(response?.status()).toBe(200);
 	expect(response?.request().redirectedFrom()).toBeNull();
-	const text = await page.locator('main').innerText();
+	const text = await sourceText(page.locator('main'));
 	expect(text.replace(/\s+/g, ' ').trim()).toBe(appFixture);
 });

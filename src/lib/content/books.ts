@@ -11,7 +11,7 @@ const files = import.meta.glob('/src/content/books/*/index.md', {
 }) as Record<string, string>;
 
 const images = import.meta.glob('/src/content/books/*/*.{jpg,jpeg,png}', {
-	query: { enhanced: true },
+	query: { enhanced: true, w: '320;480;640;960' },
 	import: 'default',
 	eager: true
 }) as Record<string, EnhancedImgAttributes['src']>;

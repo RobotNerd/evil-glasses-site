@@ -1,5 +1,5 @@
-import { loadNewest } from '../lib/content/home';
+import { loadSections } from '../lib/content/landing';
 
 export function load() {
-	return { newest: loadNewest(3) };
+	return { sections: loadSections() };
 }
