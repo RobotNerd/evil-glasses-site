@@ -31,16 +31,28 @@ export const gameSchema = z.strictObject({
 	privacyPolicy: z.string().regex(/^\/[a-z0-9/-]*$/, 'must be a site path such as /legal/my-app')
 });
 
+export const appSchema = gameSchema.extend({
+	subtitle: z.string().min(1).optional(),
+	author: z.string().min(1),
+	screenshots: z.array(z.string().min(1)).min(1)
+});
+
 export const legalSchema = z.strictObject({
 	title: z.string().min(1),
 	app: z.string().min(1),
 	updated: isoDate
 });
 
-export const schemas = { books: bookSchema, games: gameSchema, legal: legalSchema } as const;
+export const schemas = {
+	books: bookSchema,
+	games: gameSchema,
+	apps: appSchema,
+	legal: legalSchema
+} as const;
 
 export type ContentType = keyof typeof schemas;
 export type StoreLink = z.infer<typeof storeLinkSchema>;
 export type BookData = z.infer<typeof bookSchema>;
 export type GameData = z.infer<typeof gameSchema>;
+export type AppData = z.infer<typeof appSchema>;
 export type LegalData = z.infer<typeof legalSchema>;

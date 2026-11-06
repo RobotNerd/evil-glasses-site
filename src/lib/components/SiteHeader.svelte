@@ -6,6 +6,7 @@
 		{ href: '/books', label: 'Books' },
 		{ href: '/stories', label: 'Stories' },
 		{ href: '/games', label: 'Games' },
+		{ href: '/apps', label: 'Apps' },
 		{ href: '/about', label: 'About' }
 	];
 
