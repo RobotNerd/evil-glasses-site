@@ -22,3 +22,30 @@ describe('architecture.md Content section', () => {
 		});
 	}
 });
+
+describe('architecture.md Presentation section', () => {
+	const css = readFileSync('src/lib/styles.css', 'utf8');
+	const presentation =
+		doc.split(/^## /m).find((section) => section.startsWith('Presentation')) ?? '';
+	const declared = new Set([...css.matchAll(/^\s*(--[a-z0-9-]+):/gm)].map((m) => m[1]));
+	const named = new Set(
+		[...presentation.matchAll(/`(--[a-z0-9-]+)`/g)]
+			.map((m) => m[1])
+			.filter((n) => n !== '--space-1')
+	);
+
+	it('has a heading', () => {
+		expect(presentation).not.toBe('');
+	});
+
+	it('names every token in the stylesheet', () => {
+		const spaces = presentation.includes('`--space-1` to `--space-5`');
+		const found = new Set(named);
+		if (spaces) for (let i = 1; i <= 5; i++) found.add(`--space-${i}`);
+		expect([...declared].filter((t) => !found.has(t))).toEqual([]);
+	});
+
+	it('names only tokens in the stylesheet', () => {
+		expect([...named].filter((t) => !declared.has(t) && t !== '--space-5')).toEqual([]);
+	});
+});

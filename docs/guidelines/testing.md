@@ -6,10 +6,32 @@ How the site is tested, and how tests are written. `plan`, `groom` and `work` re
 
 - **Unit:** Vitest tests in `tests/unit/`. They check the content loaders and schemas, the redirect table, the scripts and the workflows, without a browser.
 - **End to end:** Playwright tests in `tests/e2e/`, run against the built site served by `scripts/preview.js`. They run in two projects, `desktop` and `phone`. The crawl visits every page in the sitemap and checks each for console errors, failed requests, one `h1`, and WCAG 2.2 AA problems with axe.
-- **Screenshots:** Playwright tests in `tests/visual/` compare the landing page, `/books`, a book page and a story page with committed snapshots, in light and dark, at phone and desktop size. `npm run test:visual` builds the site, serves it and runs them all inside the official Playwright container image (linux/amd64, pinned to the installed Playwright version), so the built images, fonts and browser are the same locally and in CI. On failure CI uploads `test-results/` as an artifact. It needs Docker. `npm run test:visual:update` rewrites the snapshots after an approved change to the look. `npm test` does not run them.
+- **Screenshots:** Playwright tests in `tests/visual/` compare pages with committed snapshots. See Screenshot tests.
 - **Lighthouse:** `npm run lighthouse` scores three pages. Each of the four categories must score 95 or more.
 - **Live comparison:** `npm run compare:live` compares the rebuilt pages with the live site. Differences must be listed in `scripts/compare-live-allowed.json`. It applies only until the rebuilt site replaces the live one.
 - **Static checks:** `npm run lint` runs ESLint and the Svelte type check. `npx prettier --check .` checks formatting.
+
+## Screenshot tests
+
+The tests in `tests/visual/` compare the landing page, `/books`, a book page and a story page with committed snapshots, in light and dark, at phone and desktop size.
+
+They run in CI as their own job, on every pull request and on pushes to `main`. On failure CI uploads `test-results/` as an artifact. `npm test` does not run them.
+
+Locally they need Docker. The command builds the site, serves it and runs the tests inside the official Playwright container image (linux/amd64, pinned to the installed Playwright version), so the built images, fonts and browser are the same locally and in CI.
+
+Run the screenshot tests:
+
+```bash
+npm run test:visual
+```
+
+After an approved change to the look, rewrite the snapshots:
+
+```bash
+npm run test:visual:update
+```
+
+Review the changed images in the diff and commit them with the change that caused them. Do not update snapshots to make a failing test pass.
 
 ## Running tests
 
