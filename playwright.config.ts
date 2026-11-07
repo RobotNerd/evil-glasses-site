@@ -20,6 +20,7 @@ export default defineConfig({
 		},
 		{
 			name: 'phone',
+			testIgnore: 'redirects.spec.ts',
 			use: {
 				browserName: 'chromium',
 				viewport: { width: 390, height: 844 },

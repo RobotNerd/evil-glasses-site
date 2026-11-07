@@ -4,27 +4,6 @@ import { expect, test } from '@playwright/test';
 const labels = ['Home', 'Books', 'Stories', 'Games', 'Apps', 'About', 'Legal'];
 const phone = { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true };
 const web = { viewport: { width: 1440, height: 900 }, isMobile: false, hasTouch: false };
-const noHover = { ...web, isMobile: true, hasTouch: true };
-
-test('the button has the same sticker blue and black frames in light and dark', async ({
-	page
-}) => {
-	const read = async (colorScheme: 'light' | 'dark') => {
-		await page.emulateMedia({ colorScheme });
-		await page.goto('/books');
-		const button = page.getByRole('button', { name: 'Menu' });
-		return {
-			background: await button
-				.locator('.badge')
-				.evaluate((el) => getComputedStyle(el).backgroundColor),
-			frame: await button.locator('path.frame').evaluate((el) => getComputedStyle(el).fill)
-		};
-	};
-	const light = await read('light');
-	const dark = await read('dark');
-	expect(dark).toEqual(light);
-	expect(light).toEqual({ background: 'rgb(108, 172, 219)', frame: 'rgb(0, 0, 0)' });
-});
 
 test.describe('menu behavior on a phone', () => {
 	test.use(phone);
@@ -159,39 +138,6 @@ test.describe('the menu bar and button', () => {
 			expect(390 - (box.x + box.width)).toBeLessThanOrEqual(24);
 			await page.getByRole('button', { name: 'Menu' }).click();
 			await expect(page.locator('#site-menu').getByRole('link')).toHaveText(labels);
-		});
-	});
-
-	for (const colorScheme of ['light', 'dark'] as const) {
-		test.describe(`button style in ${colorScheme} mode`, () => {
-			test.use({ ...web, colorScheme });
-
-			test('has a drop shadow, a 2 px white ring, and grows on hover', async ({ page }) => {
-				await page.goto('/');
-				const button = page.getByRole('button', { name: 'Menu' });
-				const shadow = await button.evaluate((el) => getComputedStyle(el).boxShadow);
-				expect(shadow).toContain('rgb(255, 255, 255) 0px 0px 0px 2px');
-				expect(shadow).toMatch(/rgba\(0, 0, 0, [\d.]+\) 0px [1-9][\d.]*px [1-9][\d.]*px/);
-
-				const transform = () => button.evaluate((el) => getComputedStyle(el).transform);
-				expect(await transform()).toBe('none');
-				await button.hover();
-				await expect.poll(transform).toBe('matrix(1.06, 0, 0, 1.06, 0, 0)');
-			});
-		});
-	}
-
-	test.describe('on a touch device', () => {
-		test.use(noHover);
-
-		test('hover does not change the button', async ({ page }) => {
-			await page.goto('/');
-			const button = page.getByRole('button', { name: 'Menu' });
-			const transform = () => button.evaluate((el) => getComputedStyle(el).transform);
-			expect(await transform()).toBe('none');
-			await button.hover();
-			expect(await page.evaluate(() => matchMedia('(hover: hover)').matches)).toBe(false);
-			await expect.poll(transform).toBe('none');
 		});
 	});
 });

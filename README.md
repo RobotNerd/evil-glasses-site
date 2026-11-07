@@ -32,21 +32,20 @@ npm run build
 
 The scripts:
 
-| Script               | What it does                                                       |
-| -------------------- | ------------------------------------------------------------------ |
-| `brand`              | Makes the favicon, touch icon and default share image              |
-| `build`              | Builds the static site into `build/`                               |
-| `check`              | Syncs SvelteKit and runs the Svelte type check                     |
-| `fonts`              | x                                                                  |
-| `compare:live`       | Compares the built pages with the live site                        |
-| `dev`                | Starts the dev server                                              |
-| `format`             | Formats every file with Prettier                                   |
-| `lighthouse`         | Scores three pages with Lighthouse                                 |
-| `lint`               | Runs ESLint, then the type check                                   |
-| `preview`            | Serves the built site                                              |
-| `test`               | Builds the site, then runs the unit tests and the end-to-end tests |
-| `test:visual`        | Runs the screenshot tests in the Playwright image (needs Docker)   |
-| `test:visual:update` | Rewrites the screenshot snapshots (needs Docker)                   |
+| Script         | What it does                                                                                                     |
+| -------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `brand`        | Makes the favicon, touch icon and default share image                                                            |
+| `build`        | Builds the static site into `build/`                                                                             |
+| `check`        | Syncs SvelteKit and runs the Svelte type check                                                                   |
+| `fonts`        | x                                                                                                                |
+| `compare:live` | Compares the built pages with the live site                                                                      |
+| `dev`          | Starts the dev server                                                                                            |
+| `format`       | Formats every file with Prettier                                                                                 |
+| `lighthouse`   | Scores three pages with Lighthouse                                                                               |
+| `lint`         | Runs ESLint, then the type check                                                                                 |
+| `preview`      | Serves the built site                                                                                            |
+| `test`         | Fast tier for a task: builds, then runs the unit tests and the desktop end-to-end tests without the crawl        |
+| `test:all`     | Full suite that CI runs: builds, then runs the unit tests, the end-to-end tests in both projects, and Lighthouse |
 
 Check formatting without changing files:
 

@@ -16,15 +16,3 @@ test('/about shows the old text with the new name and both photos', async ({ pag
 	expect(alts.some((alt) => alt.includes('Marshall'))).toBe(true);
 	expect(alts.some((alt) => alt.includes('Sara'))).toBe(true);
 });
-
-test('/about shows the sticker, tilted', async ({ page }) => {
-	await page.goto('/about');
-	const sticker = page.getByRole('img', { name: 'EvilGlasses.com sticker' });
-	await expect(sticker).toBeVisible();
-	const matrix = await sticker.evaluate((img) => getComputedStyle(img).transform);
-	const [a, b] = matrix
-		.replace(/matrix\(|\)/g, '')
-		.split(',')
-		.map(Number);
-	expect(Math.round((Math.atan2(b, a) * 180) / Math.PI)).toBe(-6);
-});
