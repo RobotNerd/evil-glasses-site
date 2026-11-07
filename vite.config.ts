@@ -8,7 +8,8 @@ export default defineConfig({
 	plugins: [
 		enhancedImages(),
 		sveltekit({
-			adapter: adapter({ fallback: '404.html' })
+			adapter: adapter({ fallback: '404.html' }),
+			inlineStyleThreshold: 20000
 		})
 	]
 });
