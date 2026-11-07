@@ -12,9 +12,13 @@ export async function checkPage(page: Page, path: string): Promise<string[]> {
 		if (msg.type() === 'error') report(`console error: ${msg.text()}`);
 	});
 	page.on('pageerror', (error) => report(`page error: ${error.message}`));
-	page.on('requestfailed', (request) =>
-		report(`failed request: ${request.url()} (${request.failure()?.errorText})`)
-	);
+	page.on('requestfailed', (request) => {
+		const error = request.failure()?.errorText;
+		// The browser cancels a lazy image when it leaves the page before the image loads.
+		// That is not a broken request; a missing file still fails on its status below.
+		if (error === 'net::ERR_ABORTED') return;
+		report(`failed request: ${request.url()} (${error})`);
+	});
 	page.on('response', (response) => {
 		if (response.status() >= 400 && response.request().resourceType() !== 'document') {
 			report(`failed request: ${response.url()} (status ${response.status()})`);
