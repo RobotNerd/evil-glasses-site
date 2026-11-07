@@ -41,3 +41,17 @@ jobs:
         env:
           # The runner's Google Chrome sandboxes fine; Playwright's Chromium does not.
           CHROME_PATH: /usr/bin/google-chrome
+
+  visual:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      # Builds the site, serves it, and runs the screenshot tests in the Playwright image
+      # that matches the installed Playwright version. A diff fails the run.
+      - name: Screenshot tests
+        run: npm run test:visual
