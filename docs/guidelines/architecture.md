@@ -16,7 +16,7 @@ How the site is built. It is a static site: every page is made at build time and
 
 - `.github/workflows/`: the CI and deploy workflows
 - `docs/guidelines/`: these guidelines
-- `scripts/`: `compare-live.ts`, `lighthouse.js`, `make-brand.js`, `make-fonts.js` and `preview.js`
+- `scripts/`: `compare-live.ts`, `lighthouse.js`, `make-brand.js`, `make-fonts.js`, `preview.js` and `visual.js`
 - `src/content/<type>/<slug>/index.md`: the content, one folder per entry
 - `src/lib/components/`: shared components, including `SeoHead.svelte`
 - `src/lib/content/`: the content loaders, the schemas and the redirect table
@@ -25,6 +25,7 @@ How the site is built. It is a static site: every page is made at build time and
 - `static/`: files copied as they are, such as `robots.txt` and the brand icons
 - `tests/e2e/`: browser tests
 - `tests/unit/`: unit tests
+- `tests/visual/`: screenshot tests and their snapshots
 
 ## Content
 
@@ -34,7 +35,7 @@ Each entry is a folder named for its slug, holding an `index.md` and any images 
 
 Every page load is a `+page.server.ts` file, so the parsers stay out of the client bundle.
 
-Set `hero: true` on one book, story, game or app to put its image on the landing page; a type with none flagged uses its newest item, and two flagged items in one type fail the build. A story's image is its edition's cover, and an app's is its first screenshot.
+Set `hero: true` on one book, story, game or app to choose its image for the landing page (see Presentation). A story's image is its edition's cover, and an app's is its first screenshot.
 
 Dates are written `YYYY-MM-DD`. A store link is an object with the fields `store` (one of `amazon`, `apple`, `google-play`, `kindle`, `smashwords`), `label` and `url`, all required.
 
@@ -119,6 +120,77 @@ A story belongs to the edition whose `number` equals its `edition`. A story with
 | `synopsis` | string                | yes      |
 | `title`    | string                | yes      |
 
+## Presentation
+
+The global stylesheet is `src/lib/styles.css`. It is inlined into each page at build time, and the preview server gzips text, as GitHub Pages does.
+
+### Tokens
+
+Tokens are custom properties on `:root`. The dark values come from `prefers-color-scheme: dark`; a token not listed below has one value for both.
+
+Colors, light and dark:
+
+- `--accent`: links and highlights
+- `--fade`: the wash over the landing images
+- `--ink`: text
+- `--line`: borders
+- `--muted`: secondary text
+- `--paper`: the page background
+- `--paper-2`: raised surfaces
+- `--vignette`: the dark edge of the landing images
+
+Colors that are the same in both modes:
+
+- `--badge`: the badge blue
+- `--badge-ink`: the badge text and outline
+- `--lens`: the logo lens fill
+
+Older color names, aliases of the colors above:
+
+- `--color-accent`
+- `--color-bg`
+- `--color-border`
+- `--color-muted`
+- `--color-surface`
+- `--color-text`
+
+Fonts, spacing and layout:
+
+- `--content-width`: the page column width
+- `--font-body`: the system font stack
+- `--font-display`: Big Shoulders Display, with a sized fallback
+- `--font-serif`: Literata, with a sized fallback
+- `--radius`: the corner radius of images
+- `--space-1` to `--space-5`: the spacing scale, from 0.25rem to 3rem
+- `--vt-duration`: the length of the current view transition
+
+### Fonts
+
+- **Big Shoulders Display** at weight 800 sets `h1`, `h2`, `h3` and the titles in the cover grids, in capitals.
+- **Literata** (regular, weights 400 to 700, and italic) sets the badge tagline and the story text.
+
+Both are served from `src/lib/assets/fonts/` as `woff2` files, with `font-display: swap`. Each has a local fallback face sized to match it, so the swap moves the layout less. The layout preloads the display font. Body text uses the system font stack.
+
+### Components
+
+- **`Logo`** draws the glasses as inline SVG. `width` sets its size, `label` gives it an accessible name (without it the logo is hidden from assistive tech), and `glint` plays a light streak across the lenses once.
+- **`Badge`** is the blue rounded rectangle the logo sits on, the same in light and dark. `size="large"` stacks a `tagline` under the logo, as on the landing page, where a soft dark glow made in CSS sits behind it.
+- **`SiteMenu`** is a sticky top bar on every page except `/`. At 768 px and wider the section links are centered; below that the site name shows. The menu button is at the top right. The back arrow at the left uses the browser history after an in-site navigation, and otherwise links to the parent page: the list for a page under a section, and `/` for any other. On `/` only the floating menu button shows.
+
+### View transitions
+
+The layout starts a view transition on each in-site navigation, unless the visitor prefers reduced motion or the browser lacks support. `data-vt` on the root element picks the kind:
+
+- `fade`: between `/` and a section list, a 300 ms opacity fade both ways with no movement
+- `cover`: between a books, games or apps list and one of its pages, 250 ms, where the cover moves into place
+- no value: every other navigation, 180 ms
+
+The only `view-transition-name` the site sets is `cover-<slug>`, on the cover or icon of a book, game or app, on both its list and its page. `<slug>` is the entry's slug. The page itself uses the default `root` name.
+
+### The hero field
+
+`hero: true` marks the item whose image fronts its type on the landing page. A type with no flagged item uses its newest by `date`. Two flagged items in one type fail the build with an error naming both files. `pickHero` in `src/lib/content/hero.ts` applies the rule.
+
 ## URLs and redirects
 
 - `/`: the landing page, four sections linking to the lists
@@ -151,6 +223,6 @@ Serve `build/` the way GitHub Pages does:
 npm run preview
 ```
 
-`.github/workflows/ci.yml` runs on every pull request and on pushes to `main`. It installs dependencies, then runs `npm run lint`, `npx prettier --check .`, `npm test` and `npm run lighthouse`.
+`.github/workflows/ci.yml` runs on every pull request and on pushes to `main`. It installs dependencies, then runs `npm run lint`, `npx prettier --check .`, `npm test` and `npm run lighthouse`. A second job runs `npm run test:visual`.
 
 `.github/workflows/deploy.yml` runs on pushes to `main`, and by hand. It always builds the site. It deploys to GitHub Pages only when the repository variable `PAGES_DEPLOY` is `true`.

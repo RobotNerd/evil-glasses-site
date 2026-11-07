@@ -16,6 +16,8 @@
 		"brand": "node scripts/make-brand.js",
 		"fonts": "node scripts/make-fonts.js",
 		"test": "npm run build && vitest run && playwright test",
+		"test:visual": "node scripts/visual.js",
+		"test:visual:update": "node scripts/visual.js --update",
 		"lighthouse": "node scripts/lighthouse.js",
 		"compare:live": "node scripts/compare-live.ts"
 	},
