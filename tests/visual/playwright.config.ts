@@ -1,6 +1,6 @@
 import { defineConfig } from '@playwright/test';
 
-// Run through `npm run test:visual`, which serves the build and starts the Playwright container.
+// Run through `npm run test:visual`, which starts the Playwright container, which builds and serves the site.
 export default defineConfig({
 	testDir: '.',
 	snapshotPathTemplate: '{testDir}/snapshots/{arg}{ext}',

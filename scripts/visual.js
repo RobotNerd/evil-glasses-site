@@ -1,46 +1,47 @@
-// Runs the screenshot tests in the official Playwright image, so fonts render the same everywhere.
-// Serves the build on the host and points the container's browser at it. Pass --update to rewrite
-// the snapshots.
-import { spawn, spawnSync } from 'node:child_process';
+// Runs the screenshot tests. Builds the site, serves it and drives the browser all inside the
+// official Playwright image, pinned to linux/amd64, so the build (image encoding), the fonts and
+// the browser are the same on a Mac and on the CI runner. Pass --update to rewrite the snapshots.
+// Linux node_modules, build and .svelte-kit live in named Docker volumes, so the host's own are
+// left alone. The build lands in build/ on the host, now a Linux build.
+import { spawnSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 
 const update = process.argv.includes('--update');
-const port = '4174';
 const { version } = JSON.parse(readFileSync('node_modules/@playwright/test/package.json', 'utf8'));
 const image = `mcr.microsoft.com/playwright:v${version}-noble`;
 
-const run = (command, args, options = {}) =>
-	spawnSync(command, args, { stdio: 'inherit', ...options }).status ?? 1;
+const script = [
+	'set -e',
+	'cmp -s package-lock.json node_modules/.installed-lock || { npm ci --no-audit --no-fund && cp package-lock.json node_modules/.installed-lock; }',
+	'npm run build',
+	'node scripts/preview.js > /dev/null &',
+	'for i in $(seq 1 50); do curl -sf http://localhost:4173/ > /dev/null && break; sleep 0.2; done',
+	`npx playwright test -c tests/visual/playwright.config.ts${update ? ' --update-snapshots' : ''}`
+].join('\n');
 
-if (run('npm', ['run', 'build']) !== 0) process.exit(1);
+const volume = (name, path) => ['-v', `evil-glasses-visual-${name}:/work/${path}`];
 
-const server = spawn('node', ['scripts/preview.js'], {
-	stdio: 'ignore',
-	env: { ...process.env, PORT: port }
-});
-await new Promise((resolve) => setTimeout(resolve, 1000));
-
-const status = run('docker', [
-	'run',
-	'--rm',
-	'--ipc=host',
-	'--add-host=host.docker.internal:host-gateway',
-	'-v',
-	`${process.cwd()}:/work`,
-	'-w',
-	'/work',
-	'-e',
-	`VISUAL_BASE_URL=http://host.docker.internal:${port}`,
-	'-e',
-	`CI=${process.env.CI ?? ''}`,
-	image,
-	'npx',
-	'playwright',
-	'test',
-	'-c',
-	'tests/visual/playwright.config.ts',
-	...(update ? ['--update-snapshots'] : [])
-]);
-
-server.kill();
-process.exit(status);
+const { status } = spawnSync(
+	'docker',
+	[
+		'run',
+		'--rm',
+		'--platform',
+		'linux/amd64',
+		'--ipc=host',
+		'-v',
+		`${process.cwd()}:/work`,
+		...volume('node-modules', 'node_modules'),
+		...volume('svelte-kit', '.svelte-kit'),
+		'-w',
+		'/work',
+		'-e',
+		`CI=${process.env.CI ?? ''}`,
+		image,
+		'bash',
+		'-c',
+		script
+	],
+	{ stdio: 'inherit' }
+);
+process.exit(status ?? 1);

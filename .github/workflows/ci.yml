@@ -51,7 +51,13 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci
-      # Builds the site, serves it, and runs the screenshot tests in the Playwright image
-      # that matches the installed Playwright version. A diff fails the run.
+      # Builds, serves and tests inside the linux/amd64 Playwright image that matches the
+      # installed Playwright version, the same command as locally. A diff fails the run.
       - name: Screenshot tests
         run: npm run test:visual
+      - name: Upload the diffs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-test-results
+          path: test-results/
