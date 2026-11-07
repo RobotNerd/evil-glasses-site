@@ -30,7 +30,7 @@
 <div class="landing">
 	{#each data.sections as section, index (section.href)}
 		<a class="sec {quadrants[index]}" href={section.href}>
-			<span class="bg" style="view-transition-name: section-{quadrants[index]}">
+			<span class="bg">
 				{#if section.image}
 					<enhanced:img
 						src={section.image}

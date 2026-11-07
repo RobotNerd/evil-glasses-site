@@ -8,18 +8,13 @@
 
 	let { children } = $props();
 
-	// The list page's main area shares a name with the landing section it grows from.
-	const sectionNames: Record<string, string> = {
-		'/books': 'section-books',
-		'/stories': 'section-stories',
-		'/games': 'section-games',
-		'/apps': 'section-apps'
-	};
+	const sections = ['/books', '/stories', '/games', '/apps'];
 	const lists = ['/books', '/games', '/apps'];
 
-	/** Picks the transition: a section grows into its list, a cover moves into its page. */
-	function kind(from: string, to: string): 'section' | 'cover' | 'page' {
-		if (from === '/' && to in sectionNames) return 'section';
+	/** Picks the transition: the landing page and a list fade, a cover moves into its page. */
+	function kind(from: string, to: string): 'fade' | 'cover' | 'page' {
+		if ((from === '/' && sections.includes(to)) || (to === '/' && sections.includes(from)))
+			return 'fade';
 		if (
 			lists.some(
 				(l) => (from === l && to.startsWith(`${l}/`)) || (to === l && from.startsWith(`${l}/`))
@@ -29,10 +24,13 @@
 		return 'page';
 	}
 
+	let current = 0;
+
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return;
 		if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 		const root = document.documentElement;
+		const id = ++current;
 		root.dataset.vt = kind(navigation.from?.url.pathname ?? '', navigation.to?.url.pathname ?? '');
 		return new Promise((resolve) => {
 			const transition = document.startViewTransition(async () => {
@@ -42,7 +40,8 @@
 			// A newer navigation skips this transition, which is not an error.
 			transition.ready.catch(() => {});
 			transition.finished.finally(() => {
-				delete root.dataset.vt;
+				// A newer transition may already have set its own kind.
+				if (id === current) delete root.dataset.vt;
 			});
 		});
 	});
@@ -54,10 +53,7 @@
 </svelte:head>
 
 <SiteMenu />
-<main
-	class:landing-main={page.url.pathname === '/'}
-	style:view-transition-name={sectionNames[page.url.pathname]}
->
+<main class:landing-main={page.url.pathname === '/'}>
 	{@render children()}
 </main>
 {#if page.url.pathname !== '/'}
