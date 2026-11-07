@@ -30,7 +30,7 @@
 <div class="landing">
 	{#each data.sections as section, index (section.href)}
 		<a class="sec {quadrants[index]}" href={section.href}>
-			<span class="bg" style="view-transition-name: section-{quadrants[index]}">
+			<span class="bg">
 				{#if section.image}
 					<enhanced:img
 						src={section.image}
@@ -47,6 +47,7 @@
 	{/each}
 	<span class="line horizontal"></span>
 	<span class="line vertical"></span>
+	<span class="glow"></span>
 	<div class="hub">
 		<Badge size="large" tagline="books, stories, games, and apps">
 			<Logo width={200} glint />
@@ -216,6 +217,24 @@
 		top: 50%;
 		transform: translate(-50%, -50%);
 		width: clamp(13rem, 24vw, 22rem);
+		pointer-events: none;
+	}
+
+	/* A soft dark pool behind the badge that darkens the section images near the center. */
+	.glow {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		width: calc(clamp(13rem, 24vw, 22rem) * 2);
+		aspect-ratio: 1;
+		transform: translate(-50%, -50%);
+		border-radius: 50%;
+		background: radial-gradient(
+			circle closest-side,
+			rgb(0 0 0 / 0.6) 0%,
+			rgb(0 0 0 / 0.45) 55%,
+			transparent 100%
+		);
 		pointer-events: none;
 	}
 

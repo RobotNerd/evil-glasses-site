@@ -32,6 +32,25 @@ export async function checkPage(page: Page, path: string): Promise<string[]> {
 	else if (button.width < 60 || button.height < 44) {
 		report(`logo menu button is ${button.width}x${button.height}, expected at least 60x44`);
 	}
+	const bars = await page.locator('.menu.bar').count();
+	if (path === '/') {
+		if (bars > 0) report('the landing page has a menu bar');
+	} else if (bars !== 1) report(`found ${bars} menu bars, expected 1`);
+	else {
+		const bar = page.locator('.menu.bar');
+		const top = async () => (await bar.boundingBox())!.y;
+		const bottom = await bar.evaluate((el) => el.getBoundingClientRect().bottom);
+		const h1Top = await page.locator('h1').evaluate((el) => el.getBoundingClientRect().top);
+		if (h1Top < bottom) report(`h1 starts at ${h1Top}, above the bar's bottom edge ${bottom}`);
+		if ((await top()) !== 0) report(`menu bar top is ${await top()} before scrolling, expected 0`);
+		await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+		await page.waitForFunction(
+			() => window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 1
+		);
+		if ((await top()) !== 0) report(`menu bar top is ${await top()} after scrolling, expected 0`);
+		await page.evaluate(() => window.scrollTo(0, 0));
+	}
+	await checkBackArrow(page, path, report);
 	if ((await page.locator('header nav a').count()) > 0) report('found header links');
 	const footers = await page.locator('footer').count();
 	if (path === '/') {
@@ -72,4 +91,38 @@ export async function checkPage(page: Page, path: string): Promise<string[]> {
 export async function sourceText(locator: Locator): Promise<string> {
 	await locator.page().addStyleTag({ content: 'h1, h2, h3 { text-transform: none !important; }' });
 	return locator.innerText();
+}
+
+/** The arrow is the bar's leftmost link and at least 44x44 at both sizes; the landing page has none. */
+async function checkBackArrow(page: Page, path: string, report: (message: string) => void) {
+	const original = page.viewportSize();
+	const back = page.getByRole('link', { name: 'Back', exact: true });
+	for (const size of [
+		{ width: 390, height: 844 },
+		{ width: 1440, height: 900 }
+	]) {
+		await page.setViewportSize(size);
+		const where = `at ${size.width}px`;
+		if (path === '/') {
+			if ((await back.count()) > 0) report(`the landing page has a back arrow ${where}`);
+			continue;
+		}
+		if ((await back.count()) !== 1) {
+			report(`found ${await back.count()} back arrows ${where}, expected 1`);
+			continue;
+		}
+		const box = (await back.boundingBox())!;
+		if (box.width < 44 || box.height < 44) {
+			report(`back arrow is ${box.width}x${box.height} ${where}, expected at least 44x44`);
+		}
+		const leftmost = await page
+			.locator('.menu.bar a')
+			.evaluateAll((anchors) => anchors[0].getAttribute('aria-label'));
+		if (leftmost !== 'Back') report(`back arrow is not the first link in the bar ${where}`);
+		const others = await page
+			.locator('.menu.bar a:visible')
+			.evaluateAll((anchors) => anchors.map((a) => a.getBoundingClientRect().left));
+		if (others.some((left) => left < box.x)) report(`back arrow is not leftmost ${where}`);
+	}
+	if (original) await page.setViewportSize(original);
 }

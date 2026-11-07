@@ -1,6 +1,7 @@
 // Serves build/ the way GitHub Pages does: /path resolves to path.html (or path/index.html),
 // and an unknown path gets 404.html with status 404.
 import { createServer } from 'node:http';
+import { gzipSync } from 'node:zlib';
 import { readFile, stat } from 'node:fs/promises';
 import { extname, join, normalize, resolve } from 'node:path';
 
@@ -51,8 +52,15 @@ createServer(async (req, res) => {
 		status = 404;
 	}
 	try {
-		const body = await readFile(file);
-		res.writeHead(status, { 'content-type': types[extname(file)] ?? 'application/octet-stream' });
+		let body = await readFile(file);
+		const type = types[extname(file)] ?? 'application/octet-stream';
+		const headers = { 'content-type': type };
+		// GitHub Pages compresses text, so do the same here.
+		if (/^(text\/|application\/(json|xml)|image\/svg)/.test(type)) {
+			body = gzipSync(body);
+			headers['content-encoding'] = 'gzip';
+		}
+		res.writeHead(status, headers);
 		res.end(body);
 	} catch {
 		res.writeHead(404, { 'content-type': 'text/plain' });

@@ -5,10 +5,68 @@ declare global {
 		__vt: Promise<{ pseudo: string; duration: number }[]>;
 		__vtCalls: number;
 		__glints: number;
+		__vtAnimations: Promise<Captured[]>;
 	}
 }
 
 type Timing = { pseudo: string; duration: number };
+type Captured = { pseudo: string; duration: number; properties: string[] };
+
+/**
+ * Wraps startViewTransition again, so `window.__vtAnimations` resolves with the next transition's
+ * animations once it is ready: their durations and the properties their keyframes hold.
+ */
+const captureOnNavigate = () => {
+	const start = document.startViewTransition.bind(document);
+	window.__vtAnimations = new Promise((resolve) => {
+		document.startViewTransition = ((callback: () => Promise<void>) => {
+			const transition = start(callback);
+			transition.ready.then(
+				() =>
+					resolve(
+						document
+							.getAnimations()
+							.filter((a) =>
+								(a.effect as KeyframeEffect).pseudoElement?.startsWith('::view-transition')
+							)
+							.map((a) => ({
+								pseudo: (a.effect as KeyframeEffect).pseudoElement!,
+								duration: Number(a.effect!.getTiming().duration),
+								properties: [
+									...new Set(
+										(a.effect as KeyframeEffect)
+											.getKeyframes()
+											.flatMap((k) =>
+												Object.keys(k).filter(
+													(key) =>
+														!['offset', 'easing', 'composite', 'computedOffset'].includes(key)
+												)
+											)
+									)
+								]
+							}))
+					),
+				() => resolve([])
+			);
+			return transition;
+		}) as typeof document.startViewTransition;
+	});
+};
+
+const expectOpacityFade = (captured: Captured[]) => {
+	expect(captured.length).toBeGreaterThan(0);
+	for (const a of captured) {
+		expect(a.duration, a.pseudo).toBe(300);
+		expect(a.properties, a.pseudo).toEqual(['opacity']);
+	}
+};
+
+const sectionNames = (page: Page) =>
+	page.evaluate(() =>
+		[...document.querySelectorAll('*')]
+			.map((el) => getComputedStyle(el).viewTransitionName)
+			.filter((n) => n.startsWith('section-'))
+	);
 
 /**
  * Wraps startViewTransition before the page scripts run. `window.__vt` resolves, once the first
@@ -71,29 +129,49 @@ test.describe('with motion', () => {
 	test('a navigation cross-fades in 180 ms', async ({ page }) => {
 		await open(page, '/books');
 		await page.locator('button.menu-button').click();
-		await page.locator('#site-menu').getByRole('link', { name: 'Stories' }).click();
+		await page.locator('#site-menu').getByRole('link', { name: 'About' }).click();
 		const timings = await page.evaluate(() => window.__vt);
 		expect(timings.length).toBeGreaterThan(0);
 		expect(durationsOf(timings)).toEqual(new Set([180]));
-		await expect(page).toHaveURL(/\/stories$/);
+		await expect(page).toHaveURL(/\/about$/);
 	});
 
-	test('a landing section grows into its list in 300 ms', async ({ page }) => {
+	for (const [name, quadrant] of [
+		['Books', { x: 0.25, y: 0.25 }],
+		['Stories', { x: 0.75, y: 0.25 }],
+		['Games', { x: 0.25, y: 0.75 }],
+		['Apps', { x: 0.75, y: 0.75 }]
+	] as const) {
+		test(`the landing page fades into ${name} in 300 ms`, async ({ page }) => {
+			await open(page, '/');
+			await page.evaluate(captureOnNavigate);
+			const size = page.viewportSize()!;
+			await page.mouse.click(size.width * quadrant.x, size.height * quadrant.y);
+			await expect(page).toHaveURL(new RegExp(`/${name.toLowerCase()}$`));
+			const captured = await page.evaluate(() => window.__vtAnimations);
+			expectOpacityFade(captured);
+			expect(await sectionNames(page)).toEqual([]);
+		});
+	}
+
+	test('a list fades back to the landing page in 300 ms', async ({ page }) => {
 		await open(page, '/');
-		const before = await page
-			.locator('.sec.books .bg')
-			.evaluate((el) => getComputedStyle(el).viewTransitionName);
-		expect(before).toBe('section-books');
 		await clickBooks(page);
-		const timings = await page.evaluate(() => window.__vt);
-		expect(durationsOf(timings)).toEqual(new Set([300]));
-		// The group exists in both states, so the section and the list's main area share the name.
-		expect(timings.some((t) => t.pseudo === '::view-transition-group(section-books)')).toBe(true);
 		await expect(page).toHaveURL(/\/books$/);
-		const after = await page
-			.locator('main')
-			.evaluate((el) => getComputedStyle(el).viewTransitionName);
-		expect(after).toBe('section-books');
+		expect(await sectionNames(page)).toEqual([]);
+		await page.evaluate(captureOnNavigate);
+		await page.goBack();
+		await expect(page).toHaveURL(/\/$/);
+		expectOpacityFade(await page.evaluate(() => window.__vtAnimations));
+		expect(await sectionNames(page)).toEqual([]);
+	});
+
+	test('the back arrow fades back to the landing page in 300 ms', async ({ page }) => {
+		await open(page, '/books');
+		await page.evaluate(captureOnNavigate);
+		await page.getByRole('link', { name: 'Back' }).click();
+		await expect(page).toHaveURL(/\/$/);
+		expectOpacityFade(await page.evaluate(() => window.__vtAnimations));
 	});
 
 	test('a cover moves into its page in 250 ms', async ({ page }) => {

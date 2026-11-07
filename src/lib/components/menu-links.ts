@@ -11,6 +11,9 @@ export const menuLinks: MenuLink[] = [
 	{ href: '/legal', label: 'Legal', display: false }
 ];
 
+/** The section links the bar shows on wide screens: Home to Apps. */
+export const sectionLinks: MenuLink[] = menuLinks.slice(0, 5);
+
 /** Whether a menu link is the current page, or an ancestor of it (`/books` for `/books/x`). */
 export function isCurrent(href: string, pathname: string): boolean {
 	if (href === '/') return pathname === '/';

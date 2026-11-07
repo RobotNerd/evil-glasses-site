@@ -35,6 +35,9 @@
 		padding: 12% 14% 10%;
 		border-width: 2px;
 		border-radius: 26% / 34%;
+		box-shadow:
+			0 12px 40px rgb(0 0 0 / 0.5),
+			0 4px 12px rgb(0 0 0 / 0.35);
 	}
 
 	.large :global(svg) {
