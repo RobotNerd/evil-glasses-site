@@ -74,9 +74,7 @@ for (const size of sizes) {
 				await page.goto('/');
 				const x = s.right ? size.width - 10 : 10;
 				const y = s.bottom ? size.height - 10 : 10;
-				// The floating menu button covers the top-left corner; click just past it.
-				const cy = s.name === 'Books' ? 80 : y;
-				await page.mouse.click(x, cy);
+				await page.mouse.click(x, y);
 				await expect(page).toHaveURL(new RegExp(`${s.href}$`));
 			}
 		});

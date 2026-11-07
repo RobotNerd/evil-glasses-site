@@ -54,7 +54,10 @@
 </svelte:head>
 
 <SiteMenu />
-<main style:view-transition-name={sectionNames[page.url.pathname]}>
+<main
+	class:landing-main={page.url.pathname === '/'}
+	style:view-transition-name={sectionNames[page.url.pathname]}
+>
 	{@render children()}
 </main>
 {#if page.url.pathname !== '/'}
@@ -65,7 +68,11 @@
 	main {
 		max-width: var(--content-width);
 		margin: 0 auto;
-		/* The column starts below the floating menu button. */
-		padding: calc(4.5rem + env(safe-area-inset-top)) var(--space-3) var(--space-3);
+		padding: var(--space-3);
+	}
+
+	/* The landing page has no bar; its column starts below the floating menu button. */
+	main.landing-main {
+		padding-top: calc(4.5rem + env(safe-area-inset-top));
 	}
 </style>

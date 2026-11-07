@@ -32,6 +32,24 @@ export async function checkPage(page: Page, path: string): Promise<string[]> {
 	else if (button.width < 60 || button.height < 44) {
 		report(`logo menu button is ${button.width}x${button.height}, expected at least 60x44`);
 	}
+	const bars = await page.locator('.menu.bar').count();
+	if (path === '/') {
+		if (bars > 0) report('the landing page has a menu bar');
+	} else if (bars !== 1) report(`found ${bars} menu bars, expected 1`);
+	else {
+		const bar = page.locator('.menu.bar');
+		const top = async () => (await bar.boundingBox())!.y;
+		const bottom = await bar.evaluate((el) => el.getBoundingClientRect().bottom);
+		const h1Top = await page.locator('h1').evaluate((el) => el.getBoundingClientRect().top);
+		if (h1Top < bottom) report(`h1 starts at ${h1Top}, above the bar's bottom edge ${bottom}`);
+		if ((await top()) !== 0) report(`menu bar top is ${await top()} before scrolling, expected 0`);
+		await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+		await page.waitForFunction(
+			() => window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 1
+		);
+		if ((await top()) !== 0) report(`menu bar top is ${await top()} after scrolling, expected 0`);
+		await page.evaluate(() => window.scrollTo(0, 0));
+	}
 	if ((await page.locator('header nav a').count()) > 0) report('found header links');
 	const footers = await page.locator('footer').count();
 	if (path === '/') {

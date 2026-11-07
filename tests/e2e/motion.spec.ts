@@ -71,11 +71,11 @@ test.describe('with motion', () => {
 	test('a navigation cross-fades in 180 ms', async ({ page }) => {
 		await open(page, '/books');
 		await page.locator('button.menu-button').click();
-		await page.locator('#site-menu').getByRole('link', { name: 'Stories' }).click();
+		await page.locator('#site-menu').getByRole('link', { name: 'About' }).click();
 		const timings = await page.evaluate(() => window.__vt);
 		expect(timings.length).toBeGreaterThan(0);
 		expect(durationsOf(timings)).toEqual(new Set([180]));
-		await expect(page).toHaveURL(/\/stories$/);
+		await expect(page).toHaveURL(/\/about$/);
 	});
 
 	test('a landing section grows into its list in 300 ms', async ({ page }) => {
