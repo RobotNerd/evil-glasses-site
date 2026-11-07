@@ -223,6 +223,6 @@ Serve `build/` the way GitHub Pages does:
 npm run preview
 ```
 
-`.github/workflows/ci.yml` runs on every pull request and on pushes to `main`. It installs dependencies, then runs `npm run lint`, `npx prettier --check .`, `npm test` and `npm run lighthouse`. A second job runs `npm run test:visual`.
+`.github/workflows/ci.yml` runs on every pull request and on pushes to `main`. It installs dependencies, then runs `npm run lint`, `npx prettier --check .`, `npm test` and `npm run lighthouse`.
 
 `.github/workflows/deploy.yml` runs on pushes to `main`, and by hand. It always builds the site. It deploys to GitHub Pages only when the repository variable `PAGES_DEPLOY` is `true`.
