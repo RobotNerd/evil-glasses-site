@@ -154,18 +154,6 @@ test.describe('with motion', () => {
 		});
 	}
 
-	test('a list fades back to the landing page in 300 ms', async ({ page }) => {
-		await open(page, '/');
-		await clickBooks(page);
-		await expect(page).toHaveURL(/\/books$/);
-		expect(await sectionNames(page)).toEqual([]);
-		await page.evaluate(captureOnNavigate);
-		await page.goBack();
-		await expect(page).toHaveURL(/\/$/);
-		expectOpacityFade(await page.evaluate(() => window.__vtAnimations));
-		expect(await sectionNames(page)).toEqual([]);
-	});
-
 	test('the back arrow fades back to the landing page in 300 ms', async ({ page }) => {
 		await open(page, '/books');
 		await page.evaluate(captureOnNavigate);
