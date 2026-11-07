@@ -5,7 +5,7 @@ How the site is tested, and how tests are written. `plan`, `groom` and `work` re
 ## Test layers
 
 - **Unit:** Vitest tests in `tests/unit/`. They check the content loaders and schemas, the redirect table and the scripts, without a browser.
-- **End to end:** Playwright tests in `tests/e2e/`, run against the built site served by `scripts/preview.js`. They run in two projects, `desktop` and `phone`. The crawl visits every page in the sitemap and checks each for console errors, failed requests, one `h1`, and WCAG 2.2 AA problems with axe.
+- **End to end:** Playwright tests in `tests/e2e/`, run against the built site served by `scripts/preview.js`. They run in two projects, `desktop` and `phone`, except `redirects.spec.ts`, which runs in `desktop` only. The crawl is tagged `@full`, so only the full suite runs it. The crawl visits every page in the sitemap and checks each for console errors, failed requests, one `h1`, and WCAG 2.2 AA problems with axe.
 - **Lighthouse:** `npm run lighthouse` scores three pages. Each of the four categories must score 95 or more.
 - **Live comparison:** `npm run compare:live` compares the rebuilt pages with the live site. Differences must be listed in `scripts/compare-live-allowed.json`. It applies only until the rebuilt site replaces the live one.
 - **Static checks:** `npm run lint` runs ESLint and the Svelte type check. `npx prettier --check .` checks formatting.
@@ -26,10 +26,22 @@ While building, check these with a throwaway agent-run check. Leave the final ju
 
 ## Running tests
 
-Run the unit and end-to-end tests. This builds the site first:
+Run the fast tier, which a task runs. It builds the site, then runs the unit tests and the `desktop` end-to-end tests, without the crawl:
 
 ```bash
 npm test
+```
+
+Run one area of the fast tier. Arguments after `--` reach Playwright:
+
+```bash
+npm test -- tests/e2e/menu.spec.ts
+```
+
+Run the full suite, which CI runs. It builds the site, then runs the unit tests, the end-to-end tests in both projects including the crawl, and Lighthouse:
+
+```bash
+npm run test:all
 ```
 
 Run only the unit tests:
