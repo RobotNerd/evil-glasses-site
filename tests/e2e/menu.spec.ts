@@ -152,7 +152,7 @@ test.describe('the menu bar and button', () => {
 			const name = bar.getByRole('link', { name: 'evilglasses.com' });
 			await expect(name).toHaveAttribute('href', '/');
 			await expect(bar.getByRole('navigation', { name: 'Sections' })).toBeHidden();
-			await expect(bar.getByRole('link')).toHaveText(['evilglasses.com']);
+			await expect(bar.getByRole('link')).toHaveText(['', 'evilglasses.com']);
 			const nameBox = (await name.boundingBox())!;
 			const box = (await page.getByRole('button', { name: 'Menu' }).boundingBox())!;
 			expect(box.x).toBeGreaterThan(nameBox.x + nameBox.width);

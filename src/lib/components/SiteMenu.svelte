@@ -5,6 +5,7 @@
 	import Badge from './Badge.svelte';
 	import Logo from './Logo.svelte';
 	import { isCurrent, menuLinks, sectionLinks } from './menu-links';
+	import { parentPage } from './parent-page';
 
 	// The landing page has no bar: the button floats in the top-right corner.
 	const landing = $derived(page.url.pathname === '/');
@@ -18,9 +19,19 @@
 		hydrated = true;
 	});
 
-	afterNavigate(() => {
+	// A non-null `from` means the page was reached from another page of this site.
+	let fromSite = false;
+
+	afterNavigate((navigation) => {
 		open = false;
+		fromSite = navigation.from !== null;
 	});
+
+	function goBack(event: MouseEvent) {
+		if (!fromSite || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey) return;
+		event.preventDefault();
+		history.back();
+	}
 
 	async function toggle() {
 		open = !open;
@@ -46,8 +57,19 @@
 
 <div class="menu" class:floating={landing} class:bar={!landing} bind:this={root}>
 	{#if !landing}
-		<!-- The left cell is kept free for the back arrow. -->
-		<div class="slot"></div>
+		<!-- Without JavaScript this is a plain link to the parent page. -->
+		<a class="back" href={parentPage(page.url.pathname)} aria-label="Back" onclick={goBack}>
+			<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+				<path
+					d="M19 12H5m6-6-6 6 6 6"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+			</svg>
+		</a>
 		<a class="site-name" href="/">evilglasses.com</a>
 		<nav class="sections" aria-label="Sections">
 			<ul>
@@ -122,8 +144,19 @@
 		border-bottom: 1px solid var(--line);
 	}
 
-	.slot {
+	.back {
+		display: inline-flex;
 		grid-area: 1 / 1;
+		justify-self: start;
+		align-items: center;
+		justify-content: center;
+		width: 2.75rem;
+		height: 2.75rem;
+		color: var(--ink);
+	}
+
+	.back:hover {
+		color: var(--accent);
 	}
 
 	.trigger {
