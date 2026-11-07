@@ -16,7 +16,7 @@ How the site is built. It is a static site: every page is made at build time and
 
 - `.github/workflows/`: the CI and deploy workflows
 - `docs/guidelines/`: these guidelines
-- `scripts/`: `compare-live.ts`, `lighthouse.js`, `make-brand.js`, `make-fonts.js`, `preview.js` and `visual.js`
+- `scripts/`: `compare-live.ts`, `lighthouse.js`, `make-brand.js`, `make-fonts.js` and `preview.js`
 - `src/content/<type>/<slug>/index.md`: the content, one folder per entry
 - `src/lib/components/`: shared components, including `SeoHead.svelte`
 - `src/lib/content/`: the content loaders, the schemas and the redirect table
@@ -25,7 +25,6 @@ How the site is built. It is a static site: every page is made at build time and
 - `static/`: files copied as they are, such as `robots.txt` and the brand icons
 - `tests/e2e/`: browser tests
 - `tests/unit/`: unit tests
-- `tests/visual/`: screenshot tests and their snapshots
 
 ## Content
 
@@ -223,6 +222,6 @@ Serve `build/` the way GitHub Pages does:
 npm run preview
 ```
 
-`.github/workflows/ci.yml` runs on every pull request and on pushes to `main`. It installs dependencies, then runs `npm run lint`, `npx prettier --check .`, `npm test` and `npm run lighthouse`.
+`.github/workflows/ci.yml` runs on every pull request and on pushes to `main`. It installs dependencies, then runs `npm run lint`, `npx prettier --check .` and `npm run test:all`, in one job.
 
 `.github/workflows/deploy.yml` runs on pushes to `main`, and by hand. It always builds the site. It deploys to GitHub Pages only when the repository variable `PAGES_DEPLOY` is `true`.
