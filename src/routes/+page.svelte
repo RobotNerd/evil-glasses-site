@@ -3,12 +3,9 @@
 	import Logo from '../lib/components/Logo.svelte';
 	import SeoHead from '../lib/components/SeoHead.svelte';
 	import SiteFooter from '../lib/components/SiteFooter.svelte';
-	import Slide from '../lib/components/Slide.svelte';
+	import Slideshow from '../lib/components/Slideshow.svelte';
 
 	let { data } = $props();
-
-	// The next task cycles through the slides; for now the newest one shows.
-	const slide = $derived(data.slides[0]);
 </script>
 
 <SeoHead
@@ -31,7 +28,7 @@
 		{/each}
 	</nav>
 	<div class="slot">
-		{#if slide}<Slide {slide} priority />{/if}
+		<Slideshow slides={data.slides} />
 	</div>
 	<SiteFooter />
 </div>

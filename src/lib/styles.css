@@ -264,10 +264,11 @@ h3 {
 
 /* Page transitions: 180 ms by default, set per navigation by the layout's onNavigate. */
 :root {
+	--fade-duration: 300ms;
 	--vt-duration: 180ms;
 }
 :root[data-vt='fade'] {
-	--vt-duration: 300ms;
+	--vt-duration: var(--fade-duration);
 }
 :root[data-vt='cover'] {
 	--vt-duration: 250ms;
