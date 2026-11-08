@@ -24,9 +24,7 @@ const open = async (page: Page, path: string) => {
 	await page.waitForLoadState('networkidle');
 };
 
-// A section link is the whole screen, cut to its quadrant, so click inside the quadrant.
-const clickBooks = (page: Page) =>
-	page.locator('.landing a', { hasText: 'Books' }).click({ position: { x: 100, y: 200 } });
+const clickBooks = (page: Page) => page.locator('.links a', { hasText: 'Books' }).click();
 
 test.describe('with motion', () => {
 	test.use({ reducedMotion: 'no-preference' });

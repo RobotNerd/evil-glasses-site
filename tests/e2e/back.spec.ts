@@ -5,9 +5,7 @@ const book = '/books/press-start-for-love';
 test('the arrow goes back through the pages of the site and forward returns', async ({ page }) => {
 	await page.goto('/');
 	await page.waitForLoadState('networkidle');
-	// A click a quarter of the way in lands inside the Books quadrant, clear of the badge.
-	const view = page.viewportSize()!;
-	await page.mouse.click(view.width * 0.25, view.height * 0.25);
+	await page.locator('.links a', { hasText: 'Books' }).click();
 	await expect(page).toHaveURL(/\/books$/);
 	await page.locator(`a[href="${book}"]`).first().click();
 	await expect(page).toHaveURL(new RegExp(`${book}$`));

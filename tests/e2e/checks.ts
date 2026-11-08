@@ -60,9 +60,7 @@ export async function checkPage(page: Page, path: string): Promise<string[]> {
 	await checkBackArrow(page, path, report);
 	if ((await page.locator('header nav a').count()) > 0) report('found header links');
 	const footers = await page.locator('footer').count();
-	if (path === '/') {
-		if (footers > 0) report('the landing page has a footer');
-	} else if (footers < 1) report('missing footer');
+	if (footers < 1) report('missing footer');
 	else {
 		for (const href of ['/about', '/legal']) {
 			if ((await page.locator(`footer a[href="${href}"]`).count()) < 1) {

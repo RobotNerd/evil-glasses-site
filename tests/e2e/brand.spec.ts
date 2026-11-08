@@ -3,7 +3,7 @@ import { sitemapUrls, localPath } from './sitemap-urls';
 
 test('the landing badge shows the logo', async ({ page }) => {
 	await page.goto('/');
-	await expect(page.locator('.landing .hub .badge svg')).toBeVisible();
+	await expect(page.locator('.landing .logo .badge svg')).toBeVisible();
 });
 
 test('the favicon files are built with the stated sizes', async ({ request }) => {

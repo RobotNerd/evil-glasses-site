@@ -52,8 +52,6 @@
 	--badge: #6cacdb;
 	--badge-ink: #111111;
 	--lens: #d9efff;
-	--fade: rgb(246 241 231 / 0.8);
-	--vignette: rgb(31 27 22 / 0.55);
 
 	--font-body: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 	--font-display: 'Big Shoulders Display', 'Big Shoulders Fallback', 'Arial Narrow', sans-serif;
@@ -86,8 +84,6 @@
 		--muted: #bbb2a4;
 		--line: #5a534a;
 		--accent: #8cc6ee;
-		--fade: rgb(27 24 21 / 0.78);
-		--vignette: rgb(0 0 0 / 0.7);
 	}
 }
 
