@@ -31,10 +31,13 @@ export async function checkPage(page: Page, path: string): Promise<string[]> {
 
 	const h1s = await page.locator('h1').count();
 	if (h1s !== 1) report(`found ${h1s} h1 elements, expected exactly 1`);
-	const button = await page.locator('.menu-button').boundingBox();
-	if (!button) report('missing logo menu button');
-	else if (button.width < 60 || button.height < 44) {
-		report(`logo menu button is ${button.width}x${button.height}, expected at least 60x44`);
+	if (
+		(await page
+			.locator('.menu-button')
+			.filter({ has: page.locator('.badge') })
+			.count()) > 0
+	) {
+		report('found the logo menu button');
 	}
 	const bars = await page.locator('.menu.bar').count();
 	if (path === '/') {
@@ -60,8 +63,16 @@ export async function checkPage(page: Page, path: string): Promise<string[]> {
 	if (path === '/') {
 		if (footers > 0) report('the landing page has a footer');
 	} else if (footers < 1) report('missing footer');
-	else if ((await page.locator('footer a[href="/legal"]').count()) < 1) {
-		report('footer has no link to /legal');
+	else {
+		for (const href of ['/about', '/legal']) {
+			if ((await page.locator(`footer a[href="${href}"]`).count()) < 1) {
+				report(`footer has no link to ${href}`);
+			}
+		}
+		const year = new Date().getFullYear();
+		if (!(await page.locator('footer').innerText()).includes(`© ${year} Evil Glasses`)) {
+			report('footer has no copyright line');
+		}
 	}
 
 	// Lazy images below the fold load when scrolled to: bring each into view and wait for it.

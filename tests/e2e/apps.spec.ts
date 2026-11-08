@@ -1,9 +1,11 @@
 import { expect, test } from '@playwright/test';
 
-test('the menu links to /apps after /games', async ({ page }) => {
-	await page.goto('/');
+test('the section links list /apps after /games', async ({ page }) => {
+	await page.setViewportSize({ width: 1440, height: 900 });
+	await page.goto('/books');
 	const hrefs = await page
-		.locator('#site-menu a')
+		.getByRole('navigation', { name: 'Sections' })
+		.getByRole('link')
 		.evaluateAll((anchors) => anchors.map((a) => a.getAttribute('href')));
 	expect(hrefs.indexOf('/apps')).toBe(hrefs.indexOf('/games') + 1);
 });

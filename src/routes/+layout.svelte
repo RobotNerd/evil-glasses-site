@@ -53,7 +53,7 @@
 </svelte:head>
 
 <SiteMenu />
-<main class:landing-main={page.url.pathname === '/'}>
+<main>
 	{@render children()}
 </main>
 {#if page.url.pathname !== '/'}
@@ -65,10 +65,5 @@
 		max-width: var(--content-width);
 		margin: 0 auto;
 		padding: var(--space-3);
-	}
-
-	/* The landing page has no bar; its column starts below the floating menu button. */
-	main.landing-main {
-		padding-top: calc(4.5rem + env(safe-area-inset-top));
 	}
 </style>

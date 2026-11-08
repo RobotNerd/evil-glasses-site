@@ -4,7 +4,7 @@ const book = '/books/press-start-for-love';
 
 test('the arrow goes back through the pages of the site and forward returns', async ({ page }) => {
 	await page.goto('/');
-	await expect(page.getByRole('button', { name: 'Menu' })).toBeVisible();
+	await page.waitForLoadState('networkidle');
 	// A click a quarter of the way in lands inside the Books quadrant, clear of the badge.
 	const view = page.viewportSize()!;
 	await page.mouse.click(view.width * 0.25, view.height * 0.25);
@@ -23,8 +23,8 @@ test('the arrow goes back through the pages of the site and forward returns', as
 
 test('a book reached from /about goes back to /about', async ({ page }) => {
 	await page.goto('/about');
-	// The menu is a button once the page has hydrated.
-	await expect(page.getByRole('button', { name: 'Menu' })).toBeVisible();
+	// Wait for hydration, so the click is handled by the router.
+	await page.waitForLoadState('networkidle');
 	// /about links to no book, so add a link; the router handles its click like any other.
 	await page.evaluate((href) => {
 		const link = document.createElement('a');

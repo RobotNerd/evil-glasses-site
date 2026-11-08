@@ -21,7 +21,7 @@ const open = async (page: Page, path: string) => {
 	await page.addInitScript(recordTransitions);
 	await page.goto(path);
 	// Wait for hydration, so clicks are handled by the router.
-	await page.locator('button.menu-button').waitFor();
+	await page.waitForLoadState('networkidle');
 };
 
 // A section link is the whole screen, cut to its quadrant, so click inside the quadrant.
@@ -56,7 +56,7 @@ test.describe('without View Transitions', () => {
 			delete Document.prototype.startViewTransition;
 		});
 		await page.goto('/');
-		await page.locator('button.menu-button').waitFor();
+		await page.waitForLoadState('networkidle');
 		expect(await page.evaluate(() => 'startViewTransition' in document)).toBe(false);
 		await clickBooks(page);
 		await expect(page).toHaveURL(/\/books$/);

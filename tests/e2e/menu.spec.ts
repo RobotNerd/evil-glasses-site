@@ -5,10 +5,19 @@ const labels = ['Home', 'Books', 'Stories', 'Games', 'Apps', 'About', 'Legal'];
 const phone = { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true };
 const web = { viewport: { width: 1440, height: 900 }, isMobile: false, hasTouch: false };
 
-test.describe('menu behavior on a phone', () => {
+test.describe('on a phone', () => {
 	test.use(phone);
 
-	test('the button opens the menu, moves focus to Home, and Esc returns focus to it', async ({
+	test('the hamburger is at least 44 by 44 and at the right of the bar', async ({ page }) => {
+		await page.goto('/books');
+		const box = (await page.getByRole('button', { name: 'Menu' }).boundingBox())!;
+		expect(box.width).toBeGreaterThanOrEqual(44);
+		expect(box.height).toBeGreaterThanOrEqual(44);
+		const name = (await page.getByRole('link', { name: 'evilglasses.com' }).boundingBox())!;
+		expect(box.x).toBeGreaterThan(name.x + name.width);
+	});
+
+	test('the hamburger opens the menu, moves focus to Home, and Esc returns focus to it', async ({
 		page
 	}) => {
 		await page.goto('/books');
@@ -56,88 +65,33 @@ test.describe('menu behavior on a phone', () => {
 	});
 });
 
-test.describe('without JavaScript', () => {
-	test.use({ javaScriptEnabled: false });
+test.describe('on a phone without JavaScript', () => {
+	test.use({ ...phone, javaScriptEnabled: false });
 
-	test('the button links to /menu, which lists the links and is not in the sitemap', async ({
-		page
-	}) => {
+	test('there is no hamburger', async ({ page }) => {
 		await page.goto('/books');
-		await page.getByRole('link', { name: 'Menu' }).click();
-		await expect(page).toHaveURL(/\/menu$/);
-		await expect(page.locator('main a')).toHaveText(labels);
-
-		const sitemap = readFileSync('build/sitemap.xml', 'utf8');
-		expect(sitemap).not.toContain('/menu');
+		await expect(page.getByRole('button', { name: 'Menu' })).toBeHidden();
+		await expect(page.getByRole('link', { name: 'Menu' })).toBeHidden();
 	});
 });
 
-test.describe('the menu bar and button', () => {
-	for (const size of ['phone', 'web'] as const) {
-		test.describe(`on the landing page at ${size}`, () => {
-			test.use(size === 'phone' ? phone : web);
+test.describe('on the web', () => {
+	test.use(web);
 
-			test('the button is at the top right, there is no bar, and the popup lists all links', async ({
-				page
-			}) => {
-				await page.goto('/');
-				const view = page.viewportSize()!;
-				const button = page.getByRole('button', { name: 'Menu' });
-				const box = (await button.boundingBox())!;
-				expect(view.width - (box.x + box.width)).toBeLessThanOrEqual(24);
-				expect(box.y).toBeLessThanOrEqual(24);
-				await expect(page.locator('.menu.bar')).toHaveCount(0);
-				await button.click();
-				await expect(page.locator('#site-menu').getByRole('link')).toHaveText(labels);
-			});
-		});
-	}
-
-	test.describe('at 1440 px', () => {
-		test.use(web);
-
-		for (const path of ['/books', '/books/press-start-for-love']) {
-			test(`${path} has centered section links, a short popup and the button last`, async ({
-				page
-			}) => {
-				await page.goto(path);
-				const bar = page.locator('.menu.bar');
-				const links = bar.getByRole('navigation', { name: 'Sections' }).getByRole('link');
-				await expect(links).toHaveText(['Home', 'Books', 'Stories', 'Games', 'Apps']);
-				const first = (await links.first().boundingBox())!;
-				const last = (await links.last().boundingBox())!;
-				expect(Math.abs((first.x + last.x + last.width) / 2 - 720)).toBeLessThanOrEqual(4);
-
-				const button = page.getByRole('button', { name: 'Menu' });
-				const box = (await button.boundingBox())!;
-				expect(box.x).toBeGreaterThan(last.x + last.width);
-				const barBox = (await bar.boundingBox())!;
-				expect(barBox.x + barBox.width - (box.x + box.width)).toBeLessThanOrEqual(24);
-				await expect(bar.getByRole('link', { name: 'evilglasses.com' })).toBeHidden();
-
-				await expect(links.filter({ hasText: 'Books' })).toHaveAttribute('aria-current', 'page');
-				await button.click();
-				await expect(page.locator('#site-menu').getByRole('link')).toHaveText(['About', 'Legal']);
-			});
-		}
+	test('the bar shows the arrow and the section links, and no menu button', async ({ page }) => {
+		await page.goto('/books');
+		await expect(page.getByRole('link', { name: 'Back', exact: true })).toBeVisible();
+		const links = page.getByRole('navigation', { name: 'Sections' }).getByRole('link');
+		await expect(links).toHaveText(['Home', 'Books', 'Stories', 'Games', 'Apps']);
+		await expect(links.filter({ hasText: 'Books' })).toHaveAttribute('aria-current', 'page');
+		await expect(page.getByRole('button', { name: 'Menu' })).toBeHidden();
 	});
+});
 
-	test.describe('at 390 px', () => {
-		test.use(phone);
-
-		test('the bar shows the site name, no section links, and the button last', async ({ page }) => {
-			await page.goto('/books');
-			const bar = page.locator('.menu.bar');
-			const name = bar.getByRole('link', { name: 'evilglasses.com' });
-			await expect(name).toHaveAttribute('href', '/');
-			await expect(bar.getByRole('navigation', { name: 'Sections' })).toBeHidden();
-			await expect(bar.getByRole('link')).toHaveText(['', 'evilglasses.com']);
-			const nameBox = (await name.boundingBox())!;
-			const box = (await page.getByRole('button', { name: 'Menu' }).boundingBox())!;
-			expect(box.x).toBeGreaterThan(nameBox.x + nameBox.width);
-			expect(390 - (box.x + box.width)).toBeLessThanOrEqual(24);
-			await page.getByRole('button', { name: 'Menu' }).click();
-			await expect(page.locator('#site-menu').getByRole('link')).toHaveText(labels);
-		});
+test.describe('the removed menu page', () => {
+	test('/menu is a 404 and not in the sitemap', async ({ page }) => {
+		const response = await page.goto('/menu');
+		expect(response?.status()).toBe(404);
+		expect(readFileSync('build/sitemap.xml', 'utf8')).not.toContain('/menu');
 	});
 });

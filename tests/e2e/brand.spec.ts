@@ -1,9 +1,8 @@
 import { expect, test } from '@playwright/test';
 import { sitemapUrls, localPath } from './sitemap-urls';
 
-test('the menu button and the landing badge show the logo', async ({ page }) => {
+test('the landing badge shows the logo', async ({ page }) => {
 	await page.goto('/');
-	await expect(page.getByRole('button', { name: 'Menu' }).locator('svg')).toBeVisible();
 	await expect(page.locator('.landing .hub .badge svg')).toBeVisible();
 });
 
