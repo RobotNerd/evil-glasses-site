@@ -135,7 +135,7 @@
 		min-height: 4rem;
 		padding: var(--space-2) var(--space-3);
 		padding-top: calc(var(--space-2) + env(safe-area-inset-top));
-		background: var(--paper);
+		background: var(--bar);
 		border-bottom: 1px solid var(--line);
 	}
 

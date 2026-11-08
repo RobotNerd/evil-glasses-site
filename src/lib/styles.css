@@ -44,10 +44,11 @@
 :root {
 	--paper: #f6f1e7;
 	--paper-2: #ece5d8;
+	--bar: #ddd5c5;
 	--ink: #1f1b16;
-	--muted: #6a6157;
+	--muted: #574f45;
 	--line: #d8cfc0;
-	--accent: #2a72a5;
+	--accent: #1e5a87;
 	--badge: #6cacdb;
 	--badge-ink: #111111;
 	--lens: #d9efff;
@@ -78,12 +79,13 @@
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--paper: #1b1815;
-		--paper-2: #26221d;
-		--ink: #eee7db;
-		--muted: #a59c8f;
-		--line: #3b352d;
-		--accent: #7dbbe6;
+		--paper: #3a3530;
+		--paper-2: #453f39;
+		--bar: #2f2a26;
+		--ink: #f3ede2;
+		--muted: #bbb2a4;
+		--line: #5a534a;
+		--accent: #8cc6ee;
 		--fade: rgb(27 24 21 / 0.78);
 		--vignette: rgb(0 0 0 / 0.7);
 	}
