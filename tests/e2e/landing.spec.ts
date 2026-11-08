@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { sourceText } from './checks';
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 const sizes = [
 	{ name: 'phone', width: 390, height: 844 },
@@ -8,13 +8,11 @@ const sizes = [
 ];
 
 const sections = [
-	{ name: 'Books', href: '/books', right: false, bottom: false },
-	{ name: 'Stories', href: '/stories', right: true, bottom: false },
-	{ name: 'Games', href: '/games', right: false, bottom: true },
-	{ name: 'Apps', href: '/apps', right: true, bottom: true }
+	{ name: 'Books', href: '/books' },
+	{ name: 'Stories', href: '/stories' },
+	{ name: 'Games', href: '/games' },
+	{ name: 'Apps', href: '/apps' }
 ];
-
-const link = (page: Page, name: string) => page.locator('.landing a', { hasText: name });
 
 for (const size of sizes) {
 	test.describe(`at ${size.name} size`, () => {
@@ -32,66 +30,83 @@ for (const size of sizes) {
 			expect(m.sw).toBe(m.cw);
 		});
 
-		test('four section links in tab order, one per quadrant', async ({ page }) => {
+		test('four section links in tab order', async ({ page }) => {
 			await page.goto('/');
-			const hrefs = await page
-				.locator('.landing a')
-				.evaluateAll((as) => as.map((a) => a.getAttribute('href')));
-			expect(hrefs).toEqual(['/books', '/stories', '/games', '/apps']);
-
-			// Tab through the page and collect the section links in the order they take focus.
-			const focused: string[] = [];
-			for (let i = 0; i < 5; i++) {
+			const links = page.locator('.links a');
+			expect(await links.evaluateAll((as) => as.map((a) => a.textContent?.trim()))).toEqual(
+				sections.map((s) => s.name)
+			);
+			const focused: (string | null)[] = [];
+			for (let i = 0; i < 4; i++) {
 				await page.keyboard.press('Tab');
-				const href = await page.evaluate(() =>
-					(document.activeElement as HTMLAnchorElement | null)
-						?.closest('.landing')
-						?.contains(document.activeElement)
-						? document.activeElement?.getAttribute('href')
-						: null
+				focused.push(
+					await page.evaluate(() => document.activeElement?.getAttribute('href') ?? null)
 				);
-				if (href) focused.push(href);
 			}
-			expect(focused).toEqual(['/books', '/stories', '/games', '/apps']);
-
-			for (const s of sections) {
-				const box = (await link(page, s.name).boundingBox())!;
-				const cx = box.x + box.width / 2;
-				const cy = box.y + box.height / 2;
-				// The link is the whole screen; its title sits in the quadrant.
-				const t = (await link(page, s.name).locator('.t').boundingBox())!;
-				const tx = t.x + t.width / 2;
-				const ty = t.y + t.height / 2;
-				expect(cx).toBeGreaterThan(0);
-				expect(cy).toBeGreaterThan(0);
-				expect(tx > size.width / 2).toBe(s.right);
-				expect(ty > size.height / 2).toBe(s.bottom);
-			}
+			expect(focused).toEqual(sections.map((s) => s.href));
 		});
 
-		test('a click 10 px inside each outer corner follows that section', async ({ page }) => {
-			for (const s of sections) {
-				await page.goto('/');
-				const x = s.right ? size.width - 10 : 10;
-				const y = s.bottom ? size.height - 10 : 10;
-				await page.mouse.click(x, y);
-				await expect(page).toHaveURL(new RegExp(`${s.href}$`));
-			}
-		});
-
-		test('the badge is centered, holds the logo and says the tagline', async ({ page }) => {
+		test('a click on the logo stays on the landing page', async ({ page }) => {
 			await page.goto('/');
-			const badge = page.locator('.landing .hub .badge');
-			const box = (await badge.boundingBox())!;
-			expect(Math.abs(box.x + box.width / 2 - size.width / 2)).toBeLessThanOrEqual(2);
-			expect(Math.abs(box.y + box.height / 2 - size.height / 2)).toBeLessThanOrEqual(2);
-			await expect(badge.locator('svg')).toHaveCount(1);
-			expect((await badge.innerText()).trim()).toBe('books, stories, games, and apps');
+			const box = (await page.locator('.logo svg').boundingBox())!;
+			await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
+			await expect(page).toHaveURL(/\/$/);
+			expect(await page.locator('.logo a').count()).toBe(0);
 		});
+
+		test('the logo is above the links and the slide', async ({ page }) => {
+			await page.goto('/');
+			const logo = (await page.locator('.logo svg').boundingBox())!;
+			expect(Math.abs(logo.x + logo.width / 2 - size.width / 2)).toBeLessThanOrEqual(2);
+			await expect(page.locator('.logo svg')).toHaveCount(1);
+			expect((await page.locator('.logo').innerText()).trim()).toBe('');
+			for (const target of ['.links', '.slide']) {
+				const box = (await page.locator(target).boundingBox())!;
+				expect(box.y).toBeGreaterThanOrEqual(logo.y + logo.height);
+			}
+		});
+
+		test('the slide shows the newest item and its summary only on wide screens', async ({
+			page
+		}) => {
+			await page.goto('/');
+			const slide = page.locator('.slide');
+			await expect(slide.locator('h2 a')).toHaveAttribute(
+				'href',
+				/^\/(books|stories|games|apps)\/./
+			);
+			await expect(slide.locator('.date')).toHaveText(/\w+ \d+, \d{4}/);
+			await expect(slide.locator('a.image img')).toBeVisible();
+			expect(await slide.locator('a.image').getAttribute('href')).toBe(
+				await slide.locator('h2 a').getAttribute('href')
+			);
+			if (size.width >= 1000) await expect(slide.locator('.summary')).toBeVisible();
+			else await expect(slide.locator('.summary')).toBeHidden();
+		});
+
+		test('the footer has About, Legal and the copyright', async ({ page }) => {
+			await page.goto('/');
+			const footer = page.locator('footer');
+			await expect(footer.locator('a[href="/about"]')).toHaveCount(1);
+			await expect(footer.locator('a[href="/legal"]')).toHaveCount(1);
+			await expect(footer).toContainText(`© ${new Date().getFullYear()} Evil Glasses`);
+			await expect(page.locator('.menu')).toHaveCount(0);
+		});
+
+		if (size.width < 500) {
+			test('each section link is at least 44 px tall', async ({ page }) => {
+				await page.goto('/');
+				for (const box of await page
+					.locator('.links a')
+					.evaluateAll((as) => as.map((a) => a.getBoundingClientRect().height))) {
+					expect(box).toBeGreaterThanOrEqual(44);
+				}
+			});
+		}
 	});
 }
 
-test('the landing page has one hidden h1 with the site name and no footer', async ({ page }) => {
+test('the landing page has one hidden h1 with the site name', async ({ page }) => {
 	await page.goto('/');
 	const h1 = page.locator('h1');
 	await expect(h1).toHaveCount(1);
@@ -99,7 +114,6 @@ test('the landing page has one hidden h1 with the site name and no footer', asyn
 	const box = (await h1.boundingBox())!;
 	expect(box.width).toBeLessThanOrEqual(1);
 	expect(box.height).toBeLessThanOrEqual(1);
-	await expect(page.locator('footer')).toHaveCount(0);
 });
 
 test('/about opens with the intro the home page had', async ({ page }) => {

@@ -1,10 +1,11 @@
 ---
 title: 'Elevator to the Moon'
-author: Sara Rogers
+author: Sara Lufrano
 date: 2016-01-01
 edition: 3
 order: 2
 synopsis: 'On a journey to the moon, two people share an intimate encounter as they grapple with their future in the new lunar colony.'
+summary: 'On the long ride to the lunar colony, Paul wants to draw out the silent Julia, but she keeps her distance as they both face an uncertain future.'
 ---
 
 “Just the two of us,” he said to her.

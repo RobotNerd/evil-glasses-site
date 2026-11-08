@@ -5,6 +5,7 @@ date: 2015-07-01
 edition: 1
 order: 2
 synopsis: 'A high school student begins experiencing horrifying encounters and inexplicable sickness following the death of her friend.'
+summary: "A high school girl who once insulted her friend Sandy's weight keeps a diary of the horrifying encounters and sickness that follow, until a monster closes in."
 ---
 
 **8/5 Wed**

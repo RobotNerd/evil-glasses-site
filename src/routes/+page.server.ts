@@ -1,5 +1,5 @@
-import { loadSections } from '../lib/content/landing';
+import { loadSlides, sections } from '../lib/content/landing';
 
 export function load() {
-	return { sections: loadSections() };
+	return { sections, slides: loadSlides() };
 }

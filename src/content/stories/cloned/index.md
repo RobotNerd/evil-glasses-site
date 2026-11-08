@@ -5,6 +5,7 @@ date: 2016-01-01
 edition: 3
 order: 3
 synopsis: 'A couple grapples with ethical questions about the potential of human cloning after a rockclimbing accident.'
+summary: 'After a rock-climbing accident, Susan, who finds human cloning unnatural, wakes from a coma and cannot shake the feeling that her husband Roger is lying to her.'
 ---
 
 "It isn't natural," Susan said. She ran her hand across the rock face above her, feeling for a handhold. The warmth from the sun was in perfect balance with the crisp air. This was turning out to be a great day for climbing. "You're not going to be able to convince me otherwise, Roger."

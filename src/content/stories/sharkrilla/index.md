@@ -1,10 +1,11 @@
 ---
 title: 'Sharkrilla'
-author: Sara Rogers
+author: Sara Lufrano
 date: 2015-10-01
 edition: 2
 order: 2
 synopsis: 'A scientist releases a bioengineered beast to evade an armed group, facing repercussions from his partner and risking global danger.'
+summary: "A scientist driving a valuable bioengineered beast through the jungle releases it to escape an armed group, risking global danger and his partner's anger."
 ---
 
 A large cargo truck sped down a jungle road. The only lights where from the dirty, dim headlights. The driver, a scientist named David, struggled to not hit small overgrowth that bled into the road.

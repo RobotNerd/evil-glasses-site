@@ -1,10 +1,11 @@
 ---
 title: 'The Lava Farmer'
-author: Sara Rogers
+author: Sara Lufrano
 date: 2015-07-01
 edition: 1
 order: 1
 synopsis: 'A solitary woman dedicated to her labor-intensive life near a volcano encounters an unexpected visitor.'
+summary: 'Anna, a solitary woman numbed by her labor-intensive life near a volcano, meets an unexpected visitor named Miguel who may bring back her smile.'
 ---
 
 Her hands were never pretty and she never cared for them to be. Even with such tough skin her fingers were still slender. In gloves they would be the regular hands of a young woman with an average face.

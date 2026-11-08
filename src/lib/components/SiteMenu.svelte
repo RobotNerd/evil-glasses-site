@@ -2,15 +2,13 @@
 	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/state';
 	import { onMount, tick } from 'svelte';
-	import Badge from './Badge.svelte';
-	import Logo from './Logo.svelte';
 	import { isCurrent, menuLinks, sectionLinks } from './menu-links';
 	import { parentPage } from './parent-page';
 
-	// The landing page has no bar: the button floats in the top-right corner.
+	// The landing page has no bar and no menu.
 	const landing = $derived(page.url.pathname === '/');
 	let open = $state(false);
-	// Until the page hydrates the button is a link to /menu, which works without JavaScript.
+	// The hamburger needs JavaScript, so it only exists once the page hydrates.
 	let hydrated = $state(false);
 	let root: HTMLElement | undefined = $state();
 	let button: HTMLButtonElement | undefined = $state();
@@ -55,8 +53,8 @@
 
 <svelte:window onkeydown={onKeydown} onclick={onClick} />
 
-<div class="menu" class:floating={landing} class:bar={!landing} bind:this={root}>
-	{#if !landing}
+{#if !landing}
+	<div class="menu bar" bind:this={root}>
 		<!-- Without JavaScript this is a plain link to the parent page. -->
 		<a class="back" href={parentPage(page.url.pathname)} aria-label="Back" onclick={goBack}>
 			<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
@@ -84,51 +82,48 @@
 				{/each}
 			</ul>
 		</nav>
-	{/if}
-	<div class="trigger">
-		{#if hydrated}
-			<button
-				type="button"
-				class="menu-button"
-				aria-label="Menu"
-				aria-expanded={open}
-				aria-controls="site-menu"
-				bind:this={button}
-				onclick={toggle}
-			>
-				<Badge><Logo width={44} /></Badge>
-			</button>
-		{:else}
-			<a class="menu-button" href="/menu" aria-label="Menu">
-				<Badge><Logo width={44} /></Badge>
-			</a>
-		{/if}
-		<nav id="site-menu" aria-label="Main" hidden={!open}>
-			<ul>
-				{#each menuLinks as link, index (link.href)}
-					{#if index === 5}<li class="divider section-item" role="separator"></li>{/if}
-					<li class:section-item={index < 5}>
-						<a
-							href={link.href}
-							class:display={link.display}
-							aria-current={isCurrent(link.href, page.url.pathname) ? 'page' : undefined}
-							>{link.label}</a
-						>
-					</li>
-				{/each}
-			</ul>
-		</nav>
+		<div class="trigger">
+			{#if hydrated}
+				<button
+					type="button"
+					class="menu-button"
+					aria-label="Menu"
+					aria-expanded={open}
+					aria-controls="site-menu"
+					bind:this={button}
+					onclick={toggle}
+				>
+					<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+						<path
+							d="M4 6h16M4 12h16M4 18h16"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2.5"
+							stroke-linecap="round"
+						/>
+					</svg>
+				</button>
+			{/if}
+			<nav id="site-menu" aria-label="Main" hidden={!open}>
+				<ul>
+					{#each menuLinks as link, index (link.href)}
+						{#if index === 5}<li class="divider" role="separator"></li>{/if}
+						<li>
+							<a
+								href={link.href}
+								class:display={link.display}
+								aria-current={isCurrent(link.href, page.url.pathname) ? 'page' : undefined}
+								>{link.label}</a
+							>
+						</li>
+					{/each}
+				</ul>
+			</nav>
+		</div>
 	</div>
-</div>
+{/if}
 
 <style>
-	.menu.floating {
-		position: fixed;
-		z-index: 10;
-		top: calc(var(--space-3) + env(safe-area-inset-top));
-		right: calc(var(--space-3) + env(safe-area-inset-right));
-	}
-
 	/* The bar sticks to the top. Its opaque background hides text scrolling under it. */
 	.menu.bar {
 		position: sticky;
@@ -140,7 +135,7 @@
 		min-height: 4rem;
 		padding: var(--space-2) var(--space-3);
 		padding-top: calc(var(--space-2) + env(safe-area-inset-top));
-		background: var(--paper);
+		background: var(--bar);
 		border-bottom: 1px solid var(--line);
 	}
 
@@ -209,36 +204,27 @@
 			display: block;
 		}
 
-		/* The bar carries the section links, so the popup keeps only About and Legal. */
-		.bar .section-item {
+		/* The bar carries the section links and the footer carries About and Legal. */
+		.trigger {
 			display: none;
 		}
 	}
 
 	.menu-button {
 		display: inline-flex;
-		min-width: 3.75rem;
-		min-height: 2.75rem;
+		align-items: center;
+		justify-content: center;
+		width: 2.75rem;
+		height: 2.75rem;
 		padding: 0;
 		border: 0;
-		border-radius: 0.75rem;
 		background: none;
+		color: var(--ink);
 		cursor: pointer;
-		/* A soft drop shadow and a 2px white ring lift the button off busy images. */
-		box-shadow:
-			0 0 0 2px #fff,
-			0 0.25rem 0.75rem rgb(0 0 0 / 0.3);
-		transition: transform 140ms ease-out;
 	}
 
-	@media (hover: hover) {
-		.menu-button:hover {
-			transform: scale(1.06);
-		}
-	}
-
-	.menu-button :global(.badge) {
-		flex: 1;
+	.menu-button:hover {
+		color: var(--accent);
 	}
 
 	.menu-button:focus-visible,

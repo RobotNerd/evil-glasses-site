@@ -9,11 +9,11 @@ We are writers and game developers an Evil Glasses is our label. Find out about 
 
 ## Our Staff
 
-![Sara Rogers](sara.jpg)
+![Sara Lufrano](sara.jpg)
 
-### Sara Rogers
+### Sara Lufrano
 
-Sara lives in Seattle with her family and adopted pets. She enjoys going to festivals, conventions, training her dog, and traveling.
+Sara lives in Seattle with her family and adopted pets. She enjoys going to festivals, conventions, training her dog, and traveling. She writes her books as Sara Rogers.
 
 ![Marshall Bowles](marshall.jpg)
 

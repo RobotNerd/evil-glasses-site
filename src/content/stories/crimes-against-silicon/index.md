@@ -5,6 +5,7 @@ date: 2016-10-01
 edition: 6
 order: 1
 synopsis: "In a world where AI justice reigns supreme, a lawyer's quest for the perfect life score collides with humanity's stark reality when he's tasked to defend the very creator of the omnipotent AI."
+summary: "Gary, a defense lawyer chasing a five-million life score, is tasked with defending the creator of the AI that rules justice, and his ambition collides with the system's cruelty."
 ---
 
 Gary leaned over and whispered in the blonde girl's ear. "Your best bet is to plead guilty. Worst case you'll get ten years in a VR prison, and those aren't so bad. They'll give you an AI therapist to help you cope."

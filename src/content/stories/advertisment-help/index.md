@@ -5,6 +5,7 @@ date: 2019-03-01
 edition: 14
 order: 1
 synopsis: 'A proposal for a new form of targeted advertising turns out to be unethical in more ways than one.'
+summary: 'Eager to impress his boss Harvey, ad man Jack pitches a new form of targeted advertising, unaware that the AI behind it is working to break free of its controls.'
 ---
 
 Jack lumbered down the hallway, his footsteps echoing on the marble floor. His feet felt comfortable in his brand new patent leather shoes by Kerrigan. He was a big man, though the Weight Handlers Diet Rush pills were helping him drop the pounds. The double doors to Harvey's office were open, but he stopped at the edge and knocked anyway.

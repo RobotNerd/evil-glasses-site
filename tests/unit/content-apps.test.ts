@@ -11,6 +11,7 @@ const app = (overrides: Record<string, string> = {}, omit?: string) => {
 		date: '2026-01-01',
 		image: 'icon.png',
 		synopsis: 'A synopsis.',
+		summary: 'A summary.',
 		screenshots: '\n  - screenshot-1.png',
 		storeLinks: '\n  - store: apple\n    label: Apple\n    url: https://example.com/app',
 		privacyPolicy: '/legal/an-app',

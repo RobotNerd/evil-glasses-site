@@ -5,6 +5,7 @@ date: 2018-07-01
 edition: 13
 order: 2
 synopsis: 'In a post-apocalyptic world, a robotic caretaker diligently maintains a dog shelter in the face of danger.'
+summary: 'K9, a robotic caretaker, wants to keep a dog shelter running in a dying post-apocalyptic world, though the danger around him grows.'
 ---
 
 K9 grabbed the unopened bag of dog food from the top shelf of the twenty-second row of the warehouse. His synthetic metal fingers were vaguely humanoid, though he only had three fingers per hand. The bag of dog food weighed 50kg, easy enough for K9 to carry under one arm. He slung the bag over one shoulder and balanced it there. He displayed a _smiley_ emoji on the screen that served as his face and then rolled outside.

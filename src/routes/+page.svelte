@@ -1,22 +1,10 @@
 <script lang="ts">
-	import { afterNavigate } from '$app/navigation';
-	import Badge from '../lib/components/Badge.svelte';
 	import Logo from '../lib/components/Logo.svelte';
 	import SeoHead from '../lib/components/SeoHead.svelte';
+	import SiteFooter from '../lib/components/SiteFooter.svelte';
+	import Slideshow from '../lib/components/Slideshow.svelte';
 
 	let { data } = $props();
-
-	// Quadrant classes, in the same order as the sections: books, stories, games, apps.
-	const quadrants = ['books', 'stories', 'games', 'apps'];
-
-	// The glint plays as the page mounts, which covers back and forward too. Restart it after a
-	// client navigation in case the page was kept alive.
-	afterNavigate(({ type }) => {
-		if (type === 'enter') return;
-		for (const animation of document.querySelector('.landing .glint')?.getAnimations() ?? []) {
-			animation.currentTime = 0;
-		}
-	});
 </script>
 
 <SeoHead
@@ -28,40 +16,25 @@
 <h1 class="visually-hidden">Evil Glasses</h1>
 
 <div class="landing">
-	{#each data.sections as section, index (section.href)}
-		<a class="sec {quadrants[index]}" href={section.href}>
-			<span class="bg">
-				{#if section.image}
-					<enhanced:img
-						src={section.image}
-						alt=""
-						sizes="50vw"
-						fetchpriority={index === 0 ? 'high' : 'low'}
-					/>
-				{/if}
-			</span>
-			<span class="fade"></span>
-			<span class="vig"></span>
-			<span class="t">{section.title}</span>
-		</a>
-	{/each}
-	<span class="line horizontal"></span>
-	<span class="line vertical"></span>
-	<span class="glow"></span>
-	<div class="hub">
-		<Badge size="large" tagline="books, stories, games, and apps">
+	<header class="banner">
+		<div class="logo">
 			<Logo width={200} glint />
-		</Badge>
+		</div>
+	</header>
+	<div class="body">
+		<nav class="links" aria-label="Sections">
+			{#each data.sections as section (section.href)}
+				<a href={section.href}><span class="t">{section.title}</span></a>
+			{/each}
+		</nav>
+		<div class="slot">
+			<Slideshow slides={data.slides} />
+		</div>
 	</div>
+	<SiteFooter />
 </div>
 
 <style>
-	@property --vig {
-		syntax: '<percentage>';
-		inherits: true;
-		initial-value: 30%;
-	}
-
 	.visually-hidden {
 		position: absolute;
 		width: 1px;
@@ -78,180 +51,105 @@
 		inset: 0;
 		height: 100dvh;
 		overflow: hidden;
-		container-type: inline-size;
-		isolation: isolate;
+		display: grid;
+		grid-template-rows: auto minmax(0, 1fr) auto;
 		background: var(--paper);
 	}
 
-	/*
-	 * Each section is the full screen, cut to its quadrant by a clip-path polygon, so the
-	 * motion task can grow one polygon to the whole screen. Its layers sit in the quadrant box
-	 * given by --top, --right, --bottom and --left.
-	 */
-	.sec {
-		--vig: 30%;
-		--top: 0%;
-		--right: 0%;
-		--bottom: 0%;
-		--left: 0%;
-		position: absolute;
-		inset: 0;
-		display: block;
-		overflow: hidden;
-		color: var(--ink);
-		text-decoration: none;
-		transition: --vig 300ms ease;
+	/* A full-width banner, taller than the other pages' menu bar, with the logo in its middle. */
+	.banner {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: var(--space-4) var(--space-3);
+		padding-top: calc(var(--space-4) + env(safe-area-inset-top));
+		background: var(--banner);
 	}
 
-	.books {
-		--right: 50%;
-		--bottom: 50%;
-		clip-path: polygon(0 0, 50% 0, 50% 50%, 0 50%);
+	.logo {
+		width: 7.25rem;
 	}
-	.stories {
-		--left: 50%;
-		--bottom: 50%;
-		clip-path: polygon(50% 0, 100% 0, 100% 50%, 50% 50%);
-	}
-	.games {
-		--top: 50%;
-		--right: 50%;
-		clip-path: polygon(0 50%, 50% 50%, 50% 100%, 0 100%);
-	}
-	.apps {
-		--top: 50%;
-		--left: 50%;
-		clip-path: polygon(50% 50%, 100% 50%, 100% 100%, 50% 100%);
-	}
-
-	.bg,
-	.fade,
-	.vig {
-		position: absolute;
-		inset: var(--top) var(--right) var(--bottom) var(--left);
-	}
-
-	.bg {
-		filter: saturate(0.85);
-		transform: scale(1.12);
-		transition: transform 300ms ease;
-	}
-	.bg :global(img) {
+	.logo :global(svg) {
 		display: block;
 		width: 100%;
-		height: 100%;
-		object-fit: cover;
+		height: auto;
 	}
 
-	.fade {
-		background: var(--paper);
-		opacity: 0.8;
-		transition: opacity 300ms ease;
+	/* The links and the slide share the other pages' content width. */
+	.body {
+		display: grid;
+		grid-template-columns: auto minmax(0, 1fr);
+		gap: var(--space-4);
+		width: 100%;
+		max-width: var(--content-width);
+		min-height: 0;
+		margin: 0 auto;
+		padding: var(--space-4) var(--space-3);
 	}
 
-	.vig {
-		background: radial-gradient(ellipse at 50% 50%, transparent var(--vig), var(--vignette) 115%);
+	.landing > :global(footer) {
+		width: 100%;
+		margin-top: 0;
 	}
 
-	.t {
-		position: absolute;
-		left: calc((var(--left) + 100% - var(--right)) / 2);
-		top: calc((var(--top) + 100% - var(--bottom)) / 2);
-		transform: translate(-50%, -50%) scale(1);
+	.links {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+	}
+
+	.links a {
+		display: flex;
+		align-items: center;
+		min-height: 2.75rem;
+		color: var(--ink);
+		text-decoration: none;
 		font-family: var(--font-display);
 		font-weight: 800;
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
-		font-size: clamp(1.25rem, 5.4cqi, 3rem);
-		white-space: nowrap;
+		font-size: 1.5rem;
+	}
+	.t {
+		display: inline-block;
+		transform-origin: left center;
 		transition: transform 300ms ease;
 	}
-
-	.sec:hover,
-	.sec:focus-visible {
-		--vig: 50%;
-	}
-	.sec:hover .bg,
-	.sec:focus-visible .bg {
-		transform: scale(1);
-	}
-	.sec:hover .fade,
-	.sec:focus-visible .fade {
-		opacity: 0.6;
-	}
-	.sec:hover .t,
-	.sec:focus-visible .t {
-		transform: translate(-50%, -50%) scale(1.12);
-	}
-	.sec:focus-visible {
+	.links a:focus-visible {
 		outline: none;
 	}
-	.sec:focus-visible .t {
+	.links a:focus-visible .t {
 		text-decoration: underline;
 		text-decoration-thickness: 3px;
 		text-underline-offset: 6px;
 	}
 
-	.line {
-		position: absolute;
-		background: var(--ink);
-		opacity: 0.75;
-		pointer-events: none;
-	}
-	.horizontal {
-		left: 0;
-		right: 0;
-		top: calc(50% - 0.5px);
-		height: 1px;
-	}
-	.vertical {
-		top: 0;
-		bottom: 0;
-		left: calc(50% - 0.5px);
-		width: 1px;
+	.slot {
+		display: flex;
+		flex-direction: column;
+		min-height: 0;
 	}
 
-	.hub {
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		transform: translate(-50%, -50%);
-		width: clamp(13rem, 24vw, 22rem);
-		pointer-events: none;
-	}
-
-	/* A soft dark pool behind the badge that darkens the section images near the center. */
-	.glow {
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		width: calc(clamp(13rem, 24vw, 22rem) * 2);
-		aspect-ratio: 1;
-		transform: translate(-50%, -50%);
-		border-radius: 50%;
-		background: radial-gradient(
-			circle closest-side,
-			rgb(0 0 0 / 0.6) 0%,
-			rgb(0 0 0 / 0.45) 55%,
-			transparent 100%
-		);
-		pointer-events: none;
-	}
-
-	@media (prefers-color-scheme: dark) {
-		.fade {
-			opacity: 0.78;
+	@media (min-width: 48rem) {
+		/* Half again as big as on a phone. */
+		.logo {
+			width: clamp(10.75rem, 19vw, 15.5rem);
 		}
-		.sec:hover .fade,
-		.sec:focus-visible .fade {
-			opacity: 0.56;
+		.body {
+			grid-template-columns: 14rem minmax(0, 1fr);
+			gap: var(--space-5);
+			padding-block: var(--space-5);
+		}
+		.links a {
+			font-size: clamp(2rem, 4vw, 3rem);
+		}
+		.links a:hover .t,
+		.links a:focus-visible .t {
+			transform: scale(1.12);
 		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.sec,
-		.bg,
-		.fade,
 		.t {
 			transition: none;
 		}

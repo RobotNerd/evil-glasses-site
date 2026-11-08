@@ -5,6 +5,7 @@ date: 2018-04-01
 edition: 12
 order: 2
 synopsis: 'Two men struggle with the meaning of their lives while working a grueling job creating a firebreak.'
+summary: 'Mason, a young man working a grueling firebreak job beside the stoic Earl, believes there is more to life than Greenville but cannot say what matters to him.'
 ---
 
 Mason dropped the shovel onto the dry, rocky ground. He leaned back against the truck beside Earl. "You don't want to travel through Europe?" Mason said. "Everybody wants to do that."

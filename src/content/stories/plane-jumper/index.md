@@ -5,6 +5,7 @@ date: 2015-10-01
 edition: 2
 order: 1
 synopsis: 'A young boy inherits a supernatural ability and must learn to use his unique power.'
+summary: 'Donald, born with a rare, vanishing supernatural gift that his grandmother told him to keep secret, must learn to use his unique power.'
 ---
 
 Donald was born on a Sunday in the summer. His parents had planned it well. There was no mad rush to the hospital. The epidural came right on time. His mother went through very little pain. Baby Donald popped out into the waiting arms of the doctor. A normal, easy birth to what seemed to be a normal, healthy boy.

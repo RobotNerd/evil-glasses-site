@@ -14,5 +14,5 @@ test('/about shows the old text with the new name and both photos', async ({ pag
 		.evaluateAll((imgs) => imgs.map((img) => (img as HTMLImageElement).alt));
 	expect(alts).toHaveLength(2);
 	expect(alts.some((alt) => alt.includes('Marshall'))).toBe(true);
-	expect(alts.some((alt) => alt.includes('Sara'))).toBe(true);
+	expect(alts.some((alt) => alt === 'Sara Lufrano')).toBe(true);
 });

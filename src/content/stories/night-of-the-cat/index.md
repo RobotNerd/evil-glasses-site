@@ -5,6 +5,7 @@ date: 2017-07-01
 edition: 9
 order: 2
 synopsis: 'A night of cat-sitting goes wrong.'
+summary: 'Ned, a bartender eager to win over Carmen, sees a night of cat-sitting go wrong and turn him into the one thing he hates, a werecat.'
 ---
 
 Ned parked his 2005 Pontiac Grand Am in a tight space in front of the apartment complex. It wasn't a sweet ride, but it was the best he could afford with his paycheck. Bartending was supposed to pay well, but the only job Ned could land was at the shittiest country-western dive in town. The only good thing about the place was that he got to stare at Carmen's sweet ass all day.

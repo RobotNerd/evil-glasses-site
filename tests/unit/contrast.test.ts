@@ -28,7 +28,9 @@ const pairs: [string, string][] = [
 	['--ink', '--paper'],
 	['--muted', '--paper'],
 	['--accent', '--paper'],
-	['--badge-ink', '--badge']
+	['--ink', '--bar'],
+	['--muted', '--bar'],
+	['--accent', '--bar']
 ];
 
 for (const [mode, block] of [
@@ -40,3 +42,19 @@ for (const [mode, block] of [
 		expect(contrast(pick(text), pick(background))).toBeGreaterThanOrEqual(4.5);
 	});
 }
+
+test('dark paper is a warm gray of low luminance', () => {
+	const paper = hex(darkBlock, '--paper')!;
+	const [r, , b] = [1, 3, 5].map((i) => parseInt(paper.slice(i, i + 2), 16));
+	expect(luminance(paper)).toBeGreaterThanOrEqual(0.03);
+	expect(luminance(paper)).toBeLessThanOrEqual(0.06);
+	expect(r).toBeGreaterThanOrEqual(b);
+});
+
+test.each([
+	['light', lightBlock],
+	['dark', darkBlock]
+] as const)('%s: the bar is darker than the paper', (_mode, block) => {
+	const pick = (name: string) => hex(block, name) ?? hex(lightBlock, name)!;
+	expect(luminance(pick('--bar'))).toBeLessThan(luminance(pick('--paper')));
+});

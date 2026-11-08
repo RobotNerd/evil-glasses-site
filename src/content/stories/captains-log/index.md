@@ -1,10 +1,11 @@
 ---
 title: "Captain's Log"
-author: Sara Rogers
+author: Sara Lufrano
 date: 2017-01-01
 edition: 7
 order: 1
 synopsis: 'Embark on a thrilling cosmic journey where an unexpected encounter with sentient matter propels an explorer fleet starship into a high- stakes battle.'
+summary: 'Captain Amber Paisley must protect her crew after a sentient cloud of matter seeps into her ship, pulling her explorer fleet starship into a high-stakes battle.'
 ---
 
 Sol System date 2405.16.6.3\

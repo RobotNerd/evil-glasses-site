@@ -1,10 +1,11 @@
 ---
 title: 'The Bad Comic, Episode 2'
-author: Sara Rogers
+author: Sara Lufrano
 date: 2017-07-01
 edition: 9
 order: 1
 synopsis: 'An exploration of failed aspirations, self-doubt, and the bittersweet humor found within the disappointments of everyday life of a standup comic.'
+summary: 'A comic who has run dry of jokes while getting over Rhett wants to be funny again, but self-doubt keeps getting in her way.'
 ---
 
 Write a stupid joke. Be funny. Say something clever. At least make fun of someone for fuck's sake. No? Why the hell not? Just make fun of that girl's leggings. They are ugly. Say something like “I hope she didn't pay for those.” I know it isn't funny. Jesus Christ. But it's something. Get over yourself and say something.

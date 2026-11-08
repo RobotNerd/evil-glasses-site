@@ -7,7 +7,7 @@
 
 <SeoHead
 	title="Stories"
-	description="Short stories by Sara Rogers, Marshall Bowles and friends."
+	description="Short stories by Sara Lufrano, Marshall Bowles and friends."
 	path="/stories"
 />
 

@@ -1,10 +1,11 @@
 ---
 title: 'Glasswood Chest'
-author: Sara Rogers
+author: Sara Lufrano
 date: 2018-01-01
 edition: 11
 order: 1
 synopsis: 'A tale of loss and redemption, where love lives in every grain of wood and in the heart of a man finding his way back to life.'
+summary: 'Nick, a woodworker grieving the woman who wanted a glasswood chest of drawers, shuts himself in his shop until his young nephew Ashton draws him back toward life.'
 ---
 
 Nick stood at his workbench and ran his hand over the glasswood board looking for catches that needed to be sanded. After he was done he wiped the board down with a damp cloth revealing its foggy grey and clear layers.

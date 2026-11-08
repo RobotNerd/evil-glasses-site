@@ -5,6 +5,7 @@ date: 2016-04-01
 edition: 4
 order: 1
 synopsis: 'An adult man catfishes his father to find evidence of adultery.'
+summary: 'When his sister says their father is cheating on their mother, John catfishes him online to find the evidence, though a man with the personality of a rock seems an unlikely cheat.'
 ---
 
 "Dad is cheating on Mom," Amanda said in a whisper. The sun was not up yet. She leaned out through the front door of the house, shivering in the cold morning air. She held her jacket closed with one hand.

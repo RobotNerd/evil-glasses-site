@@ -5,6 +5,7 @@ date: 2018-01-01
 edition: 11
 order: 2
 synopsis: 'A journey of souls, transcending time and space, as they dance on the edge of eternity.'
+summary: 'A disembodied consciousness drifting in darkness is drawn to glowing points of light that hold the final moments of the dying, and cannot stop moving toward the next one.'
 ---
 
 You float in the black soup. You have no body, only your eyes, your consciousness, suspended on the metaphysical plane. Small dots of glowing light surround you in all directions, millions, billions, too many to imagine. You feel the weight of them and it makes you claustrophobic.

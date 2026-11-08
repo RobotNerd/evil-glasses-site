@@ -25,6 +25,7 @@ The Content section of `docs/guidelines/architecture.md` is the only field refer
 
 2. Ask for each required field of that type, and for any optional field the developer wants. Ask for the image paths and, for a story, the story text.
    If a required field is missing from the request, ask the developer for it. Never invent a placeholder value.
+   A `book`, `game`, `app` and `story` each need a `summary`. Ask for it, or offer a draft from the synopsis and text for the developer to approve. Write it as a Hollywood logline: one sentence, up to 200 characters, ending in a period, that says who the main character is, what they want, and what stands in the way. Base it on what the content says and do not invent plot. Example: "When a shy gamer is paired with her rival for a tournament, she must win the prize without losing her heart."
 
 3. Choose the slug: the title in lowercase, words joined by hyphens, with apostrophes and other punctuation removed. An edition's folder is `edition-NN`, where `NN` is the number padded to two digits. If the folder exists, stop and report it.
 
@@ -40,7 +41,7 @@ The Content section of `docs/guidelines/architecture.md` is the only field refer
    A story has no image of its own. Its cover is its edition's cover, so an image given with a story goes on the edition.
    A story's date is its edition's date. Give the story an order that is the next number after the highest one in its edition, starting at 1 for a new edition.
 
-7. Names: write an author's name as the developer gives it. Do not change one name to another. The site uses "Sara Rogers" on books and stories, "Marshall Bowles" on his, and "Sara Lufrano" on the What Size Will They Be? app. If the developer gives a different spelling of a name already on the site, ask which to use.
+7. Names: write an author's name as the developer gives it. Do not change one name to another. The site uses "Sara Rogers" on books, "Sara Lufrano" on stories, "Marshall Bowles" on his, and "Sara Lufrano" on the What Size Will They Be? app. If the developer gives a different spelling of a name already on the site, ask which to use.
 
 8. Run the checks. Fix the file and run them again until both pass.
 

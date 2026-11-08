@@ -34,40 +34,38 @@ Each entry is a folder named for its slug, holding an `index.md` and any images 
 
 Every page load is a `+page.server.ts` file, so the parsers stay out of the client bundle.
 
-Set `hero: true` on one book, story, game or app to choose its image for the landing page (see Presentation). A story's image is its edition's cover, and an app's is its first screenshot.
-
 Dates are written `YYYY-MM-DD`. A store link is an object with the fields `store` (one of `amazon`, `apple`, `google-play`, `kindle`, `smashwords`), `label` and `url`, all required.
 
 ### apps
 
 An app has every game field, plus the ones below. Its `subtitle` becomes optional.
 
-| Field           | Type                                   | Required |
-| --------------- | -------------------------------------- | -------- |
-| `author`        | string                                 | yes      |
-| `date`          | date                                   | yes      |
-| `hero`          | `true`                                 | no       |
-| `image`         | image file name                        | yes      |
-| `privacyPolicy` | site path                              | yes      |
-| `screenshots`   | list of image file names, at least one | yes      |
-| `storeLinks`    | list of store links, at least one      | yes      |
-| `subtitle`      | string                                 | no       |
-| `synopsis`      | string                                 | yes      |
-| `title`         | string                                 | yes      |
+| Field           | Type                                       | Required |
+| --------------- | ------------------------------------------ | -------- |
+| `author`        | string                                     | yes      |
+| `date`          | date                                       | yes      |
+| `image`         | image file name                            | yes      |
+| `privacyPolicy` | site path                                  | yes      |
+| `screenshots`   | list of image file names, at least one     | yes      |
+| `storeLinks`    | list of store links, at least one          | yes      |
+| `subtitle`      | string                                     | no       |
+| `synopsis`      | string                                     | yes      |
+| `summary`       | string, one sentence, up to 200 characters | yes      |
+| `title`         | string                                     | yes      |
 
 ### books
 
-| Field        | Type                              | Required |
-| ------------ | --------------------------------- | -------- |
-| `author`     | string                            | yes      |
-| `authorBio`  | string                            | yes      |
-| `cover`      | image file name                   | yes      |
-| `date`       | date                              | yes      |
-| `hero`       | `true`                            | no       |
-| `storeLinks` | list of store links, at least one | yes      |
-| `subtitle`   | string                            | yes      |
-| `synopsis`   | string                            | yes      |
-| `title`      | string                            | yes      |
+| Field        | Type                                       | Required |
+| ------------ | ------------------------------------------ | -------- |
+| `author`     | string                                     | yes      |
+| `authorBio`  | string                                     | yes      |
+| `cover`      | image file name                            | yes      |
+| `date`       | date                                       | yes      |
+| `storeLinks` | list of store links, at least one          | yes      |
+| `subtitle`   | string                                     | yes      |
+| `synopsis`   | string                                     | yes      |
+| `summary`    | string, one sentence, up to 200 characters | yes      |
+| `title`      | string                                     | yes      |
 
 ### editions
 
@@ -79,16 +77,16 @@ An app has every game field, plus the ones below. Its `subtitle` becomes optiona
 
 ### games
 
-| Field           | Type                              | Required |
-| --------------- | --------------------------------- | -------- |
-| `date`          | date                              | yes      |
-| `hero`          | `true`                            | no       |
-| `image`         | image file name                   | yes      |
-| `privacyPolicy` | site path such as `/legal/my-app` | yes      |
-| `storeLinks`    | list of store links, at least one | yes      |
-| `subtitle`      | string                            | yes      |
-| `synopsis`      | string                            | yes      |
-| `title`         | string                            | yes      |
+| Field           | Type                                       | Required |
+| --------------- | ------------------------------------------ | -------- |
+| `date`          | date                                       | yes      |
+| `image`         | image file name                            | yes      |
+| `privacyPolicy` | site path such as `/legal/my-app`          | yes      |
+| `storeLinks`    | list of store links, at least one          | yes      |
+| `subtitle`      | string                                     | yes      |
+| `synopsis`      | string                                     | yes      |
+| `summary`       | string, one sentence, up to 200 characters | yes      |
+| `title`         | string                                     | yes      |
 
 ### legal
 
@@ -109,15 +107,15 @@ An app has every game field, plus the ones below. Its `subtitle` becomes optiona
 
 A story belongs to the edition whose `number` equals its `edition`. A story with no `order` sorts after those with one, by title.
 
-| Field      | Type                  | Required |
-| ---------- | --------------------- | -------- |
-| `author`   | string                | yes      |
-| `date`     | date                  | yes      |
-| `edition`  | positive whole number | yes      |
-| `hero`     | `true`                | no       |
-| `order`    | positive whole number | no       |
-| `synopsis` | string                | yes      |
-| `title`    | string                | yes      |
+| Field      | Type                                       | Required |
+| ---------- | ------------------------------------------ | -------- |
+| `author`   | string                                     | yes      |
+| `date`     | date                                       | yes      |
+| `edition`  | positive whole number                      | yes      |
+| `order`    | positive whole number                      | no       |
+| `synopsis` | string                                     | yes      |
+| `summary`  | string, one sentence, up to 200 characters | yes      |
+| `title`    | string                                     | yes      |
 
 ## Presentation
 
@@ -130,18 +128,16 @@ Tokens are custom properties on `:root`. The dark values come from `prefers-colo
 Colors, light and dark:
 
 - `--accent`: links and highlights
-- `--fade`: the wash over the landing images
+- `--banner`: the landing page banner, a blue lighter than the accent in light mode and darker in dark mode
+- `--bar`: the background of the top bar
 - `--ink`: text
 - `--line`: borders
 - `--muted`: secondary text
 - `--paper`: the page background
 - `--paper-2`: raised surfaces
-- `--vignette`: the dark edge of the landing images
 
 Colors that are the same in both modes:
 
-- `--badge`: the badge blue
-- `--badge-ink`: the badge text and outline
 - `--lens`: the logo lens fill
 
 Older color names, aliases of the colors above:
@@ -156,6 +152,7 @@ Older color names, aliases of the colors above:
 Fonts, spacing and layout:
 
 - `--content-width`: the page column width
+- `--fade-duration`: the length of the landing page fade, 300 ms; `FADE_MS` in `src/lib/slideshow.ts` must match it
 - `--font-body`: the system font stack
 - `--font-display`: Big Shoulders Display, with a sized fallback
 - `--font-serif`: Literata, with a sized fallback
@@ -166,33 +163,31 @@ Fonts, spacing and layout:
 ### Fonts
 
 - **Big Shoulders Display** at weight 800 sets `h1`, `h2`, `h3` and the titles in the cover grids, in capitals.
-- **Literata** (regular, weights 400 to 700, and italic) sets the badge tagline and the story text.
+- **Literata** (regular, weights 400 to 700, and italic) sets the story text and the slide summary.
 
 Both are served from `src/lib/assets/fonts/` as `woff2` files, with `font-display: swap`. Each has a local fallback face sized to match it, so the swap moves the layout less. The layout preloads the display font. Body text uses the system font stack.
 
 ### Components
 
 - **`Logo`** draws the glasses as inline SVG. `width` sets its size, `label` gives it an accessible name (without it the logo is hidden from assistive tech), and `glint` plays a light streak across the lenses once.
-- **`Badge`** is the blue rounded rectangle the logo sits on, the same in light and dark. `size="large"` stacks a `tagline` under the logo, as on the landing page, where a soft dark glow made in CSS sits behind it.
-- **`SiteMenu`** is a sticky top bar on every page except `/`. At 768 px and wider the section links are centered; below that the site name shows. The menu button is at the top right. The back arrow at the left uses the browser history after an in-site navigation, and otherwise links to the parent page: the list for a page under a section, and `/` for any other. On `/` only the floating menu button shows.
+- **`SiteMenu`** is a sticky top bar on every page except `/`. At 768 px and wider the section links (Home, Books, Stories, Games and Apps) are centered and there is no menu control. Below that the site name shows and a hamburger button at the top right opens a menu of those links plus About and Legal. The hamburger needs JavaScript, so it appears once the page hydrates. The back arrow at the left uses the browser history after an in-site navigation, and otherwise links to the parent page: the list for a page under a section, and `/` for any other.
+- **`SiteFooter`** shows the About and Legal links and the copyright on every page. The landing page renders it in its own layout.
+- **`Slideshow`** cycles the landing page through its slides. It shows the newest slide before JavaScript runs, then shuffles the slides and fades between them. Each slide shows for `SLIDE_MS` (5 s), including a fade of `FADE_MS`. It starts paused when the visitor prefers reduced motion, pauses on hover and focus, and has a Pause and Play icon button on the image's bottom right corner once the page hydrates. With a pointer that hovers, the button shows only while the pointer is on the slideshow.
+- **`Slide`** is one slide: the image, the title linking to the item, the date and, at 768 px and wider, the `summary`.
 
 ### View transitions
 
 The layout starts a view transition on each in-site navigation, unless the visitor prefers reduced motion or the browser lacks support. `data-vt` on the root element picks the kind:
 
-- `fade`: between `/` and a section list, a 300 ms opacity fade both ways with no movement
+- `fade`: between `/` and a section list, an opacity fade of `--fade-duration` (300 ms) both ways with no movement
 - `cover`: between a books, games or apps list and one of its pages, 250 ms, where the cover moves into place
 - no value: every other navigation, 180 ms
 
 The only `view-transition-name` the site sets is `cover-<slug>`, on the cover or icon of a book, game or app, on both its list and its page. `<slug>` is the entry's slug. The page itself uses the default `root` name.
 
-### The hero field
-
-`hero: true` marks the item whose image fronts its type on the landing page. A type with no flagged item uses its newest by `date`. Two flagged items in one type fail the build with an error naming both files. `pickHero` in `src/lib/content/hero.ts` applies the rule.
-
 ## URLs and redirects
 
-- `/`: the landing page, four sections linking to the lists
+- `/`: the landing page: a full-width blue banner with the logo, then, at the content width and at the top, a link to each of the four sections, and the slideshow with one slide per book, story, game and app, newest first. `listSlides` in `src/lib/content/landing.ts` builds the slides. A story's slide shows its edition's cover, and an app's shows its first screenshot.
 - `/about`: the about page
 - `/apps` and `/apps/<slug>`: apps
 - `/books` and `/books/<slug>`: books

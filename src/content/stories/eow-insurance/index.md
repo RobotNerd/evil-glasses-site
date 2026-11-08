@@ -5,6 +5,7 @@ date: 2016-01-01
 edition: 3
 order: 1
 synopsis: "In a troll-infested, post-apocalyptic world, an insurance agent grapples with perilous conditions and deceptive policy terms to verify a client's death."
+summary: "In a troll-infested, post-apocalyptic world, End Of World Insurance agent Jax Morris must verify a client's death, but the trolls and deceptive policy terms stand in his way."
 ---
 
 EOW INSURANCE THIS IS AGENT# CDK556. CONRAD.BILL (POLICY# YHG456) KNOWN DWELLING IS OVERRUN BY TROLLS. AREA SURROUNDING THE MAIN DWELLING HAS A NUMBER OF HUMAN REMAINS, EITHER OUT IN THE OPEN, NAILED TO TREES, OR IN TROLL PILES. ONE PILE HAS A HUMAN HEAD THAT STRONGLY RESEMBLES POLICYHOLDER. SENDING IMAGE. STANDING BY FOR RECEIPT CONFIRMATION AND SATISFACTION NOTICE.

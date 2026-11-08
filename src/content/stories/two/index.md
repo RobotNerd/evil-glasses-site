@@ -1,10 +1,11 @@
 ---
 title: 'Two'
-author: Sara Rogers
+author: Sara Lufrano
 date: 2019-03-01
 edition: 14
 order: 2
 synopsis: 'A tale of the complexities of relationships and the pain of letting go.'
+summary: 'A man torn between his girlfriend and a coworker he loves is asked to tell the truth, until the coworker ends it and he is left hiding the pain.'
 ---
 
 I took her hand in mine as we walked away from our office building to get an afternoon cup of coffee.

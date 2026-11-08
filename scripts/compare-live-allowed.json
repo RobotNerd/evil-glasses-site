@@ -12,9 +12,10 @@
 		},
 		{
 			"id": "author-name",
-			"reason": "\"Sara Lufrano\" is now \"Sara Rogers\" on books, stories and the About page.",
+			"reason": "\"Sara Lufrano\" is now \"Sara Rogers\" on books.",
 			"rules": [
 				{
+					"pages": "^/books",
 					"live": ["\\bLufrano\\b"],
 					"local": ["\\bRogers\\b"]
 				}

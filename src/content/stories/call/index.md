@@ -1,10 +1,11 @@
 ---
 title: 'Call'
-author: Sara Rogers
+author: Sara Lufrano
 date: 2016-04-01
 edition: 4
 order: 2
 synopsis: 'A man obsessively contemplates reaching out to his ex while ignoring his current partner.'
+summary: 'Oscar wants to call his ex Anne, whom he still misses, but his girlfriend Holly is right beside him, and he is left trying to get over Anne instead.'
 ---
 
 Oscar stared at his phone while music and people filled the room. Her phone number was there. All he had to do was touch it. Just touch it.

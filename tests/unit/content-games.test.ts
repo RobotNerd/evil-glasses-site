@@ -8,6 +8,7 @@ const game = (omit?: string) => {
 		date: '2023-01-01',
 		image: 'image.png',
 		synopsis: 'A synopsis.',
+		summary: 'A summary.',
 		storeLinks: '\n  - store: apple\n    label: Apple\n    url: https://example.com/game',
 		privacyPolicy: '/legal/a-game'
 	};
