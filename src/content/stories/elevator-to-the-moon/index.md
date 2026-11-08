@@ -1,6 +1,6 @@
 ---
 title: 'Elevator to the Moon'
-author: Sara Rogers
+author: Sara Lufrano
 date: 2016-01-01
 edition: 3
 order: 2

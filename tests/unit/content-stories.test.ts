@@ -13,7 +13,7 @@ const source = (fields: Record<string, string | null>) =>
 
 const storyFields = (overrides: Record<string, string | null> = {}) => ({
 	title: 'A Story',
-	author: 'Sara Rogers',
+	author: 'Sara Lufrano',
 	date: '2015-07-01',
 	edition: '1',
 	synopsis: 'A synopsis.',

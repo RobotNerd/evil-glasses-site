@@ -1,6 +1,6 @@
 ---
 title: 'Moment in Time'
-author: Sara Rogers
+author: Sara Lufrano
 date: 2017-10-01
 edition: 10
 order: 2

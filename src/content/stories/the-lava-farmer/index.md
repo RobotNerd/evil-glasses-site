@@ -1,6 +1,6 @@
 ---
 title: 'The Lava Farmer'
-author: Sara Rogers
+author: Sara Lufrano
 date: 2015-07-01
 edition: 1
 order: 1

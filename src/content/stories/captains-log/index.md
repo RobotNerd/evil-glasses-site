@@ -1,6 +1,6 @@
 ---
 title: "Captain's Log"
-author: Sara Rogers
+author: Sara Lufrano
 date: 2017-01-01
 edition: 7
 order: 1

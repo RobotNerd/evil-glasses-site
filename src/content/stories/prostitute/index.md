@@ -1,6 +1,6 @@
 ---
 title: 'Prostitute'
-author: Sara Rogers
+author: Sara Lufrano
 date: 2018-04-01
 edition: 12
 order: 1

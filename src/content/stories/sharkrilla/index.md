@@ -1,6 +1,6 @@
 ---
 title: 'Sharkrilla'
-author: Sara Rogers
+author: Sara Lufrano
 date: 2015-10-01
 edition: 2
 order: 2

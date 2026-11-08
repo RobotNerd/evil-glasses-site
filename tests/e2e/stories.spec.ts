@@ -40,13 +40,13 @@ const stories = [
 	{
 		slug: 'the-bad-comic-episode-2',
 		title: 'The Bad Comic, Episode 2',
-		author: 'Sara Rogers',
+		author: 'Sara Lufrano',
 		edition: 'Edition 9'
 	},
 	{
 		slug: '12th-ave-north-unit-m',
 		title: '12th Ave North, Unit M',
-		author: 'Sara Rogers',
+		author: 'Sara Lufrano',
 		edition: 'Edition 8'
 	}
 ];

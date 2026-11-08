@@ -1,6 +1,6 @@
 ---
 title: 'The Bad Comic'
-author: Sara Rogers
+author: Sara Lufrano
 date: 2016-10-01
 edition: 6
 order: 2

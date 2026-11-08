@@ -40,7 +40,7 @@ The Content section of `docs/guidelines/architecture.md` is the only field refer
    A story has no image of its own. Its cover is its edition's cover, so an image given with a story goes on the edition.
    A story's date is its edition's date. Give the story an order that is the next number after the highest one in its edition, starting at 1 for a new edition.
 
-7. Names: write an author's name as the developer gives it. Do not change one name to another. The site uses "Sara Rogers" on books and stories, "Marshall Bowles" on his, and "Sara Lufrano" on the What Size Will They Be? app. If the developer gives a different spelling of a name already on the site, ask which to use.
+7. Names: write an author's name as the developer gives it. Do not change one name to another. The site uses "Sara Rogers" on books, "Sara Lufrano" on stories, "Marshall Bowles" on his, and "Sara Lufrano" on the What Size Will They Be? app. If the developer gives a different spelling of a name already on the site, ask which to use.
 
 8. Run the checks. Fix the file and run them again until both pass.
 

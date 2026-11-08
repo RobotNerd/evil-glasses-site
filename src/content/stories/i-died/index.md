@@ -1,6 +1,6 @@
 ---
 title: 'I Died'
-author: Sara Rogers
+author: Sara Lufrano
 date: 2018-07-01
 edition: 13
 order: 1

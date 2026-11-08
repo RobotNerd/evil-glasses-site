@@ -4,7 +4,7 @@ test('a story page shows the cover, the title and the meta line', async ({ page 
 	await page.goto('/stories/the-lava-farmer');
 	await expect(page.locator('img.cover')).toBeVisible();
 	await expect(page.getByRole('heading', { level: 1 })).toHaveText('The Lava Farmer');
-	await expect(page.locator('.meta')).toHaveText(/Sara Rogers · Edition 1 · \d+ min read/);
+	await expect(page.locator('.meta')).toHaveText(/Sara Lufrano · Edition 1 · \d+ min read/);
 });
 
 test('the story body is set like a book page', async ({ page }) => {
@@ -56,4 +56,11 @@ test('the next story link follows the edition order', async ({ page }) => {
 	);
 	await page.goto('/stories/two');
 	await expect(page.getByRole('link', { name: /^Next story/ })).toHaveCount(0);
+});
+
+test('the stories list meta description names Sara Lufrano', async ({ page }) => {
+	await page.goto('/stories');
+	const description = await page.locator('meta[name="description"]').getAttribute('content');
+	expect(description).toContain('Sara Lufrano');
+	expect(description).not.toContain('Sara Rogers');
 });

@@ -1,6 +1,6 @@
 ---
 title: 'Glasswood Chest'
-author: Sara Rogers
+author: Sara Lufrano
 date: 2018-01-01
 edition: 11
 order: 1

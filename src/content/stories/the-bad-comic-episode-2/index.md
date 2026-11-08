@@ -1,6 +1,6 @@
 ---
 title: 'The Bad Comic, Episode 2'
-author: Sara Rogers
+author: Sara Lufrano
 date: 2017-07-01
 edition: 9
 order: 1
