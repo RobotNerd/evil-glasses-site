@@ -34,7 +34,7 @@ export async function checkPage(page: Page, path: string): Promise<string[]> {
 	if (
 		(await page
 			.locator('.menu-button')
-			.filter({ has: page.locator('.badge') })
+			.filter({ has: page.locator('path.frame') })
 			.count()) > 0
 	) {
 		report('found the logo menu button');

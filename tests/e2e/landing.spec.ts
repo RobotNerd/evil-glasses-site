@@ -48,7 +48,7 @@ for (const size of sizes) {
 
 		test('a click on the logo stays on the landing page', async ({ page }) => {
 			await page.goto('/');
-			const box = (await page.locator('.logo .badge').boundingBox())!;
+			const box = (await page.locator('.logo svg').boundingBox())!;
 			await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
 			await expect(page).toHaveURL(/\/$/);
 			expect(await page.locator('.logo a').count()).toBe(0);
@@ -56,10 +56,10 @@ for (const size of sizes) {
 
 		test('the logo is above the links and the slide', async ({ page }) => {
 			await page.goto('/');
-			const logo = (await page.locator('.logo .badge').boundingBox())!;
+			const logo = (await page.locator('.logo svg').boundingBox())!;
 			expect(Math.abs(logo.x + logo.width / 2 - size.width / 2)).toBeLessThanOrEqual(2);
-			await expect(page.locator('.logo .badge svg')).toHaveCount(1);
-			expect((await page.locator('.logo .badge').innerText()).trim()).toBe('');
+			await expect(page.locator('.logo svg')).toHaveCount(1);
+			expect((await page.locator('.logo').innerText()).trim()).toBe('');
 			for (const target of ['.links', '.slide']) {
 				const box = (await page.locator(target).boundingBox())!;
 				expect(box.y).toBeGreaterThanOrEqual(logo.y + logo.height);

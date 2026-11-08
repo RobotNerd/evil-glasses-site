@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Badge from '../lib/components/Badge.svelte';
 	import Logo from '../lib/components/Logo.svelte';
 	import SeoHead from '../lib/components/SeoHead.svelte';
 	import SiteFooter from '../lib/components/SiteFooter.svelte';
@@ -19,9 +18,7 @@
 <div class="landing">
 	<header class="banner">
 		<div class="logo">
-			<Badge size="large">
-				<Logo width={200} glint />
-			</Badge>
+			<Logo width={200} glint />
 		</div>
 	</header>
 	<div class="body">
@@ -66,12 +63,16 @@
 		justify-content: center;
 		padding: var(--space-4) var(--space-3);
 		padding-top: calc(var(--space-4) + env(safe-area-inset-top));
-		background: var(--bar);
-		border-bottom: 1px solid var(--line);
+		background: var(--banner);
 	}
 
 	.logo {
-		width: 9rem;
+		width: 7.25rem;
+	}
+	.logo :global(svg) {
+		display: block;
+		width: 100%;
+		height: auto;
 	}
 
 	/* The links and the slide share the other pages' content width. */
@@ -94,7 +95,6 @@
 	.links {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
 		gap: var(--space-2);
 	}
 
@@ -127,14 +127,13 @@
 	.slot {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
 		min-height: 0;
 	}
 
 	@media (min-width: 48rem) {
 		/* Half again as big as on a phone. */
 		.logo {
-			width: clamp(13.5rem, 24vw, 19.5rem);
+			width: clamp(10.75rem, 19vw, 15.5rem);
 		}
 		.body {
 			grid-template-columns: 14rem minmax(0, 1fr);

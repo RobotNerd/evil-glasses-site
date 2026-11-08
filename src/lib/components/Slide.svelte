@@ -40,7 +40,7 @@
 	.slide {
 		display: grid;
 		grid-template-rows: auto auto;
-		align-content: center;
+		align-content: start;
 		gap: var(--space-2);
 		min-height: 0;
 		height: 100%;
@@ -105,11 +105,8 @@
 		.slide {
 			grid-template-rows: none;
 			grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
-			align-items: center;
+			align-items: start;
 			gap: var(--space-4);
-		}
-		.media {
-			align-items: center;
 		}
 		.image :global(picture),
 		.image :global(img) {

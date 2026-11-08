@@ -30,8 +30,7 @@ const pairs: [string, string][] = [
 	['--accent', '--paper'],
 	['--ink', '--bar'],
 	['--muted', '--bar'],
-	['--accent', '--bar'],
-	['--badge-ink', '--badge']
+	['--accent', '--bar']
 ];
 
 for (const [mode, block] of [

@@ -1,9 +1,9 @@
 import { expect, test } from '@playwright/test';
 import { sitemapUrls, localPath } from './sitemap-urls';
 
-test('the landing badge shows the logo', async ({ page }) => {
+test('the landing banner shows the logo', async ({ page }) => {
 	await page.goto('/');
-	await expect(page.locator('.landing .logo .badge svg')).toBeVisible();
+	await expect(page.locator('.landing .banner .logo svg')).toBeVisible();
 });
 
 test('the favicon files are built with the stated sizes', async ({ request }) => {
