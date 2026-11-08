@@ -42,32 +42,34 @@ Dates are written `YYYY-MM-DD`. A store link is an object with the fields `store
 
 An app has every game field, plus the ones below. Its `subtitle` becomes optional.
 
-| Field           | Type                                   | Required |
-| --------------- | -------------------------------------- | -------- |
-| `author`        | string                                 | yes      |
-| `date`          | date                                   | yes      |
-| `hero`          | `true`                                 | no       |
-| `image`         | image file name                        | yes      |
-| `privacyPolicy` | site path                              | yes      |
-| `screenshots`   | list of image file names, at least one | yes      |
-| `storeLinks`    | list of store links, at least one      | yes      |
-| `subtitle`      | string                                 | no       |
-| `synopsis`      | string                                 | yes      |
-| `title`         | string                                 | yes      |
+| Field           | Type                                       | Required |
+| --------------- | ------------------------------------------ | -------- |
+| `author`        | string                                     | yes      |
+| `date`          | date                                       | yes      |
+| `hero`          | `true`                                     | no       |
+| `image`         | image file name                            | yes      |
+| `privacyPolicy` | site path                                  | yes      |
+| `screenshots`   | list of image file names, at least one     | yes      |
+| `storeLinks`    | list of store links, at least one          | yes      |
+| `subtitle`      | string                                     | no       |
+| `synopsis`      | string                                     | yes      |
+| `summary`       | string, one sentence, up to 200 characters | yes      |
+| `title`         | string                                     | yes      |
 
 ### books
 
-| Field        | Type                              | Required |
-| ------------ | --------------------------------- | -------- |
-| `author`     | string                            | yes      |
-| `authorBio`  | string                            | yes      |
-| `cover`      | image file name                   | yes      |
-| `date`       | date                              | yes      |
-| `hero`       | `true`                            | no       |
-| `storeLinks` | list of store links, at least one | yes      |
-| `subtitle`   | string                            | yes      |
-| `synopsis`   | string                            | yes      |
-| `title`      | string                            | yes      |
+| Field        | Type                                       | Required |
+| ------------ | ------------------------------------------ | -------- |
+| `author`     | string                                     | yes      |
+| `authorBio`  | string                                     | yes      |
+| `cover`      | image file name                            | yes      |
+| `date`       | date                                       | yes      |
+| `hero`       | `true`                                     | no       |
+| `storeLinks` | list of store links, at least one          | yes      |
+| `subtitle`   | string                                     | yes      |
+| `synopsis`   | string                                     | yes      |
+| `summary`    | string, one sentence, up to 200 characters | yes      |
+| `title`      | string                                     | yes      |
 
 ### editions
 
@@ -79,16 +81,17 @@ An app has every game field, plus the ones below. Its `subtitle` becomes optiona
 
 ### games
 
-| Field           | Type                              | Required |
-| --------------- | --------------------------------- | -------- |
-| `date`          | date                              | yes      |
-| `hero`          | `true`                            | no       |
-| `image`         | image file name                   | yes      |
-| `privacyPolicy` | site path such as `/legal/my-app` | yes      |
-| `storeLinks`    | list of store links, at least one | yes      |
-| `subtitle`      | string                            | yes      |
-| `synopsis`      | string                            | yes      |
-| `title`         | string                            | yes      |
+| Field           | Type                                       | Required |
+| --------------- | ------------------------------------------ | -------- |
+| `date`          | date                                       | yes      |
+| `hero`          | `true`                                     | no       |
+| `image`         | image file name                            | yes      |
+| `privacyPolicy` | site path such as `/legal/my-app`          | yes      |
+| `storeLinks`    | list of store links, at least one          | yes      |
+| `subtitle`      | string                                     | yes      |
+| `synopsis`      | string                                     | yes      |
+| `summary`       | string, one sentence, up to 200 characters | yes      |
+| `title`         | string                                     | yes      |
 
 ### legal
 
@@ -109,15 +112,16 @@ An app has every game field, plus the ones below. Its `subtitle` becomes optiona
 
 A story belongs to the edition whose `number` equals its `edition`. A story with no `order` sorts after those with one, by title.
 
-| Field      | Type                  | Required |
-| ---------- | --------------------- | -------- |
-| `author`   | string                | yes      |
-| `date`     | date                  | yes      |
-| `edition`  | positive whole number | yes      |
-| `hero`     | `true`                | no       |
-| `order`    | positive whole number | no       |
-| `synopsis` | string                | yes      |
-| `title`    | string                | yes      |
+| Field      | Type                                       | Required |
+| ---------- | ------------------------------------------ | -------- |
+| `author`   | string                                     | yes      |
+| `date`     | date                                       | yes      |
+| `edition`  | positive whole number                      | yes      |
+| `hero`     | `true`                                     | no       |
+| `order`    | positive whole number                      | no       |
+| `synopsis` | string                                     | yes      |
+| `summary`  | string, one sentence, up to 200 characters | yes      |
+| `title`    | string                                     | yes      |
 
 ## Presentation
 

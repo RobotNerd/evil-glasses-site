@@ -25,6 +25,7 @@ The Content section of `docs/guidelines/architecture.md` is the only field refer
 
 2. Ask for each required field of that type, and for any optional field the developer wants. Ask for the image paths and, for a story, the story text.
    If a required field is missing from the request, ask the developer for it. Never invent a placeholder value.
+   A `book`, `game`, `app` and `story` each need a `summary`. Ask for it, or offer a draft from the synopsis and text for the developer to approve. Write it as a Hollywood logline: one sentence, up to 200 characters, ending in a period, that says who the main character is, what they want, and what stands in the way. Base it on what the content says and do not invent plot. Example: "When a shy gamer is paired with her rival for a tournament, she must win the prize without losing her heart."
 
 3. Choose the slug: the title in lowercase, words joined by hyphens, with apostrophes and other punctuation removed. An edition's folder is `edition-NN`, where `NN` is the number padded to two digits. If the folder exists, stop and report it.
 

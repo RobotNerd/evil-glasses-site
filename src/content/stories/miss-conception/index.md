@@ -5,6 +5,7 @@ date: 2017-01-01
 edition: 7
 order: 2
 synopsis: 'A clash of reality and gaming where the stakes are more personal than anyone could have anticipated - a battle for bodily autonomy in a world that demands the unthinkable.'
+summary: "Armed and cornered in a standoff with police who won't damage the goods, Henry fights for bodily autonomy in a world that demands the unthinkable."
 ---
 
 Henry pointed his laser pistol over his head and blindly fired a pair of warning shots out of the broken windows of his apartment. He yelled loud enough to make sure the cops on the street heard him. "Just turn around and leave!"

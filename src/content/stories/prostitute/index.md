@@ -5,6 +5,7 @@ date: 2018-04-01
 edition: 12
 order: 1
 synopsis: 'A high-ranking executive tired of constant agreement from his peers seeks enlightenment from a dominatrix.'
+summary: 'Clyde, an executive tired of his peers always agreeing with him, wants someone to finally tell him no, and seeks enlightenment from a dominatrix.'
 ---
 
 Clyde watched Andy give the presentation. Clyde thought about Andy's ugly downturned mouth, his eyes that bulged whenever someone who had a title talked, that his jacket didn't sit squarely on his right shoulder.

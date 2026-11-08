@@ -5,6 +5,7 @@ date: 2018-07-01
 edition: 13
 order: 1
 synopsis: 'A poignant exploration of eternal love and the heartrending journey of a ghost clinging to the world of the living.'
+summary: 'A cyclist killed by a truck lingers as a ghost beside the soulmate left behind, wanting to stay with him but unable to touch him or feel anything.'
 ---
 
 I'm dead, he isn't. I know how it happened and everything, a cycling accident. A FedUP truck hit me.

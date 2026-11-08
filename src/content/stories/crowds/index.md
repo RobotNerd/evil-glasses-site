@@ -5,6 +5,7 @@ date: 2017-04-01
 edition: 8
 order: 1
 synopsis: 'A tale of distorted reality where human bonds and rock concerts take a sinister twist, where crowds are to be feared.'
+summary: 'Haunted by the loss of his girlfriend Michelle, a man who promised never to leave her side at concerts must face the creature that the crowd becomes.'
 ---
 
 Concerts. Michelle and I loved going to them. The swaying of human bodies jammed together trying to get as close as possible to the stage, everyone hoping to capture some of the magic made by the musicians. Michelle and I were always there, side-by-side, our sweat and breath mingling with the rest of the people around us. The music itself didn't matter: country, rock, pop, metal. It was about the people around us and the energy we all created together.

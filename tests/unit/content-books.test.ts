@@ -9,6 +9,7 @@ const frontmatter = (overrides: Record<string, string | null> = {}) => {
 		date: '2022-01-01',
 		cover: 'cover.jpg',
 		synopsis: 'A synopsis.',
+		summary: 'A summary.',
 		authorBio: 'A bio.',
 		storeLinks: '\n  - store: amazon\n    label: Paperback\n    url: https://example.com/book',
 		...overrides

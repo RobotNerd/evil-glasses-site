@@ -5,6 +5,7 @@ date: 2017-10-01
 edition: 10
 order: 1
 synopsis: 'A woman must travel back in time to stop a bio-terrorist.'
+summary: 'A woman sent back in time to stop a bio-terrorist wakes up as a bear in the new timeline and begs strangers online to help her undo it.'
 ---
 
 Sorry if there are typos. It's hard to use a laptop now that my hands aren't human anymore. I'm recounting my story for any of you out there who don't remember the previous timeline. Maybe one of you knows how to fix things.

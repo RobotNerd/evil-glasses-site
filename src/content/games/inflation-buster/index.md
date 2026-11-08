@@ -4,6 +4,7 @@ subtitle: Destroy the economy to save it?
 date: 2023-12-17
 image: image.png
 synopsis: Play as the head of the US Federal Reserve in this fast-paced arcade shooter! Throw out interest rate hikes to stop those inflating dollars in their tracks, and save the economy.
+summary: 'As head of the US Federal Reserve, you must save the economy by throwing interest rate hikes at the inflating dollars before they get out of control.'
 storeLinks:
   - store: google-play
     label: Android

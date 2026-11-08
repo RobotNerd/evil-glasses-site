@@ -5,6 +5,7 @@ date: 2016-10-01
 edition: 6
 order: 2
 synopsis: "A comic's onstage struggle with the right punchline parallels her offstage pursuit of an out- of - reach love."
+summary: 'A comic bombing on stage keeps hunting for the right punchline while she pursues Rhett, a love that feels out of reach.'
 ---
 
 “I thought they only ate meat.” I looked out at the crowd. I could only see their legs and torsos. Drinks were being lifted to mouths I couldn't see. I gave them time to laugh. Gave them a little more time.

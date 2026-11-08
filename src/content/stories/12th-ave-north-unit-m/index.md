@@ -5,6 +5,7 @@ date: 2017-04-01
 edition: 8
 order: 2
 synopsis: 'A chilling tale of sleepless nights and haunting melodies, where love is tested by a mystery that turns every dream into a waking nightmare.'
+summary: 'Exhausted by a humming only he can hear and a partner who cannot sleep, a man wants rest, but his impatience grows with every night until she dies.'
 ---
 
 He found her sitting on the couch in the dark. “What are you doing awake?”

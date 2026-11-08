@@ -5,6 +5,7 @@ date: 2016-07-01
 edition: 5
 order: 2
 synopsis: "Caught between age-old myths and harsh survival, a young man defies all odds to protect humanity's last stand against the advice of his elders."
+summary: 'Calvin, a young man in the last human village, defies his elders to save his uncle Seamus, and his choices restart an ancient war between the giant robotic gods.'
 ---
 
 The last humans on Earth lived in a small farming community known as Stonekeep Village. The Great Annihilation that destroyed almost all of their civilization was remembered only as a myth, and the giant robotic leviathans frozen mid-battle in the distance were worshipped by them as angry gods. Calvin was born and raised into this harsh life, but he had dreams of being something more. Little did he know that his choices would restart an ancient war.

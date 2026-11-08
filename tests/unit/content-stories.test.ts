@@ -17,6 +17,7 @@ const storyFields = (overrides: Record<string, string | null> = {}) => ({
 	date: '2015-07-01',
 	edition: '1',
 	synopsis: 'A synopsis.',
+	summary: 'A summary.',
 	...overrides
 });
 

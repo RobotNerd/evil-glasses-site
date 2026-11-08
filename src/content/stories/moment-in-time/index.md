@@ -5,6 +5,7 @@ date: 2017-10-01
 edition: 10
 order: 2
 synopsis: 'A quiet crisis of a woman caught in the crossfire of her desires and duties.'
+summary: 'Natalie, a woman who has long despised her life, wants something more from her last years before retirement, but her duties and desires keep her resigned to the same routine.'
 ---
 
 Natalie had almost always despised her life. The normal joys like marriage, career, and children were not joys as much as a chore she willingly added to her life. She liked to travel but the sinking feeling of real life was never far away. She liked to cook but the reason she liked to cook was because she had a family that she had to take care of. Aside from that, she was resigned to her existence and did little to change it.

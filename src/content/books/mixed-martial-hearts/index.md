@@ -5,6 +5,7 @@ author: Sara Rogers
 date: 2022-09-13
 cover: cover.jpg
 synopsis: Emily and Matt were college lovers. After Matt's bad choices Emily left to focus on herself and her goals. Years later, since moving back to Santa Cruz, their home town, Matt and Emily can't seem to stay away from each other. Will they find a way to reconcile and be together or will Matt's actions keep them apart from each other forever?
+summary: 'When her college love Matt keeps drawing her back after his bad choices drove her away, Emily must decide whether they can reconcile or his actions will keep them apart forever.'
 authorBio: Mixed Martial Hearts is Sara Rogers' freshmen publication. She lives in Seattle, Washington with her family and adopted pets. She enjoys going to festivals and conventions, training her dog, and traveling.
 storeLinks:
   - store: amazon
