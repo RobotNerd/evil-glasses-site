@@ -63,6 +63,8 @@ test('the button pauses and plays the slideshow', async ({ page }) => {
 	await expect(title(page)).toHaveText(before!);
 	await page.getByRole('button', { name: 'Play slideshow' }).click();
 	await expect(page.getByRole('button', { name: 'Pause slideshow' })).toBeVisible();
+	// The button is on the slide, and the pointer on the slide holds it.
+	await page.mouse.move(0, 0);
 	await page.clock.runFor(SLIDE_MS);
 	await expect(title(page)).not.toHaveText(before!);
 });

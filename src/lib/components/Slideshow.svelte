@@ -21,6 +21,10 @@
 	const paused = $derived(userPaused || hovered || focused);
 	const slide = $derived(index < 0 ? slides[0] : order[index % order.length]);
 
+	// Focus on the button itself does not hold the slide, or Play would never resume.
+	const isToggle = (target: EventTarget | null) =>
+		target instanceof Element && target.classList.contains('toggle');
+
 	onMount(() => {
 		order = shuffle(slides);
 		userPaused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -55,16 +59,38 @@
 		aria-label="Featured"
 		onmouseenter={() => (hovered = true)}
 		onmouseleave={() => (hovered = false)}
-		onfocusin={() => (focused = true)}
+		onfocusin={(event) => (focused = !isToggle(event.target))}
 		onfocusout={() => (focused = false)}
 	>
-		{#if slide}<Slide {slide} priority />{/if}
+		{#if slide}
+			<Slide {slide} priority>
+				{#snippet overlay()}
+					{#if ready}
+						<button
+							type="button"
+							class="toggle"
+							aria-label={userPaused ? 'Play slideshow' : 'Pause slideshow'}
+							onclick={() => (userPaused = !userPaused)}
+						>
+							<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+								{#if userPaused}
+									<path d="M8 5v14l11-7z" fill="currentColor" />
+								{:else}
+									<path
+										d="M8 5v14M16 5v14"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="3"
+										stroke-linecap="round"
+									/>
+								{/if}
+							</svg>
+						</button>
+					{/if}
+				{/snippet}
+			</Slide>
+		{/if}
 	</div>
-	{#if ready}
-		<button type="button" class="toggle" onclick={() => (userPaused = !userPaused)}>
-			{userPaused ? 'Play slideshow' : 'Pause slideshow'}
-		</button>
-	{/if}
 </div>
 
 <style>
@@ -80,18 +106,40 @@
 	.stage.out {
 		opacity: 0;
 	}
+	/* The same size as the phone menu's hamburger, on the image's bottom right corner. */
 	.toggle {
 		position: absolute;
-		top: 0;
-		right: 0;
-		min-height: 2.75rem;
-		padding: 0 var(--space-2);
-		border: 1px solid var(--ink);
+		right: var(--space-2);
+		bottom: var(--space-2);
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.75rem;
+		height: 2.75rem;
+		padding: 0;
+		border: 1px solid var(--line);
 		border-radius: var(--radius);
 		background: var(--paper);
 		color: var(--ink);
-		font: inherit;
 		cursor: pointer;
+	}
+	.toggle:hover {
+		color: var(--accent);
+	}
+	.toggle:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 2px;
+	}
+
+	/* With a pointer that hovers, the button shows only while the pointer is on the slideshow. */
+	@media (hover: hover) {
+		.toggle {
+			opacity: 0;
+		}
+		.show:hover .toggle,
+		.toggle:focus-visible {
+			opacity: 1;
+		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {

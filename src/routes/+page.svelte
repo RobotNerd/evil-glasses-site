@@ -17,18 +17,22 @@
 <h1 class="visually-hidden">Evil Glasses</h1>
 
 <div class="landing">
-	<div class="logo">
-		<Badge size="large">
-			<Logo width={200} glint />
-		</Badge>
-	</div>
-	<nav class="links" aria-label="Sections">
-		{#each data.sections as section (section.href)}
-			<a href={section.href}><span class="t">{section.title}</span></a>
-		{/each}
-	</nav>
-	<div class="slot">
-		<Slideshow slides={data.slides} />
+	<header class="banner">
+		<div class="logo">
+			<Badge size="large">
+				<Logo width={200} glint />
+			</Badge>
+		</div>
+	</header>
+	<div class="body">
+		<nav class="links" aria-label="Sections">
+			{#each data.sections as section (section.href)}
+				<a href={section.href}><span class="t">{section.title}</span></a>
+			{/each}
+		</nav>
+		<div class="slot">
+			<Slideshow slides={data.slides} />
+		</div>
 	</div>
 	<SiteFooter />
 </div>
@@ -51,33 +55,43 @@
 		height: 100dvh;
 		overflow: hidden;
 		display: grid;
-		grid-template-columns: auto minmax(0, 1fr);
 		grid-template-rows: auto minmax(0, 1fr) auto;
-		grid-template-areas:
-			'logo logo'
-			'links slot'
-			'footer footer';
-		gap: var(--space-3) var(--space-4);
-		padding: var(--space-3) var(--space-3) 0;
 		background: var(--paper);
 	}
 
-	.landing > :global(footer) {
-		grid-area: footer;
-		width: 100%;
-		margin: 0;
-		max-width: none;
-		box-sizing: border-box;
+	/* A full-width banner, taller than the other pages' menu bar, with the logo in its middle. */
+	.banner {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: var(--space-4) var(--space-3);
+		padding-top: calc(var(--space-4) + env(safe-area-inset-top));
+		background: var(--bar);
+		border-bottom: 1px solid var(--line);
 	}
 
 	.logo {
-		grid-area: logo;
-		justify-self: center;
-		width: clamp(9rem, 16vw, 13rem);
+		width: 9rem;
+	}
+
+	/* The links and the slide share the other pages' content width. */
+	.body {
+		display: grid;
+		grid-template-columns: auto minmax(0, 1fr);
+		gap: var(--space-4);
+		width: 100%;
+		max-width: var(--content-width);
+		min-height: 0;
+		margin: 0 auto;
+		padding: var(--space-4) var(--space-3);
+	}
+
+	.landing > :global(footer) {
+		width: 100%;
+		margin-top: 0;
 	}
 
 	.links {
-		grid-area: links;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -111,14 +125,21 @@
 	}
 
 	.slot {
-		grid-area: slot;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 		min-height: 0;
 	}
 
 	@media (min-width: 48rem) {
-		.landing {
+		/* Half again as big as on a phone. */
+		.logo {
+			width: clamp(13.5rem, 24vw, 19.5rem);
+		}
+		.body {
 			grid-template-columns: 14rem minmax(0, 1fr);
-			padding-inline: var(--space-5);
+			gap: var(--space-5);
+			padding-block: var(--space-5);
 		}
 		.links a {
 			font-size: clamp(2rem, 4vw, 3rem);

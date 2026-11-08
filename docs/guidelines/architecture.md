@@ -174,7 +174,7 @@ Both are served from `src/lib/assets/fonts/` as `woff2` files, with `font-displa
 - **`Badge`** is the blue rounded rectangle the logo sits on, the same in light and dark. `size="large"` fills its container, as on the landing page.
 - **`SiteMenu`** is a sticky top bar on every page except `/`. At 768 px and wider the section links (Home, Books, Stories, Games and Apps) are centered and there is no menu control. Below that the site name shows and a hamburger button at the top right opens a menu of those links plus About and Legal. The hamburger needs JavaScript, so it appears once the page hydrates. The back arrow at the left uses the browser history after an in-site navigation, and otherwise links to the parent page: the list for a page under a section, and `/` for any other.
 - **`SiteFooter`** shows the About and Legal links and the copyright on every page. The landing page renders it in its own layout.
-- **`Slideshow`** cycles the landing page through its slides. It shows the newest slide before JavaScript runs, then shuffles the slides and fades between them. Each slide shows for `SLIDE_MS` (5 s), including a fade of `FADE_MS`. It starts paused when the visitor prefers reduced motion, pauses on hover and focus, and has a Pause and Play button once the page hydrates.
+- **`Slideshow`** cycles the landing page through its slides. It shows the newest slide before JavaScript runs, then shuffles the slides and fades between them. Each slide shows for `SLIDE_MS` (5 s), including a fade of `FADE_MS`. It starts paused when the visitor prefers reduced motion, pauses on hover and focus, and has a Pause and Play icon button on the image's bottom right corner once the page hydrates. With a pointer that hovers, the button shows only while the pointer is on the slideshow.
 - **`Slide`** is one slide: the image, the title linking to the item, the date and, at 768 px and wider, the `summary`.
 
 ### View transitions
@@ -189,7 +189,7 @@ The only `view-transition-name` the site sets is `cover-<slug>`, on the cover or
 
 ## URLs and redirects
 
-- `/`: the landing page: the logo, a link to each of the four sections, and the slideshow with one slide per book, story, game and app, newest first. `listSlides` in `src/lib/content/landing.ts` builds the slides. A story's slide shows its edition's cover, and an app's shows its first screenshot.
+- `/`: the landing page: a full-width banner with the logo, then, at the content width, a link to each of the four sections, and the slideshow with one slide per book, story, game and app, newest first. `listSlides` in `src/lib/content/landing.ts` builds the slides. A story's slide shows its edition's cover, and an app's shows its first screenshot.
 - `/about`: the about page
 - `/apps` and `/apps/<slug>`: apps
 - `/books` and `/books/<slug>`: books
