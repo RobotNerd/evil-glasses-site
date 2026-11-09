@@ -128,7 +128,7 @@ Tokens are custom properties on `:root`. The dark values come from `prefers-colo
 Colors, light and dark:
 
 - `--accent`: links and highlights
-- `--banner`: the landing page banner, a blue lighter than the accent in light mode and darker in dark mode
+- `--banner`: the landing page banner, a sky blue in light mode and a muted blue in dark mode
 - `--bar`: the background of the top bar
 - `--ink`: text
 - `--line`: borders
