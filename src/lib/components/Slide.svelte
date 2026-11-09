@@ -31,6 +31,7 @@
 	</div>
 	<div class="text">
 		<h2><a href={slide.href}>{slide.title}</a></h2>
+		<p class="category">{slide.category}</p>
 		<p class="date">{formatDate(slide.date)}</p>
 		<p class="summary">{slide.summary}</p>
 	</div>
@@ -93,6 +94,8 @@
 	p {
 		margin: var(--space-1) 0 0;
 	}
+	/* The category reads in the date's style. */
+	.category,
 	.date {
 		color: var(--muted);
 		font-size: 0.875rem;
@@ -115,6 +118,7 @@
 		h2 {
 			font-size: 2rem;
 		}
+		.category,
 		.date {
 			font-size: 1rem;
 		}
@@ -123,6 +127,32 @@
 			font-family: var(--font-serif);
 			font-size: 1.125rem;
 			line-height: 1.4;
+		}
+	}
+
+	/* A phone held sideways: the image at the left, the text to its right. */
+	@media (pointer: coarse) and (orientation: landscape) and (max-height: 30rem) {
+		.slide {
+			grid-template-rows: none;
+			grid-template-columns: auto minmax(0, 1fr);
+			align-items: start;
+			gap: var(--space-4);
+		}
+		.media {
+			max-width: 45vw;
+		}
+		.image :global(picture),
+		.image :global(img) {
+			max-height: max(10rem, calc(100dvh - 11rem));
+		}
+		h2 {
+			font-size: 1.5rem;
+		}
+		.summary {
+			display: block;
+			font-family: var(--font-serif);
+			font-size: 1rem;
+			line-height: 1.35;
 		}
 	}
 </style>

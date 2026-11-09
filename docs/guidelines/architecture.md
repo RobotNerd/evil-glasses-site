@@ -128,7 +128,7 @@ Tokens are custom properties on `:root`. The dark values come from `prefers-colo
 Colors, light and dark:
 
 - `--accent`: links and highlights
-- `--banner`: the landing page banner, a blue lighter than the accent in light mode and darker in dark mode
+- `--banner`: the landing page banner, a sky blue in light mode and a muted blue in dark mode
 - `--bar`: the background of the top bar
 - `--ink`: text
 - `--line`: borders
@@ -187,7 +187,7 @@ The only `view-transition-name` the site sets is `cover-<slug>`, on the cover or
 
 ## URLs and redirects
 
-- `/`: the landing page: a full-width blue banner with the logo, then, at the content width and at the top, a link to each of the four sections, and the slideshow with one slide per book, story, game and app, newest first. `listSlides` in `src/lib/content/landing.ts` builds the slides. A story's slide shows its edition's cover, and an app's shows its first screenshot.
+- `/`: the landing page: a full-width blue banner with the logo, then, at the content width and at the top, a link to each of the four sections, and the slideshow with one slide per book, story, game and app, newest first. `listSlides` in `src/lib/content/landing.ts` builds the slides. Each slide shows the item's name, then its category (Book, Short story, Game or App) and date in the same small style, then its summary. A story's slide shows its edition's cover, and an app's shows its first screenshot. On a phone held sideways (a coarse pointer, landscape, and a height of 30 rem or less) the links move into the banner, in a row to the right of the logo at the left, and the slide shows its image at the left with the name, category, date and summary to its right, all on one screen. Computers at any size and phones held upright keep the layout above.
 - `/about`: the about page
 - `/apps` and `/apps/<slug>`: apps
 - `/books` and `/books/<slug>`: books

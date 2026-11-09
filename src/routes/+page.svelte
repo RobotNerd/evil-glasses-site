@@ -149,6 +149,46 @@
 		}
 	}
 
+	/* A phone held sideways: the links join the logo in the banner row, and the slide fills the rest. */
+	@media (pointer: coarse) and (orientation: landscape) and (max-height: 30rem) {
+		.landing {
+			grid-template-columns: calc(7.25rem + var(--space-3) * 3) minmax(0, 1fr);
+		}
+		.banner {
+			grid-area: 1 / 1 / 2 / -1;
+			justify-content: flex-start;
+			padding: var(--space-2) var(--space-3);
+			padding-top: calc(var(--space-2) + env(safe-area-inset-top));
+		}
+		.logo {
+			width: 7.25rem;
+		}
+		.body {
+			display: contents;
+		}
+		.links {
+			grid-area: 1 / 2;
+			z-index: 1;
+			flex-direction: row;
+			align-items: center;
+			align-self: center;
+			gap: var(--space-4);
+		}
+		.links a {
+			font-size: 1.25rem;
+		}
+		.slot {
+			grid-area: 2 / 1 / 3 / -1;
+			width: 100%;
+			max-width: var(--content-width);
+			margin: 0 auto;
+			padding: var(--space-2) var(--space-3);
+		}
+		.landing > :global(footer) {
+			grid-column: 1 / -1;
+		}
+	}
+
 	@media (prefers-reduced-motion: reduce) {
 		.t {
 			transition: none;

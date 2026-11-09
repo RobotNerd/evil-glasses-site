@@ -31,5 +31,6 @@ describe('listSlides', () => {
 			'/books/book'
 		]);
 		expect(slides[0]).toMatchObject({ title: 'app', date: '2023-01-01', summary: 'About app' });
+		expect(slides.map((s) => s.category)).toEqual(['App', 'Short story', 'Game', 'Book']);
 	});
 });

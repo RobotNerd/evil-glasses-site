@@ -3,9 +3,18 @@ import { sourceText } from './checks';
 import { expect, test } from '@playwright/test';
 
 const sizes = [
-	{ name: 'phone', width: 390, height: 844 },
-	{ name: 'desktop', width: 1440, height: 900 }
+	{ name: 'phone', width: 390, height: 844, touch: true },
+	{ name: 'sideways phone', width: 844, height: 390, touch: true },
+	{ name: 'desktop', width: 1440, height: 900, touch: false },
+	{ name: 'short desktop', width: 1440, height: 500, touch: false }
 ];
+
+type Box = { x: number; y: number; width: number; height: number };
+const inside = (inner: Box, outer: Box) =>
+	inner.x >= outer.x - 1 &&
+	inner.y >= outer.y - 1 &&
+	inner.x + inner.width <= outer.x + outer.width + 1 &&
+	inner.y + inner.height <= outer.y + outer.height + 1;
 
 const sections = [
 	{ name: 'Books', href: '/books' },
@@ -16,7 +25,11 @@ const sections = [
 
 for (const size of sizes) {
 	test.describe(`at ${size.name} size`, () => {
-		test.use({ viewport: { width: size.width, height: size.height } });
+		test.use({
+			viewport: { width: size.width, height: size.height },
+			hasTouch: size.touch,
+			isMobile: size.touch
+		});
 
 		test('the landing page is one screen', async ({ page }) => {
 			await page.goto('/');
@@ -28,6 +41,8 @@ for (const size of sizes) {
 			}));
 			expect(m.sh).toBe(m.ch);
 			expect(m.sw).toBe(m.cw);
+			const footer = (await page.locator('footer').boundingBox())!;
+			expect(footer.y + footer.height).toBeLessThanOrEqual(size.height);
 		});
 
 		test('four section links in tab order', async ({ page }) => {
@@ -55,6 +70,7 @@ for (const size of sizes) {
 		});
 
 		test('the logo is above the links and the slide', async ({ page }) => {
+			test.skip(size.name === 'sideways phone');
 			await page.goto('/');
 			const logo = (await page.locator('.logo svg').boundingBox())!;
 			expect(Math.abs(logo.x + logo.width / 2 - size.width / 2)).toBeLessThanOrEqual(2);
@@ -64,6 +80,9 @@ for (const size of sizes) {
 				const box = (await page.locator(target).boundingBox())!;
 				expect(box.y).toBeGreaterThanOrEqual(logo.y + logo.height);
 			}
+			const banner = (await page.locator('.banner').boundingBox())!;
+			const links = (await page.locator('.links').boundingBox())!;
+			expect(links.y).toBeGreaterThanOrEqual(banner.y + banner.height - 1);
 		});
 
 		test('the slide shows the newest item and its summary only on wide screens', async ({
@@ -76,11 +95,17 @@ for (const size of sizes) {
 				/^\/(books|stories|games|apps)\/./
 			);
 			await expect(slide.locator('.date')).toHaveText(/\w+ \d+, \d{4}/);
+			const kinds = { books: 'Book', stories: 'Short story', games: 'Game', apps: 'App' };
+			const section = (await slide.locator('h2 a').getAttribute('href'))!.split('/')[1];
+			await expect(slide.locator('.category')).toHaveText(kinds[section as keyof typeof kinds]);
+			const below = async (sel: string) => (await slide.locator(sel).boundingBox())!.y;
+			expect(await below('.category')).toBeGreaterThan(await below('h2'));
 			await expect(slide.locator('a.image img')).toBeVisible();
 			expect(await slide.locator('a.image').getAttribute('href')).toBe(
 				await slide.locator('h2 a').getAttribute('href')
 			);
-			if (size.width >= 1000) await expect(slide.locator('.summary')).toBeVisible();
+			if (size.width >= 1000 || size.name === 'sideways phone')
+				await expect(slide.locator('.summary')).toBeVisible();
 			else await expect(slide.locator('.summary')).toBeHidden();
 		});
 
@@ -92,6 +117,40 @@ for (const size of sizes) {
 			await expect(footer).toContainText(`© ${new Date().getFullYear()} Evil Glasses`);
 			await expect(page.locator('.menu')).toHaveCount(0);
 		});
+
+		if (size.name === 'sideways phone') {
+			test('the logo and the links share the banner row', async ({ page }) => {
+				await page.goto('/', { waitUntil: 'networkidle' });
+				const banner = (await page.locator('.banner').boundingBox())!;
+				const logo = (await page.locator('.logo').boundingBox())!;
+				expect(inside(logo, banner)).toBe(true);
+				let previous = logo;
+				const anchors = page.locator('.links a');
+				for (let i = 0; i < sections.length; i++) {
+					const box = (await anchors.nth(i).boundingBox())!;
+					expect(inside(box, banner)).toBe(true);
+					expect(box.x).toBeGreaterThanOrEqual(previous.x + previous.width - 1);
+					expect(box.height).toBeGreaterThanOrEqual(44);
+					previous = box;
+				}
+			});
+
+			test('the slide sits between the banner and the footer, image left of text', async ({
+				page
+			}) => {
+				await page.goto('/', { waitUntil: 'networkidle' });
+				const banner = (await page.locator('.banner').boundingBox())!;
+				const footer = (await page.locator('footer').boundingBox())!;
+				const image = (await page.locator('.slide a.image img').boundingBox())!;
+				const text = (await page.locator('.slide .text').boundingBox())!;
+				const slide = (await page.locator('.slide').boundingBox())!;
+				expect(image.x + image.width).toBeLessThanOrEqual(text.x);
+				expect(image.height).toBeGreaterThanOrEqual(160);
+				expect(slide.y).toBeGreaterThanOrEqual(banner.y + banner.height);
+				expect(slide.y + slide.height).toBeLessThanOrEqual(footer.y);
+				expect(text.y + text.height).toBeLessThanOrEqual(footer.y);
+			});
+		}
 
 		if (size.width < 500) {
 			test('each section link is at least 44 px tall', async ({ page }) => {
