@@ -16,7 +16,7 @@ How the site is built. It is a static site: every page is made at build time and
 
 - `.github/workflows/`: the CI and deploy workflows
 - `docs/guidelines/`: these guidelines
-- `scripts/`: `compare-live.ts`, `lighthouse.js`, `make-brand.js`, `make-fonts.js` and `preview.js`
+- `scripts/`: `lighthouse.js`, `make-brand.js`, `make-fonts.js` and `preview.js`
 - `src/content/<type>/<slug>/index.md`: the content, one folder per entry
 - `src/lib/components/`: shared components, including `SeoHead.svelte`
 - `src/lib/content/`: the content loaders, the schemas and the redirect table
