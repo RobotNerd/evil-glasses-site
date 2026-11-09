@@ -17,8 +17,7 @@
 		"fonts": "node scripts/make-fonts.js",
 		"test": "npm run build && vitest run && playwright test --project=desktop --grep-invert @full",
 		"test:all": "npm run build && vitest run && playwright test && npm run lighthouse",
-		"lighthouse": "node scripts/lighthouse.js",
-		"compare:live": "node scripts/compare-live.ts"
+		"lighthouse": "node scripts/lighthouse.js"
 	},
 	"devDependencies": {
 		"@axe-core/playwright": "^4.14.0",
