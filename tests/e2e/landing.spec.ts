@@ -95,6 +95,11 @@ for (const size of sizes) {
 				/^\/(books|stories|games|apps)\/./
 			);
 			await expect(slide.locator('.date')).toHaveText(/\w+ \d+, \d{4}/);
+			const kinds = { books: 'Book', stories: 'Short story', games: 'Game', apps: 'App' };
+			const section = (await slide.locator('h2 a').getAttribute('href'))!.split('/')[1];
+			await expect(slide.locator('.category')).toHaveText(kinds[section as keyof typeof kinds]);
+			const below = async (sel: string) => (await slide.locator(sel).boundingBox())!.y;
+			expect(await below('.category')).toBeGreaterThan(await below('h2'));
 			await expect(slide.locator('a.image img')).toBeVisible();
 			expect(await slide.locator('a.image').getAttribute('href')).toBe(
 				await slide.locator('h2 a').getAttribute('href')

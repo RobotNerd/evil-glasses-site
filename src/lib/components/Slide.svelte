@@ -31,6 +31,7 @@
 	</div>
 	<div class="text">
 		<h2><a href={slide.href}>{slide.title}</a></h2>
+		<p class="category">{slide.category}</p>
 		<p class="date">{formatDate(slide.date)}</p>
 		<p class="summary">{slide.summary}</p>
 	</div>
@@ -93,6 +94,8 @@
 	p {
 		margin: var(--space-1) 0 0;
 	}
+	/* The category reads in the date's style. */
+	.category,
 	.date {
 		color: var(--muted);
 		font-size: 0.875rem;
@@ -115,6 +118,7 @@
 		h2 {
 			font-size: 2rem;
 		}
+		.category,
 		.date {
 			font-size: 1rem;
 		}

@@ -12,6 +12,8 @@ export type Slide = {
 	/** The item's page. */
 	href: string;
 	title: string;
+	/** The kind of item, as the slide names it. */
+	category: 'Book' | 'Short story' | 'Game' | 'App';
 	/** `YYYY-MM-DD`. */
 	date: string;
 	summary: string;
@@ -49,6 +51,7 @@ export function listSlides(
 		...items.books.map((b) => ({
 			href: `/books/${b.slug}`,
 			title: b.data.title,
+			category: 'Book' as const,
 			date: b.data.date,
 			summary: b.data.summary,
 			image: inFolder(b.path, b.data.cover)
@@ -56,6 +59,7 @@ export function listSlides(
 		...items.stories.map((s) => ({
 			href: `/stories/${s.slug}`,
 			title: s.data.title,
+			category: 'Short story' as const,
 			date: s.data.date,
 			summary: s.data.summary,
 			image: inFolder(s.edition.path, s.edition.data.cover)
@@ -63,6 +67,7 @@ export function listSlides(
 		...items.games.map((g) => ({
 			href: `/games/${g.slug}`,
 			title: g.data.title,
+			category: 'Game' as const,
 			date: g.data.date,
 			summary: g.data.summary,
 			image: inFolder(g.path, g.data.image)
@@ -70,6 +75,7 @@ export function listSlides(
 		...items.apps.map((a) => ({
 			href: `/apps/${a.slug}`,
 			title: a.data.title,
+			category: 'App' as const,
 			date: a.data.date,
 			summary: a.data.summary,
 			image: inFolder(a.path, a.data.screenshots[0])
