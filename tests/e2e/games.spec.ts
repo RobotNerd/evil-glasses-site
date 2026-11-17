@@ -24,17 +24,12 @@ test('/games/inflation-buster shows the old content and links', async ({ page })
 	}
 
 	const storeLinks = page.locator('.stores a');
-	await expect(storeLinks).toHaveCount(2);
-	await expect(storeLinks.nth(0)).toHaveAttribute(
-		'href',
-		'https://play.google.com/store/apps/details?id=org.godotengine.inflationbuster&hl=en&gl=US'
-	);
-	await expect(storeLinks.nth(1)).toHaveAttribute(
+	await expect(storeLinks).toHaveCount(1);
+	await expect(storeLinks.first()).toHaveAttribute(
 		'href',
 		'https://apps.apple.com/us/app/inflation-buster/id6449170617'
 	);
-	await expect(storeLinks.nth(0).locator('img')).toBeVisible();
-	await expect(storeLinks.nth(1).locator('img')).toBeVisible();
+	await expect(storeLinks.first().locator('img')).toBeVisible();
 
 	await expect(page.locator('img.cover')).toBeVisible();
 	await expect(page.getByRole('link', { name: 'Privacy policy' })).toHaveAttribute(

@@ -60,6 +60,27 @@ describe('story validation', () => {
 	});
 });
 
+describe('story slideshow field', () => {
+	it('accepts true, false and no value', () => {
+		for (const value of ['true', 'false', null]) {
+			const entry = validateEntry('stories', {
+				path: storyPath,
+				source: source(storyFields({ slideshow: value }))
+			});
+			expect(entry.data.slideshow).toBe(value === null ? undefined : value === 'true');
+		}
+	});
+
+	it('names the file and the field when slideshow is not a boolean', () => {
+		expect(() =>
+			validateEntry('stories', {
+				path: storyPath,
+				source: source(storyFields({ slideshow: 'maybe' }))
+			})
+		).toThrow(/\/src\/content\/stories\/a-story\/index\.md: field "slideshow"/);
+	});
+});
+
 describe('edition validation', () => {
 	it('accepts a complete edition', () => {
 		const entry = validateEntry('editions', {

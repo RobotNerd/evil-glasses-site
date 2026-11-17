@@ -47,6 +47,7 @@ An app has every game field, plus the ones below. Its `subtitle` becomes optiona
 | `image`         | image file name                            | yes      |
 | `privacyPolicy` | site path                                  | yes      |
 | `screenshots`   | list of image file names, at least one     | yes      |
+| `slideshow`     | boolean                                    | no       |
 | `storeLinks`    | list of store links, at least one          | yes      |
 | `subtitle`      | string                                     | no       |
 | `synopsis`      | string                                     | yes      |
@@ -61,6 +62,7 @@ An app has every game field, plus the ones below. Its `subtitle` becomes optiona
 | `authorBio`  | string                                     | yes      |
 | `cover`      | image file name                            | yes      |
 | `date`       | date                                       | yes      |
+| `slideshow`  | boolean                                    | no       |
 | `storeLinks` | list of store links, at least one          | yes      |
 | `subtitle`   | string                                     | yes      |
 | `synopsis`   | string                                     | yes      |
@@ -82,6 +84,7 @@ An app has every game field, plus the ones below. Its `subtitle` becomes optiona
 | `date`          | date                                       | yes      |
 | `image`         | image file name                            | yes      |
 | `privacyPolicy` | site path such as `/legal/my-app`          | yes      |
+| `slideshow`     | boolean                                    | no       |
 | `storeLinks`    | list of store links, at least one          | yes      |
 | `subtitle`      | string                                     | yes      |
 | `synopsis`      | string                                     | yes      |
@@ -107,15 +110,16 @@ An app has every game field, plus the ones below. Its `subtitle` becomes optiona
 
 A story belongs to the edition whose `number` equals its `edition`. A story with no `order` sorts after those with one, by title.
 
-| Field      | Type                                       | Required |
-| ---------- | ------------------------------------------ | -------- |
-| `author`   | string                                     | yes      |
-| `date`     | date                                       | yes      |
-| `edition`  | positive whole number                      | yes      |
-| `order`    | positive whole number                      | no       |
-| `synopsis` | string                                     | yes      |
-| `summary`  | string, one sentence, up to 200 characters | yes      |
-| `title`    | string                                     | yes      |
+| Field       | Type                                       | Required |
+| ----------- | ------------------------------------------ | -------- |
+| `author`    | string                                     | yes      |
+| `date`      | date                                       | yes      |
+| `edition`   | positive whole number                      | yes      |
+| `order`     | positive whole number                      | no       |
+| `slideshow` | boolean                                    | no       |
+| `synopsis`  | string                                     | yes      |
+| `summary`   | string, one sentence, up to 200 characters | yes      |
+| `title`     | string                                     | yes      |
 
 ## Presentation
 
@@ -187,7 +191,7 @@ The only `view-transition-name` the site sets is `cover-<slug>`, on the cover or
 
 ## URLs and redirects
 
-- `/`: the landing page: a full-width blue banner with the logo, then, at the content width and at the top, a link to each of the four sections, and the slideshow with one slide per book, story, game and app, newest first. `listSlides` in `src/lib/content/landing.ts` builds the slides. Each slide shows the item's name, then its category (Book, Short story, Game or App) and date in the same small style, then its summary. A story's slide shows its edition's cover, and an app's shows its first screenshot. On a phone held sideways (a coarse pointer, landscape, and a height of 30 rem or less) the links move into the banner, in a row to the right of the logo at the left, and the slide shows its image at the left with the name, category, date and summary to its right, all on one screen. Computers at any size and phones held upright keep the layout above.
+- `/`: the landing page: a full-width blue banner with the logo, then, at the content width and at the top, a link to each of the four sections, and the slideshow with one slide per book, story, game and app, newest first, except an item with `slideshow: false`, which gets no slide. `listSlides` in `src/lib/content/landing.ts` builds the slides. Each slide shows the item's name, then its category (Book, Short story, Game or App) and date in the same small style, then its summary. A story's slide shows its edition's cover, and an app's shows its first screenshot. On a phone held sideways (a coarse pointer, landscape, and a height of 30 rem or less) the links move into the banner, in a row to the right of the logo at the left, and the slide shows its image at the left with the name, category, date and summary to its right, all on one screen. Computers at any size and phones held upright keep the layout above.
 - `/about`: the about page
 - `/apps` and `/apps/<slug>`: apps
 - `/books` and `/books/<slug>`: books

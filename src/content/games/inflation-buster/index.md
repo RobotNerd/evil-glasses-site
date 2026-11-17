@@ -6,9 +6,6 @@ image: image.png
 synopsis: Play as the head of the US Federal Reserve in this fast-paced arcade shooter! Throw out interest rate hikes to stop those inflating dollars in their tracks, and save the economy.
 summary: 'As head of the US Federal Reserve, you must save the economy by throwing interest rate hikes at the inflating dollars before they get out of control.'
 storeLinks:
-  - store: google-play
-    label: Android
-    url: https://play.google.com/store/apps/details?id=org.godotengine.inflationbuster&hl=en&gl=US
   - store: apple
     label: Apple
     url: https://apps.apple.com/us/app/inflation-buster/id6449170617
