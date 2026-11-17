@@ -183,3 +183,23 @@ test('/about opens with the intro the home page had', async ({ page }) => {
 	expect(text.replace(/\s+/g, ' ').trim().startsWith(`About Evil Glasses ${intro}`)).toBe(true);
 	expect(readFileSync('tests/fixtures/about-text.txt', 'utf8')).toContain(intro);
 });
+
+test('the landing page holds no slide for the opted-out stories', async ({ page }) => {
+	await page.goto('/');
+	const html = await page.content();
+	expect(html).not.toContain('/stories/prostitute');
+	expect(html).not.toContain('/stories/anorexia');
+});
+
+test('the opted-out stories stay on /stories and keep their pages', async ({ page }) => {
+	await page.goto('/stories');
+	for (const [slug, title] of [
+		['prostitute', 'Prostitute'],
+		['anorexia', 'Anorexia']
+	]) {
+		await expect(page.locator(`main a[href="/stories/${slug}"]`).first()).toBeVisible();
+		await page.goto(`/stories/${slug}`);
+		await expect(page.locator('h1')).toHaveText(title);
+		await page.goto('/stories');
+	}
+});

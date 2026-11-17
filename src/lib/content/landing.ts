@@ -42,13 +42,15 @@ function findImage(indexPath: string, name: string): Image {
 	return image;
 }
 
-/** One slide per book, story, game and app, newest first. The sort is stable, so ties keep the input order. */
+const shown = (item: { data: { slideshow?: boolean } }) => item.data.slideshow !== false;
+
+/** One slide per book, story, game and app, newest first, skipping any with `slideshow: false`. The sort is stable, so ties keep the input order. */
 export function listSlides(
 	items: { books: Book[]; stories: Story[]; games: Game[]; apps: App[] },
 	inFolder: (indexPath: string, name: string) => Image = findImage
 ): Slide[] {
 	const slides: Slide[] = [
-		...items.books.map((b) => ({
+		...items.books.filter(shown).map((b) => ({
 			href: `/books/${b.slug}`,
 			title: b.data.title,
 			category: 'Book' as const,
@@ -56,7 +58,7 @@ export function listSlides(
 			summary: b.data.summary,
 			image: inFolder(b.path, b.data.cover)
 		})),
-		...items.stories.map((s) => ({
+		...items.stories.filter(shown).map((s) => ({
 			href: `/stories/${s.slug}`,
 			title: s.data.title,
 			category: 'Short story' as const,
@@ -64,7 +66,7 @@ export function listSlides(
 			summary: s.data.summary,
 			image: inFolder(s.edition.path, s.edition.data.cover)
 		})),
-		...items.games.map((g) => ({
+		...items.games.filter(shown).map((g) => ({
 			href: `/games/${g.slug}`,
 			title: g.data.title,
 			category: 'Game' as const,
@@ -72,7 +74,7 @@ export function listSlides(
 			summary: g.data.summary,
 			image: inFolder(g.path, g.data.image)
 		})),
-		...items.apps.map((a) => ({
+		...items.apps.filter(shown).map((a) => ({
 			href: `/apps/${a.slug}`,
 			title: a.data.title,
 			category: 'App' as const,

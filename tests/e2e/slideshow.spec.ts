@@ -29,8 +29,9 @@ test('the slides change every 5 s, show every item once, and loop in the same or
 	await open(page);
 	const total = await page.evaluate(
 		async () =>
-			(await (await fetch('/sitemap.xml')).text()).match(/\/(books|stories|games|apps)\/[^</]+</g)
-				?.length ?? 0
+			(await (await fetch('/sitemap.xml')).text())
+				.match(/\/(books|stories|games|apps)\/[^</]+</g)
+				?.filter((url) => !/\/stories\/(prostitute|anorexia)</.test(url)).length ?? 0
 	);
 	expect(total).toBeGreaterThan(2);
 	const seen = await titles(page, total + 1);

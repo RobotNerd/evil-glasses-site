@@ -33,4 +33,22 @@ describe('listSlides', () => {
 		expect(slides[0]).toMatchObject({ title: 'app', date: '2023-01-01', summary: 'About app' });
 		expect(slides.map((s) => s.category)).toEqual(['App', 'Short story', 'Game', 'Book']);
 	});
+
+	it('skips an item with slideshow false and keeps the rest, newest first', () => {
+		const slides = listSlides(
+			{
+				books: [entry('books', 'book', '2020-01-01')],
+				stories: [
+					{
+						...entry('stories', 'story', '2022-01-01', { slideshow: false }),
+						edition: entry('editions', 'edition-01', '2022-01-01', { cover: 'e.jpg' })
+					}
+				],
+				games: [entry('games', 'game', '2021-01-01', { slideshow: true })],
+				apps: [entry('apps', 'app', '2023-01-01', { screenshots: ['s.png'] })]
+			} as never,
+			(path, name) => `${path}#${name}` as never
+		);
+		expect(slides.map((s) => s.href)).toEqual(['/apps/app', '/games/game', '/books/book']);
+	});
 });

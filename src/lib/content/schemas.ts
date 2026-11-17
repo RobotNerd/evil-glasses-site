@@ -13,6 +13,9 @@ const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'must be a date written 
 // A one-sentence logline: who the main character is, what they want, and what stands in the way.
 const summary = z.string().min(1).max(200);
 
+// Whether the item appears in the landing page slideshow. A missing field means true.
+const slideshow = z.boolean().optional();
+
 export const bookSchema = z.strictObject({
 	title: z.string().min(1),
 	subtitle: z.string().min(1),
@@ -21,6 +24,7 @@ export const bookSchema = z.strictObject({
 	cover: z.string().min(1),
 	synopsis: z.string().min(1),
 	summary,
+	slideshow,
 	authorBio: z.string().min(1),
 	storeLinks: z.array(storeLinkSchema).min(1)
 });
@@ -32,6 +36,7 @@ export const gameSchema = z.strictObject({
 	image: z.string().min(1),
 	synopsis: z.string().min(1),
 	summary,
+	slideshow,
 	storeLinks: z.array(storeLinkSchema).min(1),
 	privacyPolicy: z.string().regex(/^\/[a-z0-9/-]*$/, 'must be a site path such as /legal/my-app')
 });
@@ -56,7 +61,8 @@ export const storySchema = z.strictObject({
 	// Position within the edition. Stories without one sort after those with one, by title.
 	order: z.number().int().positive().optional(),
 	synopsis: z.string().min(1),
-	summary
+	summary,
+	slideshow
 });
 
 export const editionSchema = z.strictObject({
